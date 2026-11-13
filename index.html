@@ -228,7 +228,15 @@ details.det .mt{padding-top:0;border-top:0}
 .gg[open]>summary::after{transform:rotate(180deg)}
 .gg .gl{display:inline-block;margin-right:10px;padding:3px 9px;border-radius:999px;background:rgba(var(--t),.14);color:color-mix(in srgb,rgb(var(--t)) 72%,var(--tx));font-size:11px;letter-spacing:.08em;text-transform:uppercase}
 .gb{padding:0 18px 14px}
-.gb:has(h4){columns:2 340px;column-gap:48px}
+.gi{padding:16px 0 4px;border-top:1px solid var(--bd)}
+.gi:first-child{padding-top:0;border-top:0}
+.gi h3{margin:0 0 8px;font-size:17px;line-height:1.3;letter-spacing:-.01em}
+.gi:has(h4){columns:2 340px;column-gap:48px}
+.gi:has(h4) h3{column-span:all}
+.sk{grid-column:1/-1;display:flex;align-items:baseline;gap:10px;margin:6px 0 -10px;font-size:15px;font-weight:800;letter-spacing:.01em}
+.sk::before{content:"";align-self:center;width:9px;height:9px;border-radius:50%;background:rgb(var(--t))}
+.sk span{font-size:12.5px;font-weight:600;color:var(--mu)}
+.kind{display:block;margin:0 0 6px;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,rgb(var(--t)) 72%,var(--tx))}
 .gb h4{font-size:15px;margin:16px 0 4px;color:var(--tx);break-after:avoid}
 .gb h4:first-child{margin-top:0}
 .gb p{color:var(--mu);margin:0 0 12px;max-width:68ch;break-inside:avoid;font-size:15px;line-height:1.6}
@@ -336,7 +344,7 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
  <div class="ha"><a class="btn ghost" href="#eleccion">★ Ver los mejor puntuados</a></div>
  <ul class="stats" aria-label="Datos de la web">
   <li><b id="s1"></b>productos comparados</li>
-  <li><b id="s2"></b>categorías</li>
+  <li><b id="s2"></b>tipos de producto</li>
   <li><b id="s3"></b>criterios en la puntuación</li>
  </ul>
 </div></div>
@@ -361,7 +369,7 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
 </div></section>
 
 <section class="alt" id="veredicto"><div class="w">
- <div class="sh"><span class="ey">Mejor puntuados</span><h2>El mejor puntuado de cada categoría</h2><p>Se elige de forma automática: es el producto con mayor puntuación orientativa de su categoría. No es una prueba propia ni una recomendación personalizada.</p></div>
+ <div class="sh"><span class="ey">Mejor puntuados</span><h2>El mejor puntuado de cada tipo</h2><p>Se elige de forma automática: es el producto con mayor puntuación orientativa de su tipo (esterillas, gomas, bancos…). No es una prueba propia ni una recomendación personalizada.</p></div>
  <div id="picks"></div>
 </div></section>
 
@@ -404,7 +412,7 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
 <footer><div class="w">
  <div class="fg">
   <div><a class="logo" href="#inicio"><svg aria-hidden="true"><use href="#i-logo"/></svg><span>Hierro <b>de Salón</b></span></a><p>Comparativas de material de fuerza para tu home gym, con puntuación orientativa y datos de Amazon.es.</p></div>
-  <div><h3>Categorías</h3><ul class="cols"><li><a href="#comparativas" data-cat="esterillas">Esterillas</a></li><li><a href="#comparativas" data-cat="gomas">Gomas elásticas</a></li><li><a href="#comparativas" data-cat="balones">Balones de pilates</a></li><li><a href="#comparativas" data-cat="dominadas">Barras de dominadas</a></li><li><a href="#comparativas" data-cat="mancuernas">Mancuernas ajustables</a></li><li><a href="#comparativas" data-cat="bancos">Bancos</a></li><li><a href="#comparativas" data-cat="accesorios">Accesorios</a></li><li><a href="#comparativas" data-cat="lastre">Cinturones de lastre</a></li></ul></div>
+  <div><h3>Categorías</h3><ul><li><a href="#comparativas" data-cat="fit">Yoga, pilates y fitness</a></li><li><a href="#comparativas" data-cat="tra">Dominadas y lastre</a></li><li><a href="#comparativas" data-cat="pes">Mancuernas y bancos</a></li><li><a href="#comparativas" data-cat="acc">Accesorios</a></li></ul></div>
   <div><h3>Información</h3><ul><li><a href="#metodologia">Cómo puntuamos</a></li><li><a href="aviso-legal.html">Aviso legal</a></li><li><a href="privacidad.html">Política de privacidad</a></li><li><a href="cookies.html">Política de cookies</a></li><li><a href="#" data-cookies>Configurar cookies</a></li></ul></div>
  </div>
  <p class="aff">En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables. Esto no supone ningún coste adicional para ti.</p>
@@ -432,8 +440,16 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
    mx/di/pe/mat = datos de la ficha, sp = la ficha dice que ahorra espacio, nv = nivel orientativo. */
 const DATE="13/11/2026";
 /* El orden de C es el orden de aparición en la web: primero las categorías de público más amplio (criterio editorial, sin datos de ventas) */
-const C={esterillas:"Esterillas",gomas:"Gomas elásticas",balones:"Balones de pilates",dominadas:"Barras de dominadas",mancuernas:"Mancuernas ajustables",bancos:"Bancos",accesorios:"Accesorios",lastre:"Cinturones de lastre"};
-const CK=Object.keys(C);
+const C={esterillas:"Esterillas",gomas:"Gomas elásticas",balones:"Balones de pilates",dominadas:"Barras de dominadas",lastre:"Cinturones de lastre",accesorios:"Accesorios",mancuernas:"Mancuernas ajustables",bancos:"Bancos"};
+/* Grupos que ve el visitante (orden de aparición). C sigue siendo el «tipo de producto» y es la unidad de la puntuación. */
+const G={
+ fit:{n:"Yoga, pilates y fitness",s:"Yoga y fitness",k:["esterillas","gomas","balones"]},
+ tra:{n:"Dominadas y lastre",s:"Dominadas",k:["dominadas","lastre"]},
+ pes:{n:"Mancuernas y bancos",s:"Mancuernas y bancos",k:["mancuernas","bancos"]},
+ acc:{n:"Accesorios",s:"Accesorios",k:["accesorios"]}
+};
+const GK=Object.keys(G),CK=GK.flatMap(g=>G[g].k),GR={};GK.forEach(g=>G[g].k.forEach(k=>GR[k]=g));
+const lst=a=>a.length>1?a.slice(0,-1).join(", ")+" y "+a[a.length-1]:a[0];
 const CT={mancuernas:"13,148,136",bancos:"37,99,235",dominadas:"2,132,199",lastre:"124,58,237",accesorios:"225,29,72",esterillas:"22,163,74",balones:"202,138,4",gomas:"192,38,211"};
 const IC={
  all:'<rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/>',
@@ -526,7 +542,7 @@ const calc=p=>`<details class="calc"><summary>¿Cómo se calcula la puntuación?
 const pic=p=>`<img src="${p.img}" alt="${p.n}" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()">`;
 
 /* Mejor puntuado de cada categoría (automático: mayor puntuación; si empatan, más opiniones) */
-const PK=Object.keys(C).map(k=>P.filter(p=>p.c===k).sort((a,b)=>b.raw-a.raw||b.nr-a.nr)[0]);
+const PK=CK.map(k=>P.filter(p=>p.c===k).sort((a,b)=>b.raw-a.raw||b.nr-a.nr)[0]);
 const why=p=>`Es el de mayor puntuación de su categoría (${f1(p.s)} de 5): valoración ${f1(p.rt)} con ${num(p.nr)} opiniones y precio de ${eur(p.pc)} (${p.pu}).`;
 
 let cat="",qry="",cmp=[],ord="d",fp="",fe="",fn="";
@@ -539,9 +555,10 @@ const pass=p=>{
  if(fn==="ava"&&p.nv==="ini")return false;
  return true;
 };
-const card=p=>`<article class="card" data-id="${p.id}" style="--t:${CT[p.c]}">
+const card=(p,kind)=>`<article class="card" data-id="${p.id}" style="--t:${CT[p.c]}">
  <div class="ph">${pic(p)}<span class="tag">${p.b}</span>${PK.includes(p)?'<span class="star">★ Mejor puntuado</span>':''}</div>
  <div class="cd">
+ ${kind?`<span class="kind">${C[p.c]}</span>`:""}
  <div class="top"><h3>${p.n}</h3>${sc(p)}</div>
  ${pricing(p)}${rate(p)}
  <ul class="pr">${p.pr.map(x=>`<li>${x}</li>`).join("")}</ul>
@@ -558,22 +575,24 @@ const card=p=>`<article class="card" data-id="${p.id}" style="--t:${CT[p.c]}">
 const pick=p=>`<article class="card" style="--t:${CT[p.c]}"><div class="ph">${pic(p)}<span class="tag">${C[p.c]}</span></div><div class="cd"><div class="top"><h3>${p.n}</h3>${sc(p)}</div>${pricing(p)}${rate(p)}${p.av?warn(p.av):""}<p class="why"><b>Por qué aparece aquí:</b> ${why(p)}</p><div class="vd"><b>Para quién SÍ</b><p>${p.y}</p></div><div class="vd"><b>Para quién NO</b><p>${p.no}</p></div><div class="ac2">${cta(p)}<button class="btn" data-go="${p.c}">Ver comparativa de ${C[p.c].toLowerCase()}</button></div></div></article>`;
 
 /* Selector de categorías (tarjetas con icono y nº de productos) */
-const CS={esterillas:"Esterillas",gomas:"Gomas",balones:"Balones",dominadas:"Dominadas",mancuernas:"Mancuernas",bancos:"Bancos",accesorios:"Accesorios",lastre:"Lastre"};
-const chip=(k,t,n)=>`<button class="chip" data-c="${k}" title="${k?C[k]:"Todas las categorías"}: ${n} ${n===1?"producto":"productos"}" style="--t:${k?CT[k]:"100,116,139"}"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[k||"all"]}</svg></span><span class="cl">${t}</span></button>`;
-$("#chips").innerHTML=chip("","Todo",P.length)+CK.map(k=>chip(k,CS[k],P.filter(p=>p.c===k).length)).join("");
+const chip=(k,t,n)=>{const i=k?G[k].k[0]:"";return `<button class="chip" data-c="${k}" title="${k?G[k].n+" ("+lst(G[k].k.map(c=>C[c].toLowerCase()))+")":"Todos los productos"}: ${n} ${n===1?"producto":"productos"}" style="--t:${k?CT[i]:"100,116,139"}"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[k?i:"all"]}</svg></span><span class="cl">${t}</span></button>`};
+$("#chips").innerHTML=chip("","Todo",P.length)+GK.map(g=>chip(g,G[g].s,P.filter(p=>GR[p.c]===g).length)).join("");
 /* Guías de compra: cada una va dentro de su categoría */
 const GD={};document.querySelectorAll("#guides article").forEach(a=>{const h=a.querySelector("h3"),t=h.textContent;a.querySelectorAll("a.more").forEach(x=>x.remove());h.remove();GD[a.id.slice(2)]={t,h:a.innerHTML}});
-const guide=c=>GD[c]?`<details class="gg" style="--t:${CT[c]}"><summary><span class="gl">Qué comprar</span>${GD[c].t}</summary><div class="gb">${GD[c].h}</div></details>`:"";
+const guide=g=>{const L=G[g].k.filter(c=>GD[c]);return L.length?`<details class="gg" style="--t:${CT[L[0]]}"><summary><span class="gl">Qué comprar</span>Cómo elegir ${lst(L.map(c=>C[c].toLowerCase()))}</summary><div class="gb">${L.map(c=>`<section class="gi"><h3>${GD[c].t}</h3>${GD[c].h}</section>`).join("")}</div></details>`:""};
 
 function render(){
- const t=qry.toLowerCase(),F=P.filter(p=>(t?(p.n+" "+p.b+" "+C[p.c]).toLowerCase().includes(t):(!cat||p.c===cat))&&pass(p)).sort(SRT[ord]);
+ const t=qry.toLowerCase(),F=P.filter(p=>(t?(p.n+" "+p.b+" "+C[p.c]+" "+G[GR[p.c]].n).toLowerCase().includes(t):(!cat||GR[p.c]===cat))&&pass(p)).sort(SRT[ord]);
  document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",!t&&b.dataset.c===cat));
- const col=(!t&&CT[cat])||"71,85,105";$("#comparativas").style.setProperty("--t",col);
- const grp=!t&&(cat||ord==="d");let last="";
+ const col=(!t&&cat&&CT[G[cat].k[0]])||"71,85,105";$("#comparativas").style.setProperty("--t",col);
+ /* Con «Destacados» cada grupo se divide por tipo de producto; con otro orden las tarjetas llevan el tipo escrito */
+ const grp=!t&&(cat||ord==="d"),sub=!t&&ord==="d";let lg="",ls="";
+ const np=(n)=>n+" "+(n===1?"producto":"productos");
  $("#list").innerHTML=F.length?F.map(p=>{
-  let h="";
-  if(grp&&p.c!==last){last=p.c;const n=F.filter(x=>x.c===p.c).length;h=`<h3 class="gh" style="--t:${CT[p.c]}"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[p.c]}</svg></span>${C[p.c]}<span class="gn">${n} ${n===1?"producto":"productos"}</span>${cat?"":`<a href="#comparativas" data-cat="${p.c}">Ver solo esta categoría</a>`}</h3>${guide(p.c)}`}
-  return h+card(p)}).join(""):`<p class="muted">Ningún producto cumple estos filtros. Prueba a quitar alguno.</p>`;
+  let h="";const g=GR[p.c],i0=G[g].k[0];
+  if(grp&&g!==lg){lg=g;ls="";h=`<h3 class="gh" style="--t:${CT[i0]}"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[i0]}</svg></span>${G[g].n}<span class="gn">${np(F.filter(x=>GR[x.c]===g).length)}</span>${cat?"":`<a href="#comparativas" data-cat="${g}">Ver solo esta categoría</a>`}</h3>${guide(g)}`}
+  if(sub&&G[g].k.length>1&&p.c!==ls){ls=p.c;h+=`<h4 class="sk" style="--t:${CT[p.c]}">${C[p.c]}<span>${np(F.filter(x=>x.c===p.c).length)}</span></h4>`}
+  return h+card(p,!sub)}).join(""):`<p class="muted">Ningún producto cumple estos filtros. Prueba a quitar alguno.</p>`;
  $("#cnt").textContent=F.length+(F.length===1?" producto":" productos");
  $("#fx").hidden=!(fp||fe||fn);
  const nf=(fp?1:0)+(fe?1:0)+(fn?1:0);$(".fd>summary").textContent="Filtros"+(nf?" ("+nf+(nf===1?" activo)":" activos)"):"");
@@ -640,7 +659,7 @@ $("#dlg").addEventListener("click",e=>{if(e.target===$("#dlg"))$("#dlg").close()
 
 /* Mejor puntuado de cada categoría y panel de la portada */
 $("#picks").innerHTML=PK.map(pick).join("");
-$("#picks").addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(b){go(b.dataset.go);nav("#comparativas")}});
+$("#picks").addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(b){go(GR[b.dataset.go]);nav("#comparativas")}});
 
 /* Cifras y textos que dependen de los datos (no hay valores fijos en el HTML) */
 $("#s1").textContent=P.length;$("#s2").textContent=Object.keys(C).length;$("#s3").textContent=CR.length;
@@ -652,7 +671,7 @@ $("#frm").innerHTML=`<p><strong>Puntuación orientativa (de 1 a 5, en pasos de 0
 <li><strong>Capacidad</strong> = 5 × (carga o resistencia declarada ÷ mayor declarada en su categoría). Es una cifra del fabricante, no medida por nosotros. Solo se calcula en categorías con datos de carga; en las demás es «No aplica».</li>
 <li><strong>Precio</strong> = 2,5 + 1,25 × log₂(mediana de su categoría ÷ precio), limitado entre 0 y 5. Un precio igual a la mediana da 2,5. Si el producto se vende por unidad y los demás por par o set (como la Nüobell), se compara el precio del par o set.</li>
 </ul>
-<p><strong>Limitaciones.</strong> Cada categoría tiene solo 2 o 3 productos, así que la mediana y el «mayor» de cada categoría son referencias poco representativas. El criterio de precio favorece al más barato aunque no sea el de mejor calidad: por eso es solo uno de los criterios. Las opiniones de Amazon pueden incluir variantes del producto y no las hemos verificado. <strong>No hemos probado los productos</strong>: todos los datos salen de las fichas públicas de Amazon.es consultadas el <span>${DATE}</span>. Los materiales, el nivel y el ahorro de espacio son datos o clasificaciones basados en la ficha y no puntúan.</p>`;
+<p><strong>Limitaciones.</strong> En esta metodología, «categoría» es el tipo de producto (por ejemplo, esterillas o bancos), no el grupo en el que se muestra en la web. Cada categoría tiene solo 2 o 3 productos, así que la mediana y el «mayor» de cada categoría son referencias poco representativas. El criterio de precio favorece al más barato aunque no sea el de mejor calidad: por eso es solo uno de los criterios. Las opiniones de Amazon pueden incluir variantes del producto y no las hemos verificado. <strong>No hemos probado los productos</strong>: todos los datos salen de las fichas públicas de Amazon.es consultadas el <span>${DATE}</span>. Los materiales, el nivel y el ahorro de espacio son datos o clasificaciones basados en la ficha y no puntúan.</p>`;
 
 /* Navegación interna: no depende del hash del navegador, así funciona también en vistas previas y en file:// */
 function view(h){h=h||"";const v=h==="#eleccion";["#inicio","#comparativas","#metodologia"].forEach(s=>$(s).hidden=v);$("#veredicto").hidden=!v;const t=!v&&h.length>1&&h!=="#inicio"&&document.getElementById(h.slice(1));t?t.scrollIntoView():scrollTo(0,0)}
