@@ -3,18 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hierro de Salón: comparativas de mancuernas, bancos y material de fuerza</title>
-<meta name="description" content="Hierro de Salón compara mancuernas ajustables, bancos, cinturones de lastre y accesorios para tu home gym. Elige el material de fuerza adecuado.">
+<title>Hierro de Salón: comparativas de material de fuerza y fitness para casa</title>
+<meta name="description" content="Comparativas de mancuernas ajustables, bancos, barras de dominadas, cinturones de lastre, straps, esterillas, balones de pilates y gomas elásticas, con notas claras para elegir tu equipo de home gym.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://hierrodesalon.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Hierro de Salón">
-<meta property="og:title" content="Hierro de Salón: comparativas de mancuernas, bancos y material de fuerza">
-<meta property="og:description" content="Comparamos materiales, carga máxima y calidad-precio. Elige tu equipo de fuerza en minutos.">
+<meta property="og:title" content="Hierro de Salón: comparativas de material de fuerza y fitness para casa">
+<meta property="og:description" content="Comparamos materiales, carga máxima y calidad-precio. Elige tu equipo de fuerza y fitness en minutos.">
 <meta property="og:url" content="https://hierrodesalon.com/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://hierrodesalon.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hierro de Salón: comparativas de material de fuerza">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://hierrodesalon.com/og.png">
 <meta name="theme-color" content="#0E1317">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,16 +107,21 @@ a.cta:hover::after{transform:translateX(3px)}
 
 /* ---------- Comparativas ---------- */
 #comparativas{background:linear-gradient(180deg,rgba(var(--t),.09),transparent 380px),var(--bg)}
-#comparativas[data-c=bancos]{--t:37,99,235}
-#comparativas[data-c=lastre]{--t:124,58,237}
-#comparativas[data-c=accesorios]{--t:225,29,72}
-#comparativas[data-c=""]{--t:71,85,105}
-.tb{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin:0 0 28px}
-.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:none;max-width:100%}
-.chip{padding:11px 20px;border:1px solid var(--bd);border-radius:999px;background:var(--sf);color:var(--tx);font:inherit;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:border-color .15s,background .15s}
-.chip:hover{border-color:var(--ac)}
-.chip[aria-pressed="true"]{background:var(--tx);border-color:var(--tx);color:var(--bg)}
-.cnt{font-size:14px;color:var(--mu);font-weight:500}
+.chips{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin:0 0 28px}
+@media(min-width:760px){.chips{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:759px){.chip:last-child{grid-column:1/-1}}
+.chip{--t:71,85,105;display:flex;align-items:center;gap:14px;text-align:left;padding:14px 16px;border:1px solid var(--bd);border-radius:18px;background:var(--sf);color:var(--tx);font:inherit;cursor:pointer;transition:border-color .15s,background .15s,transform .15s,box-shadow .15s}
+.chip:hover{border-color:rgba(var(--t),.55);transform:translateY(-2px);box-shadow:0 12px 24px -16px rgba(19,23,27,.4)}
+.chip .ci{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:rgba(var(--t),.13);color:rgb(var(--t));transition:background .15s,color .15s}
+.chip .ci svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.chip .cl{display:block;font-size:15px;font-weight:700;line-height:1.2}
+.chip small{display:block;margin-top:3px;font-size:12px;color:var(--mu);font-weight:500}
+.chip[aria-pressed="true"]{border-color:rgb(var(--t));background:rgba(var(--t),.08);box-shadow:0 0 0 1px rgb(var(--t))}
+.chip[aria-pressed="true"] .ci{background:rgb(var(--t));color:#fff}
+.tb{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin:0 0 24px}
+.cnt{font-size:14px;color:var(--mu);font-weight:600}
+.ord{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mu);font-weight:500}
+.ord select{padding:9px 38px 9px 16px;border:1px solid var(--bd);border-radius:999px;background:var(--sf);color:var(--tx);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 #list{display:grid;gap:24px;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
 .card{display:flex;flex-direction:column;background:var(--sf);border:1px solid var(--bd);border-radius:22px;overflow:hidden;box-shadow:0 1px 2px rgba(19,23,27,.04),0 10px 28px -16px rgba(19,23,27,.18);transition:transform .25s,box-shadow .25s,border-color .25s;animation:up .45s both}
 .card:hover{transform:translateY(-4px);border-color:rgba(var(--t),.5);box-shadow:0 2px 4px rgba(19,23,27,.05),0 24px 40px -18px rgba(19,23,27,.28)}
@@ -120,7 +130,7 @@ a.cta:hover::after{transform:translateX(3px)}
 .ph{position:relative;flex:none;height:230px;display:flex;align-items:center;justify-content:center;padding:34px 22px 18px;background:radial-gradient(ellipse at 50% 45%,#fff 40%,rgba(var(--t),.10) 130%),#fff;border-bottom:1px solid var(--bd);overflow:hidden}
 .ph img{width:100%;height:100%;min-height:0;object-fit:contain;transition:transform .35s}
 .card:hover .ph img{transform:scale(1.05)}
-.ph svg.im{width:86%;height:86%}
+.ph.nf::after{content:"Imagen no disponible";color:#58616B;font-size:13px;font-weight:500}
 .tag{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:#fff;color:#13171B;font-size:12px;font-weight:700;box-shadow:0 1px 3px rgba(19,23,27,.14),0 0 0 1px rgba(19,23,27,.06)}
 .tag::before{content:"";width:8px;height:8px;border-radius:50%;background:rgb(var(--t))}
 .ph .tag{position:absolute;left:14px;top:14px}
@@ -134,7 +144,7 @@ a.cta:hover::after{transform:translateX(3px)}
 ul.pr{flex:1 0 auto;align-content:start;list-style:none;margin:0 0 18px;padding:0;display:grid;gap:7px;color:var(--mu);font-size:14px;line-height:1.45}
 ul.pr li{position:relative;padding-left:28px}
 ul.pr li::before{content:"✓";position:absolute;left:0;top:1px;width:19px;height:19px;border-radius:50%;background:rgba(21,128,61,.14);color:var(--ok);font-size:11px;font-weight:800;display:grid;place-items:center}
-.mt{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 16px;padding:14px 0;border-block:1px solid var(--bd)}
+.mt{display:grid;grid-template-columns:repeat(var(--n,3),1fr);gap:12px 18px;margin:0 0 16px;padding:14px 0;border-block:1px solid var(--bd)}
 .mt div{min-width:0}
 .mt span.l{display:block;font-size:11px;font-weight:600;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mt .br{display:block;height:6px;margin:6px 0 5px;border-radius:99px;background:var(--alt);overflow:hidden}
@@ -151,7 +161,6 @@ ul.pr li::before{content:"✓";position:absolute;left:0;top:1px;width:19px;heigh
 .vd b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
 .vd p{margin:3px 0 0;color:var(--mu)}
 .vd~.ac2{margin-top:20px}
-.c1{fill:var(--c1)}.c2{fill:var(--c2)}.s1{stroke:var(--c1)}.s2{stroke:var(--c2)}
 
 /* ---------- Nuestra elección ---------- */
 #veredicto{padding:80px 0;background:linear-gradient(180deg,var(--dk) 0 330px,var(--bg) 330px)}
@@ -164,10 +173,6 @@ ul.pr li::before{content:"✓";position:absolute;left:0;top:1px;width:19px;heigh
 
 /* ---------- Guías ---------- */
 #guias{background:var(--sf);border-block:1px solid var(--bd);--t:15,118,110}
-#guias[data-c=bancos]{--t:37,99,235}
-#guias[data-c=lastre]{--t:124,58,237}
-#guias[data-c=accesorios]{--t:225,29,72}
-#guias[data-c=""]{--t:71,85,105}
 #guias:not(:has(.gd article:not([hidden]))){display:none}
 .gd{display:grid;gap:24px}
 .g3{display:contents}
@@ -195,7 +200,9 @@ ul.pr li::before{content:"✓";position:absolute;left:0;top:1px;width:19px;heigh
 /* ---------- Pie ---------- */
 footer{background:var(--dk);color:#9FB0BF;padding:64px 0 32px;font-size:14px}
 .fg{display:grid;gap:36px;margin-bottom:36px}
-@media(min-width:760px){.fg{grid-template-columns:1.4fr 1fr 1fr}}
+@media(min-width:760px){.fg{grid-template-columns:1.2fr 1.5fr 1fr}}
+footer ul.cols{display:block;columns:2;column-gap:24px}
+footer ul.cols li{margin:0 0 8px;break-inside:avoid}
 footer .logo{color:#fff;margin-bottom:12px}
 footer .logo b{color:#5EEAD4}
 footer p{margin:0;max-width:30em}
@@ -240,24 +247,24 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
  .tr{grid-template-columns:60px minmax(0,1fr) auto;gap:12px}
  .tr .th{width:60px;height:60px}
  .gd article{padding:24px}
+ .chip{padding:12px;gap:10px}
+ .chip .ci{width:40px;height:40px}
+ .chip .cl{font-size:14px}
+ .ord span{display:none}
+ .ord select{padding-left:14px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.card:hover,.card:hover .ph img{transition:none;transform:none;animation:none}}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<symbol id="i-db" viewBox="0 0 240 150"><ellipse cx="120" cy="134" rx="84" ry="7" fill="#0F172A" opacity=".12"/><rect x="66" y="66" width="108" height="16" rx="8" fill="#94A3B8"/><path d="M82 68v12M92 68v12M148 68v12M158 68v12" stroke="#64748B" stroke-width="2" fill="none"/><rect class="c1" x="40" y="36" width="28" height="76" rx="8"/><rect class="c1" x="172" y="36" width="28" height="76" rx="8"/><rect class="c2" x="22" y="48" width="20" height="52" rx="6"/><rect class="c2" x="198" y="48" width="20" height="52" rx="6"/><rect x="46" y="40" width="7" height="68" rx="3.5" fill="#fff" opacity=".22"/><rect x="178" y="40" width="7" height="68" rx="3.5" fill="#fff" opacity=".22"/><circle cx="186" cy="74" r="8" fill="#0F172A"/><circle class="c2" cx="186" cy="74" r="3.5"/></symbol>
-<symbol id="i-tr" viewBox="0 0 240 150"><rect x="12" y="108" width="216" height="16" rx="8" fill="#CBD5E1"/><rect x="12" y="118" width="216" height="6" rx="3" fill="#94A3B8"/><use href="#i-db" y="-16"/></symbol>
-<symbol id="i-bn" viewBox="0 0 240 150"><ellipse cx="120" cy="136" rx="94" ry="6" fill="#0F172A" opacity=".12"/><path d="M52 130h44M148 130h44M74 130v-12M170 130v-12M74 118h96M100 118l-34-36" stroke="#334155" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect class="c1" x="34" y="82" width="108" height="20" rx="10" transform="rotate(16 142 92)"/><rect class="c1" x="148" y="90" width="58" height="18" rx="9"/><rect x="40" y="86" width="96" height="4" rx="2" fill="#fff" opacity=".22" transform="rotate(16 142 92)"/><rect x="156" y="94" width="42" height="3" rx="1.5" fill="#fff" opacity=".22"/></symbol>
-<symbol id="i-bl" viewBox="0 0 240 150"><ellipse cx="120" cy="142" rx="52" ry="5" fill="#0F172A" opacity=".12"/><path class="c1" d="M30 30q90 28 180 0v34q-90 28-180 0z"/><path d="M34 48q86 26 172 0" stroke="#fff" stroke-opacity=".45" stroke-width="2.5" stroke-dasharray="6 5" fill="none"/><rect x="104" y="46" width="32" height="28" rx="5" fill="#CBD5E1"/><rect class="c2" x="111" y="53" width="18" height="14" rx="3"/><path d="M120 78v22" stroke="#64748B" stroke-width="6" stroke-dasharray="8 4" fill="none"/><circle cx="120" cy="120" r="20" fill="#1E293B"/><circle class="c2" cx="120" cy="120" r="12"/><circle cx="120" cy="120" r="4.5" fill="#F1F5F9"/></symbol>
-<symbol id="i-st" viewBox="0 0 240 150"><ellipse cx="120" cy="138" rx="90" ry="6" fill="#0F172A" opacity=".12"/><path class="s1" d="M24 92C66 18 112 28 130 70S198 112 216 44" stroke-width="20" stroke-linecap="round" fill="none"/><path class="s2" d="M24 118C66 44 112 54 130 96S198 138 216 70" stroke-width="20" stroke-linecap="round" fill="none"/><path d="M24 92C66 18 112 28 130 70S198 112 216 44M24 118C66 44 112 54 130 96S198 138 216 70" stroke="#fff" stroke-opacity=".45" stroke-width="2" stroke-dasharray="7 6" fill="none"/></symbol>
 <symbol id="i-logo" viewBox="0 0 40 40"><rect width="40" height="40" rx="10" fill="#0E1317"/><g fill="none" stroke="#5EEAD4" stroke-width="3" stroke-linecap="round"><path d="M12 14v12M8 17v6M28 14v12M32 17v6M12 20h16"/></g></symbol>
 </defs></svg>
 <header>
  <div class="w hd">
   <a class="logo" href="#inicio"><svg aria-hidden="true"><use href="#i-logo"/></svg><span>Hierro <b>de Salón</b></span></a>
   <nav aria-label="Principal">
-   <a href="#inicio">Inicio</a><a href="#comparativas">Comparativas</a><a href="#eleccion">Nuestra elección</a><a href="#comparativas" data-cat="accesorios">Accesorios</a><a href="#metodologia">Metodología</a>
+   <a href="#inicio">Inicio</a><a href="#comparativas">Comparativas</a><a href="#eleccion">Nuestra elección</a><a href="#guias">Guías de compra</a><a href="#metodologia">Metodología</a>
   </nav>
   <form class="srch" role="search" onsubmit="return false"><label class="sr" for="q">Buscar productos</label><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Buscar producto…" autocomplete="off"></form>
  </div>
@@ -285,15 +292,10 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
 
 <section id="comparativas"><div class="w">
  <div class="sh"><span class="ey">Comparativas</span><h2>Elige por categoría</h2><p>Cada producto con su nota, sus puntos fuertes y sus datos clave para decidir sin perder tiempo.</p></div>
+ <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
  <div class="tb">
-  <div class="chips" id="chips" role="group" aria-label="Categorías">
-   <button class="chip" data-c="mancuernas">Mancuernas ajustables</button>
-   <button class="chip" data-c="bancos">Bancos</button>
-   <button class="chip" data-c="lastre">Barras y lastre</button>
-   <button class="chip" data-c="accesorios">Accesorios</button>
-   <button class="chip" data-c="">Todo</button>
-  </div>
   <span class="cnt" id="cnt" aria-live="polite"></span>
+  <label class="ord"><span>Ordenar por</span><select id="ord"><option value="s">Mejor nota</option><option value="v">Mejor calidad-precio</option><option value="n">Nombre (A-Z)</option></select></label>
  </div>
  <div id="list"></div>
 </div></section>
@@ -325,6 +327,10 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
    <article id="g-bancos"><h3>Cómo elegir un banco de musculación regulable</h3><p>Empieza por la carga máxima: suma tu peso y el de la barra, y deja un margen del 30 % como mínimo. Un banco de 300 kg sirve para casi todos los usuarios; si levantas pesado, lo razonable son 450 kg o más. Comprueba que el respaldo tenga varias posiciones y que no se mueva al apoyarte. Un tapizado firme y antideslizante evita resbalar con el sudor. Si vives en un piso pequeño, un banco plegable ahorra espacio; si entrenas con barra, prioriza la estabilidad.</p><a class="more" href="#comparativas" data-cat="bancos">Ver comparativa de bancos</a></article>
    <article id="g-lastre"><h3>Qué mirar al comprar un cinturón de lastre</h3><p>Sirve para añadir carga en dominadas y fondos cuando tu peso corporal ya se queda corto. Elige un ancho de unos 10 cm: reparte mejor la presión y no se clava en la cintura. La cadena debe ser de acero soldado y con mosquetón sólido, porque soportará el disco colgando. El cuero sintético acolchado dura más; el neopreno es más ligero y cómodo para un uso ocasional. Empieza con poco peso y sube de forma gradual.</p><a class="more" href="#comparativas" data-cat="lastre">Ver comparativa de lastre</a></article>
    <article id="g-accesorios"><h3>Straps de levantamiento: cuándo usarlos y cómo elegirlos</h3><p>Los straps sujetan la barra cuando el agarre falla antes que la espalda, algo habitual en peso muerto, remos y tirones con carga alta. Elige algodón grueso con costura doble: aguanta más y no se deshilacha. Con unos 60 cm de longitud se enrollan cómodamente. No los uses en todas las series: resérvalos para las más pesadas y sigue entrenando el agarre con el resto.</p><a class="more" href="#comparativas" data-cat="accesorios">Ver comparativa de accesorios</a></article>
+   <article id="g-dominadas"><h3>Cómo elegir una barra de dominadas</h3><p>Hay tres tipos. La de puerta se coloca a presión en el marco, sin tornillos: es la más barata y la más fácil de guardar, pero solo sirve si el marco es resistente y su ancho entra en el rango indicado, así que mídelo antes de comprar. La de pared se atornilla y ofrece más estabilidad y varios agarres, aunque necesita una pared firme de ladrillo u hormigón y herramientas para instalarla. La de techo es la más rígida, pero exige obra. Fíjate en la carga máxima: suma tu peso y el del lastre y deja un margen del 30 %. Comprueba también que haya espacio libre sobre la barra para la dominada completa, y prueba con calma antes de colgarte con todo tu peso.</p><a class="more" href="#comparativas" data-cat="dominadas">Ver comparativa de barras de dominadas</a></article>
+   <article id="g-esterillas"><h3>Cómo elegir una esterilla de yoga o fitness</h3><p>El grosor decide para qué sirve. Entre 4 y 6 mm da más contacto con el suelo y va mejor para yoga y posturas de equilibrio; entre 8 y 15 mm amortigua rodillas, codos y columna en abdominales, pilates y trabajo de suelo. En cuanto al material, el TPE es ligero y firme, el NBR amortigua más pero agarra algo menos, y el caucho natural agarra muy bien pero puede oler y no sirve si tienes alergia al látex. Busca una textura antideslizante y unas medidas de unos 183 × 61 cm; si superas 1,80 m, mejor una algo más larga. Una correa o una bolsa facilita el transporte, y se limpia con un paño húmedo, sin dejarla al sol.</p><a class="more" href="#comparativas" data-cat="esterillas">Ver comparativa de esterillas</a></article>
+   <article id="g-balones"><h3>Cómo elegir un balón de pilates</h3><p>Lo primero es la talla, según tu altura: 55 cm hasta unos 1,70 m, 65 cm entre 1,70 y 1,85 m y 75 cm por encima de 1,85 m (para menos de 1,55 m existe la de 45 cm). Al sentarte, las rodillas deben quedar a unos 90°. Elige un modelo antiestallido: si se pincha, se desinfla despacio en lugar de explotar. Mira la carga máxima que declara el fabricante y que el material sea PVC sin ftalatos. Una superficie antideslizante da más seguridad, y conviene que incluya inflador. Hínchalo poco a poco y déjalo reposar unas horas antes de usarlo, porque el PVC cede con el tiempo.</p><a class="more" href="#comparativas" data-cat="balones">Ver comparativa de balones de pilates</a></article>
+   <article id="g-gomas"><h3>Qué gomas elásticas comprar</h3><p>Hay tres tipos principales: minibandas cortas para glúteos, calentamiento y movilidad; bandas largas, que sirven para dominadas asistidas y ejercicios de fuerza con anclaje; y bandas con asas para remos y presses. Empieza con una resistencia media y sube cuando domines la técnica: un set de varios niveles te da margen. El látex es muy elástico, pero puede dar alergia y se agrieta con el tiempo; las de TPE no huelen y las de tela no se enrollan en las piernas. Revisa antes de cada uso que no tengan cortes ni grietas, no las estires más de lo que indique el fabricante y fija bien el anclaje de puerta.</p><a class="more" href="#comparativas" data-cat="gomas">Ver comparativa de gomas elásticas</a></article>
   </div>
  </div>
 </div></section>
@@ -336,14 +342,14 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
   <div><h3>Carga máxima</h3><p>Límite real y margen de progresión.</p></div>
   <div><h3>Calidad-precio</h3><p>Valor frente a su categoría.</p></div>
  </div>
- <p class="note">La nota (0-10) es la media de los tres criterios. <strong>Materiales</strong>: valoración editorial según los materiales que indica la ficha. <strong>Carga máxima</strong>: proporcional a la mayor de su categoría (36 kg por mancuerna, 450 kg en bancos, 300 kg en lastre); si no consta, 5; no se aplica a accesorios. <strong>Calidad-precio</strong>: mitad precio frente al más barato de su categoría y mitad valoración de clientes en Amazon.es, ajustada por número de opiniones. Datos consultados el 13/11/2026; los precios cambian.</p>
+ <p class="note">La nota (0-10) es la media de los criterios que se aplican a cada producto. <strong>Materiales</strong>: valoración editorial según los materiales que indica la ficha. <strong>Carga máxima</strong>: proporcional a la mayor de su categoría (36 kg por mancuerna, 450 kg en bancos, 300 kg en lastre, 200 kg en barras de dominadas y 500 kg en balones, según declara el fabricante); si no consta, 5; no se aplica a esterillas, gomas ni accesorios. <strong>Calidad-precio</strong>: mitad precio frente al más barato de su categoría y mitad valoración de clientes en Amazon.es, ajustada por número de opiniones. Datos consultados el 13/11/2026; los precios cambian.</p>
 </div></section>
 </main>
 
 <footer><div class="w">
  <div class="fg">
   <div><a class="logo" href="#inicio"><svg aria-hidden="true"><use href="#i-logo"/></svg><span>Hierro <b>de Salón</b></span></a><p>Comparativas de material de fuerza para tu home gym, con notas claras y datos de Amazon.es.</p></div>
-  <div><h4>Categorías</h4><ul><li><a href="#comparativas" data-cat="mancuernas">Mancuernas ajustables</a></li><li><a href="#comparativas" data-cat="bancos">Bancos</a></li><li><a href="#comparativas" data-cat="lastre">Barras y lastre</a></li><li><a href="#comparativas" data-cat="accesorios">Accesorios</a></li></ul></div>
+  <div><h4>Categorías</h4><ul class="cols"><li><a href="#comparativas" data-cat="mancuernas">Mancuernas ajustables</a></li><li><a href="#comparativas" data-cat="bancos">Bancos</a></li><li><a href="#comparativas" data-cat="dominadas">Barras de dominadas</a></li><li><a href="#comparativas" data-cat="lastre">Cinturones de lastre</a></li><li><a href="#comparativas" data-cat="accesorios">Accesorios</a></li><li><a href="#comparativas" data-cat="esterillas">Esterillas</a></li><li><a href="#comparativas" data-cat="balones">Balones de pilates</a></li><li><a href="#comparativas" data-cat="gomas">Gomas elásticas</a></li></ul></div>
   <div><h4>Información</h4><ul><li><a href="#metodologia">Cómo puntuamos</a></li><li><a href="aviso-legal.html">Aviso legal</a></li><li><a href="privacidad.html">Política de privacidad</a></li><li><a href="cookies.html">Política de cookies</a></li><li><a href="#" data-cookies>Configurar cookies</a></li></ul></div>
  </div>
  <p class="aff">En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables. Esto no supone ningún coste adicional para ti.</p>
@@ -363,9 +369,28 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
 
 <script src="cookies.js"></script>
 <script>
-const S=[["mx","Carga máx."],["di","Dimensiones"],["pe","Peso"],["ga","Garantía"]];
-const M=[["mx","Carga máx."],["di","Dimensiones"],["pe","Peso"],["ag","Agarre"],["ga","Garantía"]];
-const C={mancuernas:"Mancuernas ajustables",bancos:"Bancos",lastre:"Barras y lastre",accesorios:"Accesorios"};
+const C={mancuernas:"Mancuernas ajustables",bancos:"Bancos",dominadas:"Barras de dominadas",lastre:"Cinturones de lastre",accesorios:"Accesorios",esterillas:"Esterillas",balones:"Balones de pilates",gomas:"Gomas elásticas"};
+const CT={mancuernas:"13,148,136",bancos:"37,99,235",dominadas:"2,132,199",lastre:"124,58,237",accesorios:"225,29,72",esterillas:"22,163,74",balones:"202,138,4",gomas:"192,38,211"};
+const IC={
+ all:'<rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/>',
+ mancuernas:'<path d="M6 7v10M3 9.5v5M18 7v10M21 9.5v5M6 12h12"/>',
+ bancos:'<path d="M3 16h13M16 16l4-7M7 16v4M13 16v4"/>',
+ dominadas:'<path d="M5 20V5M19 20V5M5 8h14M9 8v4M15 8v4"/>',
+ lastre:'<rect x="3" y="7" width="18" height="5" rx="2.5"/><path d="M12 12v4"/><circle cx="12" cy="18.5" r="2.5"/>',
+ accesorios:'<path d="M7 4c-3 3-3 13 0 16M17 4c3 3 3 13 0 16M7 12h10"/>',
+ esterillas:'<rect x="3" y="9" width="14" height="6" rx="1"/><circle cx="17" cy="12" r="4.5"/><circle cx="17" cy="12" r="1.6"/>',
+ balones:'<circle cx="12" cy="12" r="8"/><path d="M4.5 9.8c5 1.6 10 1.6 15 0M4.5 14.2c5-1.6 10-1.6 15 0"/>',
+ gomas:'<ellipse cx="12" cy="12" rx="9" ry="5.5"/><ellipse cx="12" cy="12" rx="4.5" ry="2"/>'
+};
+/* Etiquetas de la ficha técnica según categoría (las claves mx, di, pe, ag, ga son internas) */
+const L0={mx:"Carga máx.",di:"Dimensiones",pe:"Peso",ag:"Agarre",ga:"Garantía"};
+const LB={
+ esterillas:{mx:"Grosor",di:"Medidas",pe:"Peso",ag:"Material"},
+ balones:{mx:"Soporta",di:"Diámetro",pe:"Peso",ag:"Material"},
+ gomas:{mx:"Resistencia",di:"Incluye",pe:"Peso",ag:"Material"},
+ dominadas:{mx:"Carga máx.",di:"Medidas",pe:"Peso",ag:"Montaje"}
+};
+const lab=(c,k)=>(LB[c]&&LB[c][k])||L0[k],SPK=c=>LB[c]?["mx","di","pe","ag"]:["mx","di","pe","ga"];
 const P=[
 {id:"nuo",a:"B09N6M5BH8",img:"https://m.media-amazon.com/images/I/61K9eZacbvL._AC_SL500_.jpg",c:"mancuernas",b:"Uso intensivo",n:"Nüobell 80 lb",m:8.5,kc:36,pc:3468,rt:3.7,nr:6,q:"Nüobell 80 lb mancuernas ajustables",pr:["36 kg en una sola mancuerna (9 pasos)","Cambio de peso girando el agarre","Se vende por unidad: pide dos para el par"],mx:"36 kg por mancuerna",di:"48 × 18,5 × 19,5 cm",pe:"36,3 kg cada una",ag:"Acero inoxidable",ga:"Garantía legal"},
 {id:"bow",a:"B0FRNG2N5H",img:"https://m.media-amazon.com/images/I/61KE8cmqB%2BL._AC_SL500_.jpg",c:"mancuernas",b:"Pisos pequeños",n:"Bowflex SelectTech 552",m:9,kc:22.7,pc:673.57,rt:4.8,nr:317,q:"Bowflex SelectTech 552 mancuernas",pr:["15 pesos en un solo par (5-50 lb)","Bandejas de guardado incluidas"],mx:"22,7 kg por mano",di:"42,9 × 21,1 × 21,1 cm",pe:"50,2 kg el set",ag:"Caucho antideslizante",ga:"Garantía legal"},
@@ -375,10 +400,18 @@ const P=[
 {id:"bel",a:"B082SY8QZB",img:"https://m.media-amazon.com/images/I/71QnANHIpeL._AC_SL500_.jpg",c:"lastre",b:"Dominadas y fondos",n:"Eric Flag cinturón de lastre con cadena",m:7.5,kc:300,pc:26.9,rt:4.7,nr:1715,q:"cinturón de lastre dominadas cadena",pr:["Hasta 300 kg de carga","Espalda ancha y acolchada, 2 mosquetones"],mx:"300 kg",di:"Cinturón de 76 cm",pe:"953 g",ag:"Nailon acolchado",ga:"Garantía legal"},
 {id:"bne",a:"B00SS27VNG",img:"https://m.media-amazon.com/images/I/91exAYcQFzL._AC_SL500_.jpg",c:"lastre",b:"Uso ligero",n:"AQF cinturón de lastre con neopreno",m:7,kc:null,pc:24.99,rt:4.7,nr:3466,q:"cinturón lastre neopreno",pr:["Soporte lumbar contorneado de 12,7 cm","Cadena de acero de 91 cm y 2 mosquetones"],mx:"No indicada",di:"Cadena de 91 cm",pe:"800 g",ag:"Material sintético",ga:"Garantía legal"},
 {id:"str",a:"B01F2OGJQM",img:"https://m.media-amazon.com/images/I/81ZDizb0wEL._AC_SL500_.jpg",c:"accesorios",b:"Peso muerto",n:"Fitgriff straps de algodón",m:7.5,kc:null,pc:9.99,rt:4.7,nr:23268,q:"straps muñeca algodón reforzado",pr:["Algodón denso con acolchado de neopreno","Unos 58 cm: 2-3 vueltas a la barra"],mx:"No indicada",di:"60 × 4 cm",pe:"100 g",ag:"Algodón y neopreno",ga:"Garantía legal"},
-{id:"sac",a:"B0BXQQNLYF",img:"https://m.media-amazon.com/images/I/71FdNvgxUAL._AC_SL500_.jpg",c:"accesorios",b:"Más comodidad",n:"MERCURYAL straps con muñequera",m:7,kc:null,pc:9.99,rt:4.5,nr:197,q:"straps acolchados muñequera levantamiento",pr:["Muñequera de neopreno contra rozaduras","Sistema de ajuste seguro y fácil"],mx:"No indicada",di:"No indicadas",pe:"120 g (paquete)",ag:"Nailon y neopreno",ga:"Garantía legal"}
+{id:"sac",a:"B0BXQQNLYF",img:"https://m.media-amazon.com/images/I/71FdNvgxUAL._AC_SL500_.jpg",c:"accesorios",b:"Más comodidad",n:"MERCURYAL straps con muñequera",m:7,kc:null,pc:9.99,rt:4.5,nr:197,q:"straps acolchados muñequera levantamiento",pr:["Muñequera de neopreno contra rozaduras","Sistema de ajuste seguro y fácil"],mx:"No indicada",di:"No indicadas",pe:"120 g (paquete)",ag:"Nailon y neopreno",ga:"Garantía legal"},
+{id:"pdb",a:"B0C88MN138",img:"https://m.media-amazon.com/images/I/61J1BcTQ5dL._AC_SL500_.jpg",c:"dominadas",b:"Sin taladrar",n:"PROIRON barra de dominadas para puerta",m:8,kc:200,pc:33.99,rt:4.5,nr:869,q:"barra dominadas puerta sin tornillos",pr:["Sin tornillos: se bloquea en el marco (72-97 cm)","Mango de espuma de algodón lavable y antideslizante"],mx:"200 kg (180 kg a 97 cm)",di:"Ajustable de 72 a 97 cm",pe:"2,1 kg",ag:"Marco de puerta, sin tornillos",ga:"Garantía legal"},
+{id:"dhb",a:"B0DMPQTG7M",img:"https://m.media-amazon.com/images/I/51-QE-BmDoL._AC_SL500_.jpg",c:"dominadas",b:"Fija en pared",n:"DH FitLife barra de dominadas de pared 4 en 1",m:8.5,kc:200,pc:54,rt:4.5,nr:630,q:"barra dominadas pared multiagarre",pr:["Agarres amplio, cerrado, paralelo y chin-up","8 tacos con tornillos y 2 correas incluidos"],mx:"200 kg",di:"100 × 27 cm (ancho × alto)",pe:"5,5 kg",ag:"Pared (8 tacos incluidos)",ga:"Garantía legal"},
+{id:"mmm",a:"B0BH4ZHP9R",img:"https://m.media-amazon.com/images/I/81s5ZAFh70L._AC_SL500_.jpg",c:"esterillas",b:"Yoga y fitness",n:"LA MENTE ES MARAVILLOSA esterilla TPE 6 mm",m:8,kc:null,pc:14.9,rt:4.7,nr:6138,q:"esterilla yoga TPE 183x61",pr:["Doble cara antideslizante, TPE de alta densidad","Incluye bolsa, correa de hombro y e-book de ejercicios"],mx:"6 mm",di:"183 × 61 cm",pe:"0,8 kg",ag:"TPE (elastómero)",ga:"Garantía legal"},
+{id:"unm",a:"B0FPDNZD17",img:"https://m.media-amazon.com/images/I/71YRVEvc1qL._AC_SL500_.jpg",c:"esterillas",b:"Más grosor (10 mm)",n:"unycos esterilla NBR 10 mm",m:7,kc:null,pc:19.7,rt:4.6,nr:2346,q:"esterilla yoga NBR 10 mm",pr:["10 mm de grosor y superficie ondulada antideslizante","Plegable, con correa de hombro y bolsa de transporte"],mx:"10 mm",di:"183 × 60 cm",pe:"0,85 kg",ag:"NBR (caucho de nitrilo)",ga:"Garantía legal"},
+{id:"pbp",a:"B0CP26FKZL",img:"https://m.media-amazon.com/images/I/513GNPYm5YL._AC_SL500_.jpg",c:"balones",b:"Antiestallido",n:"PROIRON pelota de pilates antiestallido",m:8.5,kc:500,pc:19,rt:4.7,nr:12357,q:"pelota pilates antiestallido 65 cm",pr:["Estructura de panal: si se pincha, se desinfla despacio","Incluye bomba de mano y ejercicios impresos en la superficie"],mx:"500 kg (según fabricante)",di:"55, 65 o 75 cm",pe:"1,4 kg (talla de 75 cm)",ag:"PVC antiestallido",ga:"Garantía legal"},
+{id:"upb",a:"B0CSF223W2",img:"https://m.media-amazon.com/images/I/51iojMZ1NEL._AC_SL500_.jpg",c:"balones",b:"Económica",n:"unycos pelota de yoga y pilates",m:7.5,kc:300,pc:11.9,rt:4.4,nr:1927,q:"pelota yoga pilates antiexplosión",pr:["Antiexplosión y antideslizante","Incluye inflador"],mx:"300 kg (según fabricante)",di:"55, 65 o 75 cm",pe:"0,85 kg (paquete, talla de 55 cm)",ag:"PVC antiexplosión",ga:"Garantía legal"},
+{id:"fko",a:"B09CTVQWK8",img:"https://m.media-amazon.com/images/I/51sVFEQCXXL._AC_SL500_.jpg",c:"gomas",b:"Básicas y económicas",n:"Fokky gomas elásticas set de 5",m:7,kc:null,pc:6.99,rt:4.4,nr:14015,q:"gomas elásticas musculación set de 5",pr:["5 niveles de resistencia, de 4 a 30 lb","Incluye bolsa de transporte y manual"],mx:"4-30 lb (1,8-13,6 kg)",di:"5 bandas de 30 × 5 cm, bolsa y manual",pe:"140 g",ag:"Caucho natural (látex)",ga:"Garantía legal"},
+{id:"fka",a:"B0H1BGRHCV",img:"https://m.media-amazon.com/images/I/71dbnFaf5SL._AC_SL500_.jpg",c:"gomas",b:"Para entrenar fuerza",n:"Fokky gomas elásticas con anclaje de puerta (4 niveles)",m:7.5,kc:null,pc:17.99,rt:4.4,nr:832,q:"gomas elásticas musculación anclaje puerta",pr:["4 niveles de 8 a 85 lb; la naranja sirve para dominadas asistidas","Anclaje de puerta, 2 protectores acolchados y guía"],mx:"8-85 lb (3,6-38,6 kg)",di:"4 bandas, anclaje, protectores, bolsa y guía",pe:"810 g (paquete)",ag:"TPE (elastómero)",ga:"Garantía legal"}
 ];
-/* Puntuación 0-10 = media de Materiales, Carga máxima y Calidad-precio (ver "Cómo puntuamos"). */
-const REF={mancuernas:36,bancos:450,lastre:300},R1=v=>Math.round(v*10)/10;
+/* Puntuación 0-10 = media de los criterios que aplican (Materiales, Carga máxima y Calidad-precio). Ver "Cómo puntuamos". */
+const REF={mancuernas:36,bancos:450,lastre:300,dominadas:200,balones:500},R1=v=>Math.round(v*10)/10;
 P.forEach(p=>{
  const min=Math.min(...P.filter(x=>x.c===p.c).map(x=>x.pc)),n=p.nr,adj=(n*p.rt+30*4.2)/(n+30);
  p.k=REF[p.c]?(p.kc==null?5:Math.min(10,p.kc/REF[p.c]*10)):null;
@@ -390,26 +423,31 @@ const fm=v=>v==null?"—":v.toFixed(1).replace(".",","),why=p=>`Materiales ${fm(
 const $=s=>document.querySelector(s),A=p=>p.a?"https://www.amazon.es/dp/"+p.a+"?tag=hierrodesalon-21":"https://www.amazon.es/s?k="+encodeURIComponent(p.q)+"&tag=hierrodesalon-21";
 const cta=p=>`<a class="btn cta" href="${A(p)}" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a>`;
 const sc=p=>`<span class="sc" title="${why(p)}">${p.s.toFixed(1).replace(".",",")}<small>/10</small></span>`;
-let cat="mancuernas",qry="",cmp=[];
+let cat="mancuernas",qry="",cmp=[],ord="s";
+const SRT={s:(a,b)=>b.s-a.s||a.n.localeCompare(b.n,"es"),v:(a,b)=>b.v-a.v||b.s-a.s,n:(a,b)=>a.n.localeCompare(b.n,"es")};
 
-const V={nuo:["db","#1E293B","#14B8A6"],bow:["tr","#334155","#EF4444"],cor:["db","#475569","#3B82F6"],ban:["bn","#1E293B"],bpl:["bn","#475569"],bel:["bl","#5B3A29","#C9A27E"],bne:["bl","#1E293B","#7C3AED"],str:["st","#CBB994","#1E293B"],sac:["st","#2563EB","#0F172A"]};
-const pic=p=>{const[v,a,b]=V[p.id];return p.img?`<img src="${p.img}" alt="${p.n}" loading="lazy">`:`<svg class="im" viewBox="0 0 240 150" role="img" aria-label="${p.n}" style="--c1:${a};--c2:${b||a}"><use href="#i-${v}"/></svg>`};
-const CT={mancuernas:"13,148,136",bancos:"37,99,235",lastre:"124,58,237",accesorios:"225,29,72"};
-const mt=p=>`<div class="mt">${[["Materiales",p.m],["Carga máx.",p.k],["Calidad-precio",p.v]].map(([l,v])=>`<div><span class="l">${l}</span><span class="br"><i style="width:${v==null?0:Math.round(v*10)}%"></i></span><b>${fm(v)}</b></div>`).join("")}</div>`;
+const pic=p=>`<img src="${p.img}" alt="${p.n}" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()">`;
+const mt=p=>{const a=[["Materiales",p.m],["Carga máx.",p.k],["Calidad-precio",p.v]].filter(x=>x[1]!=null);return `<div class="mt" style="--n:${a.length}">${a.map(([l,v])=>`<div><span class="l">${l}</span><span class="br"><i style="width:${Math.round(v*10)}%"></i></span><b>${fm(v)}</b></div>`).join("")}</div>`};
 const card=p=>`<article class="card" data-id="${p.id}" style="--t:${CT[p.c]}">
  <div class="ph">${pic(p)}<span class="tag">${p.b}</span>${PK.some(k=>k.id===p.id)?'<span class="star">★ Nuestra elección</span>':''}</div>
  <div class="cd">
  <div class="top"><h3>${p.n}</h3>${sc(p)}</div>
  <ul class="pr">${p.pr.map(x=>`<li>${x}</li>`).join("")}</ul>
  ${mt(p)}
- <div class="sp">${S.map(([k,l])=>`<div><span>${l}</span><b>${p[k]}</b></div>`).join("")}</div>
+ <div class="sp">${SPK(p.c).map(k=>`<div><span>${lab(p.c,k)}</span><b>${p[k]}</b></div>`).join("")}</div>
  <div class="ac2">${cta(p)}<button class="btn" data-cmp aria-pressed="${cmp.includes(p.id)}">${cmp.includes(p.id)?"✓ En comparador":"Comparar"}</button></div>
  </div>
 </article>`;
 
+/* Selector de categorías (tarjetas con icono y nº de productos) */
+const chip=(k,t,n)=>`<button class="chip" data-c="${k}" style="--t:${k?CT[k]:"100,116,139"}"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[k||"all"]}</svg></span><span><span class="cl">${t}</span><small>${n} ${n===1?"producto":"productos"}</small></span></button>`;
+$("#chips").innerHTML=Object.keys(C).map(k=>chip(k,C[k],P.filter(p=>p.c===k).length)).join("")+chip("","Todo",P.length);
+
 function render(){
- const t=qry.toLowerCase(),F=P.filter(p=>t?(p.n+" "+p.b+" "+C[p.c]).toLowerCase().includes(t):(!cat||p.c===cat));
- document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",!t&&b.dataset.c===cat));$("#comparativas").dataset.c=$("#guias").dataset.c=t?"":cat;document.querySelectorAll(".gd article").forEach(a=>a.hidden=!!t||(!!cat&&a.id!=="g-"+cat));
+ const t=qry.toLowerCase(),F=P.filter(p=>t?(p.n+" "+p.b+" "+C[p.c]).toLowerCase().includes(t):(!cat||p.c===cat)).sort(SRT[ord]);
+ document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",!t&&b.dataset.c===cat));
+ const col=(!t&&CT[cat])||"71,85,105";$("#comparativas").style.setProperty("--t",col);$("#guias").style.setProperty("--t",col);
+ document.querySelectorAll(".gd article").forEach(a=>a.hidden=!!t||(!!cat&&a.id!=="g-"+cat));
  $("#list").innerHTML=F.length?F.map(card).join(""):`<p class="muted">Sin resultados. Prueba con otro término.</p>`;
  $("#cnt").textContent=F.length+(F.length===1?" producto":" productos");
  bar();
@@ -428,25 +466,36 @@ $("#list").addEventListener("click",e=>{
  render();
 });
 $("#chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(b){go(b.dataset.c);$("#comparativas").scrollIntoView()}});
+$("#ord").addEventListener("change",e=>{ord=e.target.value;render()});
 document.addEventListener("click",e=>{const a=e.target.closest("a[data-cat]");if(a)go(a.dataset.cat)});
 $("#q").addEventListener("input",e=>{qry=e.target.value.trim();render()});
 $("#q").addEventListener("keydown",e=>{if(e.key==="Enter")$("#comparativas").scrollIntoView()});
 $("#cc").onclick=()=>{cmp=[];render()};
 $("#cv").onclick=()=>{
- const L=cmp.map(id=>P.find(p=>p.id===id));
+ const L=cmp.map(id=>P.find(p=>p.id===id)),one=L.every(p=>p.c===L[0].c);
+ const GL={mx:"Carga o resistencia",di:"Dimensiones",pe:"Peso",ag:"Agarre o material",ga:"Garantía"},rl=k=>one?lab(L[0].c,k):GL[k];
  $("#dbody").innerHTML=`<table><thead><tr><th></th>${L.map(p=>`<th><div class="im2">${p.img?`<img src="${p.img}" alt="">`:""}</div>${p.n}</th>`).join("")}</tr></thead><tbody>
  <tr><td>Nota</td>${L.map(p=>`<td>${sc(p)}</td>`).join("")}</tr>
  <tr><td>Materiales</td>${L.map(p=>`<td>${fm(p.m)}</td>`).join("")}</tr>
  <tr><td>Carga máxima (nota)</td>${L.map(p=>`<td>${fm(p.k)}</td>`).join("")}</tr>
  <tr><td>Calidad-precio</td>${L.map(p=>`<td>${fm(p.v)}</td>`).join("")}</tr>
  <tr><td>Perfil</td>${L.map(p=>`<td>${p.b}</td>`).join("")}</tr>
- ${M.map(([k,l])=>`<tr><td>${l}</td>${L.map(p=>`<td>${p[k]}</td>`).join("")}</tr>`).join("")}
+ ${["mx","di","pe","ag","ga"].map(k=>`<tr><td>${rl(k)}</td>${L.map(p=>`<td>${p[k]==null?"—":p[k]}</td>`).join("")}</tr>`).join("")}
  <tr><td></td>${L.map(p=>`<td>${cta(p)}</td>`).join("")}</tr></tbody></table>`;
  $("#dlg").showModal();
 };
 $("#dx").onclick=()=>$("#dlg").close();
 $("#dlg").addEventListener("click",e=>{if(e.target===$("#dlg"))$("#dlg").close()});
-const PK=[{id:"cor",a:"B0CR6TDDZX",img:"https://m.media-amazon.com/images/I/71F5R3XRN3L._AC_SL500_.jpg",y:"Quieres llegar a 32 kg por mano con el mejor equilibrio entre carga y precio.",n:"No necesitas pasar de 22 kg por mano: la Bowflex ocupa menos espacio."},{id:"ban",a:"B09V2CS1CY",img:"https://m.media-amazon.com/images/I/71ni1LLgqfL._AC_SL500_.jpg",y:"Levantas cargas altas y necesitas un banco que no se mueva.",n:"Vives en un piso pequeño: el plegable ocupa mucho menos."},{id:"bel",a:"B082SY8QZB",img:"https://m.media-amazon.com/images/I/71QnANHIpeL._AC_SL500_.jpg",y:"Haces dominadas y fondos lastrados con progresión constante.",n:"Solo entrenas con tu peso corporal."},{id:"str",a:"B01F2OGJQM",img:"https://m.media-amazon.com/images/I/81ZDizb0wEL._AC_SL500_.jpg",y:"Tu agarre falla antes que tu espalda en peso muerto y tirones.",n:"Compites en una disciplina que prohíbe las correas."}];
+const PK=[
+{id:"cor",y:"Quieres llegar a 32 kg por mano con el mejor equilibrio entre carga y precio.",n:"No necesitas pasar de 22 kg por mano: la Bowflex ocupa menos espacio."},
+{id:"ban",y:"Levantas cargas altas y necesitas un banco que no se mueva.",n:"Vives en un piso pequeño: el plegable ocupa mucho menos."},
+{id:"pdb",y:"Quieres hacer dominadas en casa sin taladrar y tu marco de puerta mide entre 72 y 97 cm.",n:"Quieres agarres variados o colgar accesorios: una barra de pared ofrece más posiciones."},
+{id:"bel",y:"Haces dominadas y fondos lastrados con progresión constante.",n:"Solo entrenas con tu peso corporal."},
+{id:"str",y:"Tu agarre falla antes que tu espalda en peso muerto y tirones.",n:"Compites en una disciplina que prohíbe las correas."},
+{id:"mmm",y:"Quieres una esterilla ligera y antideslizante para yoga, pilates y estiramientos.",n:"Haces trabajo de suelo exigente o te molestan las rodillas: mejor una de 10 mm."},
+{id:"pbp",y:"Buscas un fitball resistente, con bomba incluida y ejercicios impresos para empezar.",n:"Necesitas una pelota pequeña tipo overball: esta es de 55 a 75 cm."},
+{id:"fko",y:"Empiezas con bandas y quieres una opción económica para calentar, glúteos y movilidad.",n:"Buscas mucha resistencia para dominadas asistidas o press: el kit con anclaje llega a 85 lb."}
+];
 $("#picks").innerHTML=PK.map(k=>{const p=P.find(x=>x.id===k.id);return `<article class="card" style="--t:${CT[p.c]}"><div class="ph">${pic(p)}<span class="tag">${C[p.c]}</span></div><div class="cd"><div class="top"><h3>${p.n}</h3>${sc(p)}</div><div class="vd"><b>Para quién SÍ</b><p>${k.y}</p></div><div class="vd"><b>Para quién NO</b><p>${k.n}</p></div><div class="ac2">${cta(p)}<button class="btn" data-go="${p.c}">Ver comparativa</button></div></div></article>`}).join("");
 $("#picks").addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(b){go(b.dataset.go);nav("#comparativas")}});
 $("#tops").innerHTML=[...P].sort((a,b)=>b.s-a.s).slice(0,4).map(p=>`<a class="tr" href="#comparativas" data-cat="${p.c}"><span class="th">${p.img?`<img src="${p.img}" alt="">`:""}</span><span><strong>${p.n}</strong><small>${C[p.c]}</small></span><span class="n">${p.s.toFixed(1).replace(".",",")}<i>/10</i></span></a>`).join("");

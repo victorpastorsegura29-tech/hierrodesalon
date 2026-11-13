@@ -9,6 +9,7 @@ Web estática (sin servidor ni base de datos). Archivos:
 | `cookies.js` | Banner de consentimiento de cookies |
 | `legal.css` | Estilo de las páginas legales y la 404 |
 | `404.html`, `favicon.svg`, `robots.txt`, `sitemap.xml` | Errores, icono y SEO |
+| `og.png` | Imagen que se muestra al compartir la web en redes (1200 × 630) |
 
 ## 1. Antes de publicar (obligatorio)
 
