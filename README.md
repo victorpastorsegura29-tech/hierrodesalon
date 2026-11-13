@@ -55,7 +55,7 @@ Cambia el texto en `tools\og.html` (o el icono en `tools\icon.html`) y ejecuta `
 ## Hosting, dominio y Search Console
 
 - **Cloudflare Pages** (proyecto `hierrodesalon`, conectado a GitHub). Sin comando de build; la carpeta raíz es la carpeta de publicación.
-- **DNS en Cloudflare**: `hierrodesalon.com` y `www` apuntan a `hierrodesalon.pages.dev`. Hay un registro **TXT** `google-site-verification=…` que verifica Search Console: **no lo borres**.
+- **DNS en Cloudflare**: `hierrodesalon.com` y `www` apuntan a `hierrodesalon.pages.dev`; una regla de redirección (Rules > Redirect Rules) manda `www` al dominio principal con un 301. Hay un registro **TXT** `google-site-verification=…` que verifica Search Console: **no lo borres**.
 - Cloudflare Pages redirige `/pagina.html` a `/pagina`; por eso los enlaces internos van sin `.html`.
 
 ## Cookies y terceros
