@@ -1,6 +1,6 @@
 # Prerenderizado de index.html
 #
-# La web genera las tarjetas, los "mejor puntuados" y la metodologia con JavaScript. Este script abre
+# La web genera las tarjetas de producto, los botones de categoria y las cifras con JavaScript. Este script abre
 # la pagina en Edge sin ventana, recoge el HTML ya generado y lo escribe dentro de index.html (entre los
 # marcadores <!--pre:nombre--> ... <!--/pre:nombre-->). Asi Google, los asistentes de IA y las vistas
 # previas ven los productos sin ejecutar JavaScript. Los visitantes siguen usando el JavaScript de siempre.
@@ -8,6 +8,8 @@
 # Uso (desde esta carpeta, cada vez que cambies datos, textos o diseno de index.html):
 #   powershell -ExecutionPolicy Bypass -File .\prerender.ps1
 # Despues: git add index.html; git commit; git push
+
+param([switch]$Check)   # -Check: no escribe nada; solo avisa si index.html esta desactualizado (devuelve 1)
 
 $ErrorActionPreference = "Stop"
 $dir  = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -39,7 +41,8 @@ try {
   $d = $json | ConvertFrom-Json
 
   $html = [System.IO.File]::ReadAllText($file, $utf8)
-  $names = "list", "picks", "chips", "crit", "frm", "s1", "s2", "s3"
+  $orig = $html
+  $names = "list", "chips", "s1", "s2"
   foreach ($n in $names) {
     $val = [string]$d.$n
     if ([string]::IsNullOrWhiteSpace($val)) { throw "El bloque '$n' esta vacio: no se escribe nada." }
@@ -53,10 +56,17 @@ try {
   $html = [regex]::Replace($html, '<span data-dc>[^<]*</span>', [System.Text.RegularExpressions.MatchEvaluator]{
     param($x) '<span data-dc>' + $date + '</span>' })
 
-  [System.IO.File]::WriteAllText($file, $html, $utf8)
+  if ($Check) {
+    if ($html -ceq $orig) { Write-Host "Prerender al dia."; $code = 0 }
+    else { Write-Host "DESACTUALIZADO: ejecuta  powershell -ExecutionPolicy Bypass -File .prerender.ps1"; $code = 1 }
+  } else {
+    [System.IO.File]::WriteAllText($file, $html, $utf8)
+  }
   $cards = ([regex]::Matches([string]$d.list, 'class="card"')).Count
-  Write-Host "Listo: $cards tarjetas y el resto de bloques escritos en index.html (datos del $date)."
+  if (-not $Check) { Write-Host "Listo: $cards tarjetas y el resto de bloques escritos en index.html (datos del $date)." }
 }
 finally {
   Remove-Item -Recurse -Force $tmp -ErrorAction SilentlyContinue
 }
+
+if ($Check) { exit $code }

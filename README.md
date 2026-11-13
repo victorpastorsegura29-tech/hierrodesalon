@@ -1,62 +1,65 @@
-# Hierro de Salón: guía de publicación
+# Hierro de Salón
 
-Web estática (sin servidor ni base de datos). Archivos:
+Web estática (sin servidor ni base de datos) de comparativas de material de fitness y fuerza para casa, con enlaces de afiliado a Amazon.es. Publicada en https://hierrodesalon.com con **Cloudflare Pages**: cada `git push` a la rama `main` se publica sola en un minuto.
+
+## Archivos
 
 | Archivo | Para qué sirve |
 |---|---|
-| `index.html` | Portada, comparativas, elección, guías y metodología |
-| `aviso-legal.html`, `privacidad.html`, `cookies.html` | Páginas legales (plantillas) |
-| `cookies.js` | Banner de consentimiento de cookies |
-| `legal.css` | Estilo de las páginas legales y la 404 |
-| `404.html`, `favicon.svg`, `robots.txt`, `sitemap.xml` | Errores, icono y SEO |
-| `og.png` | Imagen que se muestra al compartir la web en redes (1200 × 630) |
+| `index.html` | La web: portada, productos, guías «Qué comprar» y «Cómo elegimos». Los datos de los productos están en el array `P` del script |
+| `aviso-legal.html`, `privacidad.html`, `cookies.html`, `legal.css`, `cookies.js` | Páginas legales y banner de cookies |
+| `404.html` | Página de error |
+| `fonts/` | Tipografías Inter y Barlow Condensed (licencia SIL OFL), servidas desde la propia web |
+| `_headers` | Cabeceras de seguridad y caché de Cloudflare Pages (no se publica como página) |
+| `robots.txt`, `sitemap.xml`, `site.webmanifest` | SEO e información para móviles |
+| `og.jpg`, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | Imagen para compartir e iconos (se generan con `tools\make-images.ps1`) |
+| `google7045589a039bc88c.html` | Verificación antigua de Search Console (ya se verifica por DNS; se puede conservar) |
+| `prerender.ps1`, `check.ps1`, `tools/` | Herramientas para trabajar con la web (no son parte de la web) |
 
-## 0. Prerenderizado (cada vez que cambies `index.html`)
+## Cómo trabajar (cada vez que cambies algo)
 
-Las tarjetas, los «mejor puntuados» y la metodología los genera JavaScript. Para que Google y los asistentes de IA los vean sin ejecutar JavaScript, el HTML generado se guarda dentro de `index.html` (entre los marcadores `<!--pre:nombre-->`). Tras cambiar datos, textos o diseño, ejecuta desde esta carpeta (necesita Microsoft Edge):
+Hace falta Windows con Microsoft Edge. Desde esta carpeta:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\prerender.ps1
-```
+1. **Edita** `index.html` (datos, textos o diseño).
+2. **Genera el contenido para buscadores**: las tarjetas las crea JavaScript, y este paso guarda el resultado dentro del HTML para que Google y las IA lo vean sin ejecutar nada.
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File .\prerender.ps1
+   ```
+3. **Comprueba la calidad** (sin precios ni estrellas, enlaces de afiliado, HTML bien formado, enlaces internos, prerender al día…):
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File .\check.ps1
+   ```
+   Si hay algún FALLO, no publiques hasta arreglarlo.
+4. **Publica**: `git add -A`, `git commit` y `git push`.
+5. **Comprueba la web publicada** (pasado un minuto):
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File .\check.ps1 -Live
+   ```
 
-Después haz commit de `index.html` y `git push`. Si no lo ejecutas, los visitantes ven los datos nuevos, pero Google y los asistentes de IA seguirán viendo la versión anterior.
+Para ver la web en local con las tipografías y las cabeceras reales hace falta un servidor; abrir `index.html` con doble clic también funciona, pero sin las tipografías propias.
 
-## 1. Antes de publicar (obligatorio)
+### Actualizar un producto
 
-1. **Datos legales.** Busca en `aviso-legal.html`, `privacidad.html` y `cookies.html` los textos resaltados en amarillo (`class="dato"`) y sustitúyelos por tus datos reales: nombre o razón social, NIF/CIF, domicilio, email, proveedor de hosting y fecha. Después elimina el recuadro "Plantilla orientativa". Conviene que un profesional los revise.
-2. **Dominio.** Sustituye `TU-DOMINIO.es` por tu dominio real en `index.html` (canonical y og:url), `robots.txt` y `sitemap.xml`.
-3. **Etiqueta de afiliado.** Ya configurada: `hierrodesalon-21` (aparece en la función `A=` de `index.html`).
-4. **Revisa los datos de producto** (precios, notas, opiniones) y la fecha "consultados el 13/11/2026" de la sección Metodología.
+Edita su línea en el array `P` de `index.html` (nombre, `y`/`no` = «para quién sí / no», datos de la ficha) y la constante `DATE` (fecha de consulta de las fichas). Después, pasos 2 a 4. Para añadir un tipo de producto nuevo hay que añadirlo a los objetos `C` (nombre), `CT` (color), `IC` (icono), `G` (grupo) y a su guía en `#guides`.
 
-Atajo en PowerShell, desde esta carpeta:
+### Imagen para compartir e iconos
 
-```powershell
-(Get-Content index.html -Raw) -replace 'TU-DOMINIO\.es','midominio.es' -replace 'TU-TAG-21','mitag-21' | Set-Content index.html -Encoding utf8
-```
-(repite el cambio de dominio en `robots.txt` y `sitemap.xml`).
+Cambia el texto en `tools\og.html` (o el icono en `tools\icon.html`) y ejecuta `powershell -ExecutionPolicy Bypass -File .\tools\make-images.ps1`.
 
-## 2. Publicar (elige una opción, todas gratuitas)
+## Reglas de Amazon Afiliados (ya aplicadas)
 
-**Cloudflare Pages / Netlify / Vercel (recomendado):** crea una cuenta, "nuevo proyecto", sube esta carpeta (arrastrar y soltar en Netlify) o conecta un repositorio de GitHub. Sin comando de build y con la carpeta raíz como directorio de publicación.
+- **No se muestran precios, valoraciones con estrellas ni número de opiniones.** Las políticas del programa solo lo permiten con datos de su API oficial. El botón lleva a Amazon, que muestra precio y opiniones actualizados. `check.ps1` vigila que no reaparezcan.
+- Los enlaces llevan `tag=hierrodesalon-21` y `rel="nofollow sponsored noopener"`; el aviso obligatorio («En calidad de Afiliado de Amazon, obtengo ingresos…») está en el pie.
+- **Pendiente de revisar:** las fotos de producto se cargan desde `m.media-amazon.com` (las políticas leídas no aclaran si el enlace directo está permitido); la vía segura es la API oficial.
 
-**GitHub Pages:** sube los archivos a un repositorio y activa Pages en Settings > Pages.
+## Hosting, dominio y Search Console
 
-## 3. Conectar tu dominio .es / .com
+- **Cloudflare Pages** (proyecto `hierrodesalon`, conectado a GitHub). Sin comando de build; la carpeta raíz es la carpeta de publicación.
+- **DNS en Cloudflare**: `hierrodesalon.com` y `www` apuntan a `hierrodesalon.pages.dev`. Hay un registro **TXT** `google-site-verification=…` que verifica Search Console: **no lo borres**.
+- Cloudflare Pages redirige `/pagina.html` a `/pagina`; por eso los enlaces internos van sin `.html`.
 
-1. Compra el dominio en un registrador (Cloudflare, Namecheap, Dinahosting...). Para `.es` te pedirán datos de titular.
-2. En el hosting elegido, añade el dominio personalizado y copia los registros DNS que te indique (CNAME o A).
-3. Pégalos en el panel DNS del registrador. El HTTPS se activa solo en unos minutos.
-4. Si subes los archivos a un repositorio y lo conectas al hosting, cada cambio que guardes se publicará automáticamente.
+## Cookies y terceros
 
-## 4. Después de publicar
-
-- Da de alta el sitio en Google Search Console y envía `sitemap.xml`.
-- Comprueba en Amazon Afiliados que el dominio está dado de alta en tu cuenta.
-- Prueba el banner de cookies en una ventana de incógnito.
-
-## Cookies y terceros: qué hay que saber
-
-- La web **no instala cookies propias** salvo guardar tu elección (`hds-consent`, en el almacenamiento local).
-- Si añades analítica (Google Analytics, etc.), cárgala **solo** dentro de la función `onAccept()` de `cookies.js`, para que no se active sin consentimiento, y actualiza `cookies.html`.
-- **Google Fonts** envía la IP del visitante a Google. Está declarado en la política de privacidad. Para evitarlo del todo, descarga las fuentes Inter y Barlow Condensed y sírvelas desde tu propio dominio.
-- Las **fotos de producto** se cargan desde servidores de Amazon. Revisa las condiciones del programa de afiliados sobre uso de imágenes; la vía más segura es la API oficial de Amazon.
+- La web no instala cookies propias salvo guardar tu elección del banner (`hds-consent`, en el almacenamiento local).
+- Si añades analítica, cárgala **solo** dentro de `onAccept()` de `cookies.js` y actualiza `cookies.html` y `privacidad.html`.
+- Las tipografías se sirven desde `/fonts` (sin Google Fonts). Terceros que intervienen: Cloudflare (alojamiento y CDN) y Amazon (fotos y enlaces).
