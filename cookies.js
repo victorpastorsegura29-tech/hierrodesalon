@@ -45,7 +45,7 @@
   box=document.createElement("div");box.className="ck-b";box.setAttribute("role","dialog");box.setAttribute("aria-label","Preferencias de cookies");
   var cur=window.hdsConsent.state;
   if(!cfg){
-   box.innerHTML='<h2>Tu privacidad</h2><p>Usamos almacenamiento técnico imprescindible para que la web funcione. Con tu permiso podríamos usar cookies de analítica para mejorarla. Al pulsar un producto sales a Amazon, que aplica su propia política. Más información en la <a href="cookies.html">política de cookies</a>.</p>'+
+   box.innerHTML='<h2>Tu privacidad</h2><p>Usamos almacenamiento técnico imprescindible para que la web funcione. Con tu permiso podríamos usar cookies de analítica para mejorarla. Al pulsar un producto sales a Amazon, que aplica su propia política. Más información en la <a href="cookies">política de cookies</a>.</p>'+
    '<div class="ck-r"><button class="ck-x" data-a="no">Rechazar</button><button class="ck-x" data-a="cfg">Configurar</button><button class="ck-x ok" data-a="yes">Aceptar todas</button></div>';
   }else{
    box.innerHTML='<h2>Configurar cookies</h2><div class="ck-o">'+
