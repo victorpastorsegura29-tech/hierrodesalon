@@ -908,7 +908,8 @@ $("#s1").textContent=P.length;$("#s2").textContent=Object.keys(C).length;
 document.querySelectorAll("[data-dc]").forEach(e=>e.textContent=DATE);
 
 /* Navegación interna: no depende del hash del navegador, así funciona también en vistas previas y en file:// */
-function view(h){h=h||"";const t=h.length>1&&h!=="#inicio"&&document.getElementById(h.slice(1));
+function view(h){h=h||"";const m=/^#[cg]-([a-z]+)$/.exec(h),dg=m&&(G.hasOwnProperty(m[1])?m[1]:GR.hasOwnProperty(m[1])&&GR[m[1]]);if(dg){go(dg);$("#comparativas").scrollIntoView();return}
+ const t=h.length>1&&h!=="#inicio"&&document.getElementById(h.slice(1));
  if(t){t.scrollIntoView();if(!/^(A|BUTTON|INPUT|SELECT|TEXTAREA|SUMMARY)$/.test(t.tagName)){t.setAttribute("tabindex","-1");t.focus({preventScroll:true})}}else scrollTo(0,0)}
 function nav(h){try{history.pushState(null,"",h)}catch(_){}view(h)}
 document.addEventListener("click",e=>{
