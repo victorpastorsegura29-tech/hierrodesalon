@@ -133,6 +133,7 @@ a.cta:hover::after{transform:translateX(3px)}
 .card{display:flex;flex-direction:column;background:var(--sf);border:1px solid var(--bd);border-radius:22px;overflow:hidden;box-shadow:0 1px 2px rgba(19,23,27,.04),0 10px 28px -16px rgba(19,23,27,.18);transition:transform .25s,box-shadow .25s,border-color .25s;animation:up .45s both}
 .card:hover{transform:translateY(-4px);border-color:rgba(var(--t),.5);box-shadow:0 2px 4px rgba(19,23,27,.05),0 24px 40px -18px rgba(19,23,27,.28)}
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#list.pre .card{animation:none}
 #list .card:nth-child(2){animation-delay:.05s}#list .card:nth-child(3){animation-delay:.1s}#list .card:nth-child(n+4){animation-delay:.15s}
 .ph{position:relative;flex:none;height:230px;display:flex;align-items:center;justify-content:center;padding:34px 22px 18px;background:radial-gradient(ellipse at 50% 45%,#fff 40%,rgba(var(--t),.10) 130%),#fff;border-bottom:1px solid var(--bd);overflow:hidden}
 .ph img{width:100%;height:100%;min-height:0;object-fit:contain;transition:transform .35s}
@@ -343,15 +344,15 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
  </div>
  <div class="ha"><a class="btn ghost" href="#eleccion">★ Ver los mejor puntuados</a></div>
  <ul class="stats" aria-label="Datos de la web">
-  <li><b id="s1"></b>productos comparados</li>
-  <li><b id="s2"></b>tipos de producto</li>
-  <li><b id="s3"></b>criterios en la puntuación</li>
+  <li><b id="s1"><!--pre:s1-->17<!--/pre:s1--></b>productos comparados</li>
+  <li><b id="s2"><!--pre:s2-->8<!--/pre:s2--></b>tipos de producto</li>
+  <li><b id="s3"><!--pre:s3-->3<!--/pre:s3--></b>criterios en la puntuación</li>
  </ul>
 </div></div>
 
 <section id="comparativas"><div class="w">
  <h2 class="sr">Qué comprar: comparativas por categoría</h2>
- <div class="cbar" id="cbar"><div class="chips" id="chips" role="group" aria-label="Categorías"></div></div>
+ <div class="cbar" id="cbar"><div class="chips" id="chips" role="group" aria-label="Categorías"><!--pre:chips--><button class="chip" data-c="" title="Todos los productos: 17 productos" style="--t:100,116,139" aria-pressed="true"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"></rect><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"></rect><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"></rect><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"></rect></svg></span><span class="cl">Todo</span></button><button class="chip" data-c="fit" title="Yoga, pilates y fitness (esterillas, gomas elásticas y balones de pilates): 6 productos" style="--t:22,163,74" aria-pressed="false"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="14" height="6" rx="1"></rect><circle cx="17" cy="12" r="4.5"></circle><circle cx="17" cy="12" r="1.6"></circle></svg></span><span class="cl">Yoga y fitness</span></button><button class="chip" data-c="tra" title="Dominadas y lastre (barras de dominadas y cinturones de lastre): 4 productos" style="--t:2,132,199" aria-pressed="false"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V5M19 20V5M5 8h14M9 8v4M15 8v4"></path></svg></span><span class="cl">Dominadas</span></button><button class="chip" data-c="pes" title="Mancuernas y bancos (mancuernas ajustables y bancos): 5 productos" style="--t:13,148,136" aria-pressed="false"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7v10M3 9.5v5M18 7v10M21 9.5v5M6 12h12"></path></svg></span><span class="cl">Mancuernas y bancos</span></button><button class="chip" data-c="acc" title="Accesorios (accesorios): 2 productos" style="--t:225,29,72" aria-pressed="false"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4c-3 3-3 13 0 16M17 4c3 3 3 13 0 16M7 12h10"></path></svg></span><span class="cl">Accesorios</span></button><!--/pre:chips--></div></div>
  <div class="tb">
   <span class="cnt" id="cnt" aria-live="polite"></span>
   <div class="flt" role="group" aria-label="Filtros y orden">
@@ -364,13 +365,384 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
    <label class="od">Ordenar por<select id="ord"><option value="d">Destacados</option><option value="s">Mejor nota</option><option value="v">Mejor calidad-precio</option><option value="n">Nombre (A-Z)</option></select></label>
   </div>
  </div>
- <p class="nt" role="note"><strong>Datos de Amazon.es del <span data-dc></span>:</strong> precios y opiniones cambian, <strong>confírmalos en Amazon antes de comprar</strong>. Los botones de Amazon son enlaces de afiliado: si compras, ganamos una comisión sin coste extra para ti.</p>
- <div id="list"></div>
+ <p class="nt" role="note"><strong>Datos de Amazon.es del <span data-dc>13/11/2026</span>:</strong> precios y opiniones cambian, <strong>confírmalos en Amazon antes de comprar</strong>. Los botones de Amazon son enlaces de afiliado: si compras, ganamos una comisión sin coste extra para ti.</p>
+ <div id="list" class="pre"><!--pre:list--><h3 class="gh" style="--t:22,163,74"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="14" height="6" rx="1"></rect><circle cx="17" cy="12" r="4.5"></circle><circle cx="17" cy="12" r="1.6"></circle></svg></span>Yoga, pilates y fitness<span class="gn">6 productos</span><a href="#comparativas" data-cat="fit">Ver solo esta categoría</a></h3><details class="gg" style="--t:22,163,74"><summary><span class="gl">Qué comprar</span>Cómo elegir esterillas, gomas elásticas y balones de pilates</summary><div class="gb"><section class="gi"><h3>Cómo elegir una esterilla de yoga o fitness</h3><p>El grosor decide para qué sirve. Entre 4 y 6 mm da más contacto con el suelo y se suele preferir en yoga y posturas de equilibrio; entre 8 y 15 mm amortigua más rodillas, codos y columna en abdominales, pilates y trabajo de suelo. En cuanto al material, el TPE suele ser ligero y firme, el NBR suele amortiguar más pero agarrar algo menos, y el caucho natural suele agarrar muy bien pero puede oler y no sirve si tienes alergia al látex. Busca una textura antideslizante. Una longitud de 183 cm (la de las dos esterillas comparadas) basta aproximadamente hasta 1,80 m de altura; si eres más alto, busca una de 190 cm o más. Una correa o una bolsa facilita el transporte, y se limpia con un paño húmedo, sin dejarla al sol.</p></section><section class="gi"><h3>Qué gomas elásticas comprar</h3><p>En esta comparativa hay dos tipos: un set de bandas cortas de látex, que según su ficha sirve para glúteos, equilibrio y movimientos básicos, y un kit con anclaje de puerta y resistencias más altas (hasta 85 lb), que según su ficha permite ejercicios de fuerza y dominadas asistidas. Empieza con una resistencia media y sube cuando domines la técnica: un set de varios niveles te da margen. El látex puede provocar alergia: si eres sensible, evita las bandas de caucho natural. Revisa antes de cada uso que no tengan cortes ni grietas, no las estires más de lo que indique el fabricante y fija bien el anclaje de puerta.</p></section><section class="gi"><h3>Cómo elegir un balón de pilates</h3><p>Lo primero es la talla, según tu altura. Como orientación general: 55 cm hasta unos 1,70 m, 65 cm entre 1,70 y 1,85 m y 75 cm por encima de 1,85 m (para menos de 1,55 m existe la de 45 cm). Las dos pelotas comparadas aquí se venden en 55, 65 y 75 cm; la talla se elige en Amazon. Al sentarte, las rodillas deben quedar a unos 90°. Elige un modelo antiestallido: si se pincha, se desinfla despacio en lugar de explotar. Mira la carga máxima que declara el fabricante y que incluya bomba o inflador. Como consejo habitual, hínchalo poco a poco y déjalo reposar unas horas antes de usarlo.</p></section></div></details><h4 class="sk" style="--t:22,163,74">Esterillas<span>2 productos</span></h4><article class="card" data-id="mmm" style="--t:22,163,74">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/81s5ZAFh70L._AC_SL500_.jpg" alt="LA MENTE ES MARAVILLOSA esterilla TPE 6 mm" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">TPE de 6 mm</span><span class="star">★ Mejor puntuado</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>LA MENTE ES MARAVILLOSA esterilla TPE 6 mm</h3><span class="sc"><span aria-hidden="true">★ 3,5<small>/5</small></span><span class="sr">Puntuación orientativa: 3,5 de 5</span></span></div>
+ <div class="pc"><b>14,90 €</b><span>por unidad</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,7</b> de 5 en Amazon · 6.138 opiniones</div>
+ <ul class="pr"><li>Doble cara antideslizante, TPE de alta densidad</li><li>Incluye bolsa, correa de hombro y e-book de ejercicios</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:94%"></i></span><b>4,7/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:0%"></i></span><b>No aplica</b></div><div><span class="l">Precio</span><span class="br"><i style="width:55%"></i></span><b>2,8/5</b></div></div>
+ <div class="sp"><div><span>Grosor</span><b>6 mm</b></div><div><span>Medidas</span><b>183 × 61 cm</b></div><div><span>Peso</span><b>0,8 kg</b></div><div><span>Materiales (según la ficha)</span><b>TPE (elastómero termoplástico) con textura en ambas caras</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,7 de 5 con 6.138 opiniones → valor ajustado 4,70</li>
+<li><b>Capacidad (cifra del fabricante):</b> No aplica a esta categoría: no entra en la media</li>
+<li><b>Precio:</b> 14,90 € frente a una mediana de 17,30 € en su categoría → 2,77</li>
+<li><b>Media:</b> 3,73 → redondeada a 3,5 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0BH4ZHP9R?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><article class="card" data-id="unm" style="--t:22,163,74">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/71YRVEvc1qL._AC_SL500_.jpg" alt="unycos esterilla NBR 10 mm" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">NBR de 10 mm, plegable</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>unycos esterilla NBR 10 mm</h3><span class="sc"><span aria-hidden="true">★ 3,5<small>/5</small></span><span class="sr">Puntuación orientativa: 3,5 de 5</span></span></div>
+ <div class="pc"><b>19,70 €</b><span>por unidad</span><small>Precio consultado el 13/11/2026; puede cambiar</small><p class="wn"><span aria-hidden="true">⚠ </span><strong>Precio a confirmar.</strong> Precio de una variante (talla o color): puede cambiar según la opción que elijas. Confírmalo en Amazon.</p></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,6</b> de 5 en Amazon · 2.346 opiniones</div>
+ <ul class="pr"><li>10 mm de grosor y superficie ondulada antideslizante</li><li>Plegable, con correa de hombro y bolsa de transporte</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:92%"></i></span><b>4,6/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:0%"></i></span><b>No aplica</b></div><div><span class="l">Precio</span><span class="br"><i style="width:45%"></i></span><b>2,3/5</b></div></div>
+ <div class="sp"><div><span>Grosor</span><b>10 mm</b></div><div><span>Medidas</span><b>183 × 60 cm</b></div><div><span>Peso</span><b>0,85 kg</b></div><div><span>Materiales (según la ficha)</span><b>NBR (caucho de nitrilo butadieno)</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,6 de 5 con 2.346 opiniones → valor ajustado 4,59</li>
+<li><b>Capacidad (cifra del fabricante):</b> No aplica a esta categoría: no entra en la media</li>
+<li><b>Precio:</b> 19,70 € frente a una mediana de 17,30 € en su categoría → 2,27</li>
+<li><b>Media:</b> 3,43 → redondeada a 3,5 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0FPDNZD17?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><h4 class="sk" style="--t:192,38,211">Gomas elásticas<span>2 productos</span></h4><article class="card" data-id="fko" style="--t:192,38,211">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/51sVFEQCXXL._AC_SL500_.jpg" alt="Fokky gomas elásticas set de 5" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Látex, 5 niveles</span><span class="star">★ Mejor puntuado</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>Fokky gomas elásticas set de 5</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div>
+ <div class="pc"><b>6,99 €</b><span>set de 5 bandas</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,4</b> de 5 en Amazon · 14.015 opiniones</div>
+ <ul class="pr"><li>5 niveles de resistencia, de 4 a 30 lb</li><li>Incluye bolsa de transporte y manual</li></ul>
+ <p class="wn"><span aria-hidden="true">⚠ </span>Contiene látex natural: puede provocar alergia en personas sensibles.</p>
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:88%"></i></span><b>4,4/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:0%"></i></span><b>No aplica</b></div><div><span class="l">Precio</span><span class="br"><i style="width:71%"></i></span><b>3,5/5</b></div></div>
+ <div class="sp"><div><span>Resistencia (según fabricante)</span><b>4-30 lb (1,8-13,6 kg)</b></div><div><span>Incluye</span><b>5 bandas de 30 × 5 cm, bolsa y manual</b></div><div><span>Peso</span><b>140 g</b></div><div><span>Materiales (según la ficha)</span><b>Caucho natural (látex)</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,4 de 5 con 14.015 opiniones → valor ajustado 4,40</li>
+<li><b>Capacidad (cifra del fabricante):</b> No aplica a esta categoría: no entra en la media</li>
+<li><b>Precio:</b> 6,99 € frente a una mediana de 12,49 € en su categoría → 3,55</li>
+<li><b>Media:</b> 3,97 → redondeada a 4,0 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B09CTVQWK8?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><article class="card" data-id="fka" style="--t:192,38,211">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/71dbnFaf5SL._AC_SL500_.jpg" alt="Fokky gomas elásticas con anclaje de puerta (4 niveles)" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Con anclaje de puerta</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>Fokky gomas elásticas con anclaje de puerta (4 niveles)</h3><span class="sc"><span aria-hidden="true">★ 3,0<small>/5</small></span><span class="sr">Puntuación orientativa: 3,0 de 5</span></span></div>
+ <div class="pc"><b>17,99 €</b><span>set de 4 bandas con accesorios</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,4</b> de 5 en Amazon · 832 opiniones</div>
+ <ul class="pr"><li>4 niveles de 8 a 85 lb; la naranja sirve para dominadas asistidas</li><li>Anclaje de puerta, 2 protectores acolchados y guía</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:88%"></i></span><b>4,4/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:0%"></i></span><b>No aplica</b></div><div><span class="l">Precio</span><span class="br"><i style="width:37%"></i></span><b>1,8/5</b></div></div>
+ <div class="sp"><div><span>Resistencia (según fabricante)</span><b>8-85 lb (3,6-38,6 kg)</b></div><div><span>Incluye</span><b>4 bandas, anclaje, protectores, bolsa y guía</b></div><div><span>Peso</span><b>810 g (paquete)</b></div><div><span>Materiales (según la ficha)</span><b>TPE (elastómero termoplástico)</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,4 de 5 con 832 opiniones → valor ajustado 4,39</li>
+<li><b>Capacidad (cifra del fabricante):</b> No aplica a esta categoría: no entra en la media</li>
+<li><b>Precio:</b> 17,99 € frente a una mediana de 12,49 € en su categoría → 1,84</li>
+<li><b>Media:</b> 3,12 → redondeada a 3,0 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0H1BGRHCV?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><h4 class="sk" style="--t:202,138,4">Balones de pilates<span>2 productos</span></h4><article class="card" data-id="pbp" style="--t:202,138,4">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/513GNPYm5YL._AC_SL500_.jpg" alt="PROIRON pelota de pilates antiestallido" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Antiestallido, con bomba</span><span class="star">★ Mejor puntuado</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>PROIRON pelota de pilates antiestallido</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div>
+ <div class="pc"><b>19,00 €</b><span>por unidad (talla a elegir)</span><small>Precio consultado el 13/11/2026; puede cambiar</small><p class="wn"><span aria-hidden="true">⚠ </span><strong>Precio a confirmar.</strong> Precio de una variante (talla o color): puede cambiar según la opción que elijas. Confírmalo en Amazon.</p></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,7</b> de 5 en Amazon · 12.357 opiniones</div>
+ <ul class="pr"><li>Estructura de panal: si se pincha, se desinfla despacio</li><li>Incluye bomba de mano y ejercicios impresos en la superficie</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:94%"></i></span><b>4,7/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:100%"></i></span><b>5,0/5</b></div><div><span class="l">Precio</span><span class="br"><i style="width:43%"></i></span><b>2,1/5</b></div></div>
+ <div class="sp"><div><span>Soporta (según fabricante)</span><b>500 kg</b></div><div><span>Diámetro</span><b>55, 65 o 75 cm</b></div><div><span>Peso</span><b>1,4 kg (talla de 75 cm)</b></div><div><span>Materiales (según la ficha)</span><b>PVC hipoalergénico con estructura de panal; superficie de 2 mm</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,7 de 5 con 12.357 opiniones → valor ajustado 4,70</li>
+<li><b>Capacidad (cifra del fabricante):</b> 500 kg de 500 kg (máximo declarado en su categoría) → 5,00</li>
+<li><b>Precio:</b> 19,00 € frente a una mediana de 15,45 € en su categoría → 2,13</li>
+<li><b>Media:</b> 3,94 → redondeada a 4,0 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0CP26FKZL?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><article class="card" data-id="upb" style="--t:202,138,4">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/51iojMZ1NEL._AC_SL500_.jpg" alt="unycos pelota de yoga y pilates" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Antiexplosión, con inflador</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>unycos pelota de yoga y pilates</h3><span class="sc"><span aria-hidden="true">★ 3,5<small>/5</small></span><span class="sr">Puntuación orientativa: 3,5 de 5</span></span></div>
+ <div class="pc"><b>11,90 €</b><span>por unidad (talla a elegir)</span><small>Precio consultado el 13/11/2026; puede cambiar</small><p class="wn"><span aria-hidden="true">⚠ </span><strong>Precio a confirmar.</strong> Precio de una variante (talla o color): puede cambiar según la opción que elijas. Confírmalo en Amazon.</p></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,4</b> de 5 en Amazon · 1.927 opiniones</div>
+ <ul class="pr"><li>Antiexplosión y antideslizante</li><li>Incluye inflador</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:88%"></i></span><b>4,4/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:60%"></i></span><b>3,0/5</b></div><div><span class="l">Precio</span><span class="br"><i style="width:59%"></i></span><b>3,0/5</b></div></div>
+ <div class="sp"><div><span>Soporta (según fabricante)</span><b>300 kg</b></div><div><span>Diámetro</span><b>55, 65 o 75 cm</b></div><div><span>Peso</span><b>0,85 kg (paquete, talla de 55 cm)</b></div><div><span>Materiales (según la ficha)</span><b>PVC con propiedad antiexplosión</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,4 de 5 con 1.927 opiniones → valor ajustado 4,40</li>
+<li><b>Capacidad (cifra del fabricante):</b> 300 kg de 500 kg (máximo declarado en su categoría) → 3,00</li>
+<li><b>Precio:</b> 11,90 € frente a una mediana de 15,45 € en su categoría → 2,97</li>
+<li><b>Media:</b> 3,46 → redondeada a 3,5 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0CSF223W2?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><h3 class="gh" style="--t:2,132,199"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V5M19 20V5M5 8h14M9 8v4M15 8v4"></path></svg></span>Dominadas y lastre<span class="gn">4 productos</span><a href="#comparativas" data-cat="tra">Ver solo esta categoría</a></h3><details class="gg" style="--t:2,132,199"><summary><span class="gl">Qué comprar</span>Cómo elegir barras de dominadas y cinturones de lastre</summary><div class="gb"><section class="gi"><h3>Cómo elegir una barra de dominadas</h3><p>Hay tres tipos. La de puerta se coloca a presión en el marco, sin tornillos: suele ser la más barata y la más fácil de guardar, pero solo sirve si el marco es resistente y su ancho entra en el rango indicado, así que mídelo antes de comprar. La de pared se atornilla y suele ofrecer más estabilidad y varios agarres, aunque necesita una pared firme de ladrillo u hormigón y herramientas para instalarla. La de techo suele ser la más rígida, pero exige obra. Fíjate en la carga máxima que declara el fabricante: suma tu peso y el del lastre y deja un margen del 30 %. Comprueba también que haya espacio libre sobre la barra para la dominada completa, y prueba con calma antes de colgarte con todo tu peso.</p></section><section class="gi"><h3>Qué mirar al comprar un cinturón de lastre</h3><p>Sirve para añadir carga en dominadas y fondos cuando tu peso corporal ya se queda corto. Fíjate en el ancho del cinturón, porque un cinturón más ancho reparte mejor la presión; en que la cadena sea de acero y los mosquetones sean sólidos, porque soportarán el disco colgando; y en la carga máxima que indique la ficha, que es una cifra del fabricante. Empieza con poco peso y sube de forma gradual.</p></section></div></details><h4 class="sk" style="--t:2,132,199">Barras de dominadas<span>2 productos</span></h4><article class="card" data-id="pdb" style="--t:2,132,199">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/61J1BcTQ5dL._AC_SL500_.jpg" alt="PROIRON barra de dominadas para puerta" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Sin taladrar</span><span class="star">★ Mejor puntuado</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>PROIRON barra de dominadas para puerta</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div>
+ <div class="pc"><b>33,99 €</b><span>por unidad</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,5</b> de 5 en Amazon · 869 opiniones</div>
+ <ul class="pr"><li>Sin tornillos: se bloquea en el marco (72-97 cm)</li><li>Mango de espuma de algodón lavable y antideslizante</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:90%"></i></span><b>4,5/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:100%"></i></span><b>5,0/5</b></div><div><span class="l">Precio</span><span class="br"><i style="width:59%"></i></span><b>3,0/5</b></div></div>
+ <div class="sp"><div><span>Carga máx. (según fabricante)</span><b>200 kg (180 kg a 97 cm)</b></div><div><span>Medidas</span><b>Ajustable de 72 a 97 cm</b></div><div><span>Peso</span><b>2,1 kg</b></div><div><span>Materiales (según la ficha)</span><b>Acero aleado; mango de espuma de algodón</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,5 de 5 con 869 opiniones → valor ajustado 4,49</li>
+<li><b>Capacidad (cifra del fabricante):</b> 200 kg de 200 kg (máximo declarado en su categoría) → 5,00</li>
+<li><b>Precio:</b> 33,99 € frente a una mediana de 44,00 € en su categoría → 2,97</li>
+<li><b>Media:</b> 4,15 → redondeada a 4,0 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0C88MN138?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><article class="card" data-id="dhb" style="--t:2,132,199">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/51-QE-BmDoL._AC_SL500_.jpg" alt="DH FitLife barra de dominadas de pared 4 en 1" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Montaje en pared</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>DH FitLife barra de dominadas de pared 4 en 1</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div>
+ <div class="pc"><b>54,00 €</b><span>por unidad</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,5</b> de 5 en Amazon · 630 opiniones</div>
+ <ul class="pr"><li>Agarres amplio, cerrado, paralelo y chin-up</li><li>8 tacos con tornillos y 2 correas incluidos</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:90%"></i></span><b>4,5/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:100%"></i></span><b>5,0/5</b></div><div><span class="l">Precio</span><span class="br"><i style="width:43%"></i></span><b>2,1/5</b></div></div>
+ <div class="sp"><div><span>Carga máx. (según fabricante)</span><b>200 kg</b></div><div><span>Medidas</span><b>100 × 27 cm (ancho × alto)</b></div><div><span>Peso</span><b>5,5 kg</b></div><div><span>Materiales (según la ficha)</span><b>Acero (la ficha indica acero inoxidable); empuñaduras de espuma multicapa</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,5 de 5 con 630 opiniones → valor ajustado 4,49</li>
+<li><b>Capacidad (cifra del fabricante):</b> 200 kg de 200 kg (máximo declarado en su categoría) → 5,00</li>
+<li><b>Precio:</b> 54,00 € frente a una mediana de 44,00 € en su categoría → 2,13</li>
+<li><b>Media:</b> 3,87 → redondeada a 4,0 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0DMPQTG7M?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><h4 class="sk" style="--t:124,58,237">Cinturones de lastre<span>2 productos</span></h4><article class="card" data-id="bel" style="--t:124,58,237">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/71QnANHIpeL._AC_SL500_.jpg" alt="Eric Flag cinturón de lastre con cadena" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Con cadena y 2 mosquetones</span><span class="star">★ Mejor puntuado</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>Eric Flag cinturón de lastre con cadena</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div>
+ <div class="pc"><b>26,90 €</b><span>por unidad</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,7</b> de 5 en Amazon · 1.715 opiniones</div>
+ <ul class="pr"><li>Hasta 300 kg de carga</li><li>Espalda ancha y acolchada, 2 mosquetones</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:94%"></i></span><b>4,7/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:100%"></i></span><b>5,0/5</b></div><div><span class="l">Precio</span><span class="br"><i style="width:49%"></i></span><b>2,4/5</b></div></div>
+ <div class="sp"><div><span>Carga máx. (según fabricante)</span><b>300 kg</b></div><div><span>Dimensiones</span><b>Cinturón de 76 cm</b></div><div><span>Peso</span><b>953 g</b></div><div><span>Materiales (según la ficha)</span><b>Nailon con costuras de nailon; cadena de metal</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,7 de 5 con 1.715 opiniones → valor ajustado 4,69</li>
+<li><b>Capacidad (cifra del fabricante):</b> 300 kg de 300 kg (máximo declarado en su categoría) → 5,00</li>
+<li><b>Precio:</b> 26,90 € frente a una mediana de 25,95 € en su categoría → 2,43</li>
+<li><b>Media:</b> 4,04 → redondeada a 4,0 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B082SY8QZB?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><article class="card" data-id="bne" style="--t:124,58,237">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/91exAYcQFzL._AC_SL500_.jpg" alt="AQF cinturón de lastre con neopreno" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Soporte lumbar contorneado</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>AQF cinturón de lastre con neopreno</h3><span class="sc"><span aria-hidden="true">★ 3,5<small>/5</small></span><span class="sr">Puntuación orientativa: 3,5 de 5</span></span></div>
+ <div class="pc"><b>24,99 €</b><span>por unidad</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,7</b> de 5 en Amazon · 3.467 opiniones</div>
+ <ul class="pr"><li>Soporte lumbar contorneado de 12,7 cm</li><li>Cadena de acero de 91 cm y 2 mosquetones</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:94%"></i></span><b>4,7/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:0%"></i></span><b>Sin dato</b></div><div><span class="l">Precio</span><span class="br"><i style="width:51%"></i></span><b>2,6/5</b></div></div>
+ <div class="sp"><div><span>Carga máx. (según fabricante)</span><b>No indicada</b></div><div><span>Dimensiones</span><b>Cadena de 91 cm</b></div><div><span>Peso</span><b>800 g</b></div><div><span>Materiales (según la ficha)</span><b>Material sintético (polipropileno); cadena de acero</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,7 de 5 con 3.467 opiniones → valor ajustado 4,70</li>
+<li><b>Capacidad (cifra del fabricante):</b> Sin dato: no entra en la media</li>
+<li><b>Precio:</b> 24,99 € frente a una mediana de 25,95 € en su categoría → 2,57</li>
+<li><b>Media:</b> 3,63 → redondeada a 3,5 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B00SS27VNG?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><h3 class="gh" style="--t:13,148,136"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7v10M3 9.5v5M18 7v10M21 9.5v5M6 12h12"></path></svg></span>Mancuernas y bancos<span class="gn">5 productos</span><a href="#comparativas" data-cat="pes">Ver solo esta categoría</a></h3><details class="gg" style="--t:13,148,136"><summary><span class="gl">Qué comprar</span>Cómo elegir mancuernas ajustables y bancos</summary><div class="gb"><section class="gi"><h3>En qué fijarse antes de comprar unas mancuernas ajustables</h3>
+   
+   <p>Las mancuernas ajustables sustituyen varias pesas fijas y ocupan menos espacio. Pero no todos los modelos sirven para lo mismo. Estos son criterios generales para decidir.</p>
+   <h4>Rango de peso y progresión</h4>
+   <p>Mira el peso máximo por mano y los saltos entre cargas. Si vas a progresar, un máximo bajo (por ejemplo, 24 kg por mano) puede quedarse corto en ejercicios como el press de hombro o el remo, mientras que uno de 32 a 36 kg da más margen. Los saltos pequeños permiten progresar con más precisión en curl y elevaciones laterales.</p>
+   <h4>Sistema de ajuste</h4>
+   <p>Los modelos de dial o selector suelen cambiar de peso más rápido que los de discos con rosca, que obligan a desmontar. Comprueba en la ficha cómo se bloquea la carga: un bloqueo flojo es un riesgo de seguridad.</p>
+   <h4>Agarre y tamaño</h4>
+   <p>Fíjate en el material del agarre (acero o goma, por ejemplo) y en la longitud del conjunto, porque algunas mancuernas resultan largas en ejercicios de pecho con poco peso.</p>
+   <h4>Espacio y almacenamiento</h4>
+   <p>Mide el hueco donde las vas a guardar. Algunos modelos incluyen una bandeja para las piezas.</p>
+   <h4>Garantía y mantenimiento</h4>
+   <p>Un mecanismo con partes móviles es más delicado que una pesa fija. Compara el plazo de garantía que indica cada ficha, evita soltarlas desde altura y revisa el selector de vez en cuando.</p>
+   <p><strong>En resumen:</strong> si priorizas el espacio, mira los modelos compactos; si quieres más carga, los de 32 a 36 kg por mano; y compara siempre el precio del par, no el de una unidad suelta. </p>
+  </section><section class="gi"><h3>Cómo elegir un banco de musculación regulable</h3><p>Empieza por la carga máxima que declara el fabricante: suma tu peso y el de la barra y deja un margen del 30 % como mínimo (criterio general de seguridad). Si no cargas mucho peso, 300 kg pueden bastar; si levantas pesado, mira modelos de 450 kg o más. Comprueba que el respaldo tenga varias posiciones y que no se mueva al apoyarte. Un tapizado firme y antideslizante ayuda a no resbalar con el sudor. Si vives en un piso pequeño, mira si es plegable; si entrenas con barra, prioriza la estabilidad.</p></section></div></details><h4 class="sk" style="--t:13,148,136">Mancuernas ajustables<span>3 productos</span></h4><article class="card" data-id="cor" style="--t:13,148,136">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/71F5R3XRN3L._AC_SL500_.jpg" alt="Mancuernas ajustables 32 kg (1 kg de salto)" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">32 kg por mano, saltos de 1 kg</span><span class="star">★ Mejor puntuado</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>Mancuernas ajustables 32 kg (1 kg de salto)</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div>
+ <div class="pc"><b>419,00 €</b><span>el par (2 mancuernas)</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,8</b> de 5 en Amazon · 18 opiniones</div><p class="wn"><span aria-hidden="true">⚠ </span><strong>Solo 18 opiniones:</strong> la valoración puede no ser representativa.</p>
+ <ul class="pr"><li>32 kg por mano en saltos de 1 kg</li><li>Incluye las 2 mancuernas</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:89%"></i></span><b>4,4/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:89%"></i></span><b>4,4/5</b></div><div><span class="l">Precio</span><span class="br"><i style="width:67%"></i></span><b>3,4/5</b></div></div>
+ <div class="sp"><div><span>Carga máx. (según fabricante)</span><b>32 kg por mano</b></div><div><span>Dimensiones</span><b>55 × 20 × 20 cm</b></div><div><span>Peso</span><b>2 × 32 kg</b></div><div><span>Materiales (según la ficha)</span><b>Discos cromados y acero; mango de hierro fundido</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,8 de 5 con 18 opiniones → valor ajustado 4,42</li>
+<li><b>Capacidad (cifra del fabricante):</b> 32 kg de 36 kg (máximo declarado en su categoría) → 4,44</li>
+<li><b>Precio:</b> 419,00 € frente a una mediana de 673,57 € en su categoría → 3,36</li>
+<li><b>Media:</b> 4,08 → redondeada a 4,0 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0CR6TDDZX?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><article class="card" data-id="bow" style="--t:13,148,136">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/61KE8cmqB%2BL._AC_SL500_.jpg" alt="Bowflex SelectTech 552" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">15 pesos en un par</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>Bowflex SelectTech 552</h3><span class="sc"><span aria-hidden="true">★ 3,5<small>/5</small></span><span class="sr">Puntuación orientativa: 3,5 de 5</span></span></div>
+ <div class="pc"><b>673,57 €</b><span>el par (2 mancuernas)</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,8</b> de 5 en Amazon · 317 opiniones</div>
+ <ul class="pr"><li>15 pesos en un solo par (5-50 lb)</li><li>Bandejas de guardado incluidas</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:95%"></i></span><b>4,7/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:63%"></i></span><b>3,2/5</b></div><div><span class="l">Precio</span><span class="br"><i style="width:50%"></i></span><b>2,5/5</b></div></div>
+ <div class="sp"><div><span>Carga máx. (según fabricante)</span><b>22,7 kg por mano</b></div><div><span>Dimensiones</span><b>42,9 × 21,1 × 21,1 cm</b></div><div><span>Peso</span><b>50,2 kg el set</b></div><div><span>Materiales (según la ficha)</span><b>Placas de metal; mango de acero aleado y caucho</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,8 de 5 con 317 opiniones → valor ajustado 4,75</li>
+<li><b>Capacidad (cifra del fabricante):</b> 22,7 kg de 36 kg (máximo declarado en su categoría) → 3,15</li>
+<li><b>Precio:</b> 673,57 € frente a una mediana de 673,57 € en su categoría → 2,50</li>
+<li><b>Media:</b> 3,47 → redondeada a 3,5 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0FRNG2N5H?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><article class="card" data-id="nuo" style="--t:13,148,136">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/61K9eZacbvL._AC_SL500_.jpg" alt="Nüobell 80 lb" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Hasta 36 kg por mancuerna</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>Nüobell 80 lb</h3><span class="sc"><span aria-hidden="true">★ 3,0<small>/5</small></span><span class="sr">Puntuación orientativa: 3,0 de 5</span></span></div>
+ <div class="pc"><b>1.734,00 €</b><span>por unidad (1 mancuerna)</span><small>Precio consultado el 13/11/2026; puede cambiar · Un par (2 unidades) costaría 3.468,00 €.</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>3,7</b> de 5 en Amazon · 6 opiniones</div><p class="wn"><span aria-hidden="true">⚠ </span><strong>Solo 6 opiniones:</strong> la valoración puede no ser representativa.</p>
+ <ul class="pr"><li>36 kg en una sola mancuerna (9 pasos)</li><li>Cambio de peso girando el agarre</li><li>Se vende por unidad: pide dos para el par</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:82%"></i></span><b>4,1/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:100%"></i></span><b>5,0/5</b></div><div><span class="l">Precio</span><span class="br"><i style="width:0%"></i></span><b>0,0/5</b></div></div>
+ <div class="sp"><div><span>Carga máx. (según fabricante)</span><b>36 kg por mancuerna</b></div><div><span>Dimensiones</span><b>48 × 18,5 × 19,5 cm</b></div><div><span>Peso</span><b>36,3 kg cada una</b></div><div><span>Materiales (según la ficha)</span><b>Acero inoxidable y plástico; agarre de acero inoxidable</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 3,7 de 5 con 6 opiniones → valor ajustado 4,12</li>
+<li><b>Capacidad (cifra del fabricante):</b> 36 kg de 36 kg (máximo declarado en su categoría) → 5,00</li>
+<li><b>Precio:</b> 3.468,00 € (el par) frente a una mediana de 673,57 € en su categoría → 0,00</li>
+<li><b>Media:</b> 3,04 → redondeada a 3,0 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B09N6M5BH8?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><h4 class="sk" style="--t:37,99,235">Bancos<span>2 productos</span></h4><article class="card" data-id="ban" style="--t:37,99,235">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/71ni1LLgqfL._AC_SL500_.jpg" alt="JOROTO MD80 banco regulable 450 kg" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">450 kg declarados</span><span class="star">★ Mejor puntuado</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>JOROTO MD80 banco regulable 450 kg</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div>
+ <div class="pc"><b>199,99 €</b><span>por unidad</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,7</b> de 5 en Amazon · 938 opiniones</div>
+ <ul class="pr"><li>Respaldo de 6 posiciones y asiento de 2</li><li>Tapizado resistente al sudor</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:94%"></i></span><b>4,7/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:100%"></i></span><b>5,0/5</b></div><div><span class="l">Precio</span><span class="br"><i style="width:40%"></i></span><b>2,0/5</b></div></div>
+ <div class="sp"><div><span>Carga máx. (según fabricante)</span><b>450 kg</b></div><div><span>Dimensiones</span><b>120 × 50 × 45 cm</b></div><div><span>Peso</span><b>24 kg</b></div><div><span>Materiales (según la ficha)</span><b>Acero aleado; tapizado de 6 cm resistente al sudor</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,7 de 5 con 938 opiniones → valor ajustado 4,68</li>
+<li><b>Capacidad (cifra del fabricante):</b> 450 kg de 450 kg (máximo declarado en su categoría) → 5,00</li>
+<li><b>Precio:</b> 199,99 € frente a una mediana de 152,34 € en su categoría → 2,01</li>
+<li><b>Media:</b> 3,90 → redondeada a 4,0 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B09V2CS1CY?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><article class="card" data-id="bpl" style="--t:37,99,235">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/71Y5hmmXmoL._AC_SL500_.jpg" alt="FLYBIRD banco plegable 363 kg" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Plegable</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>FLYBIRD banco plegable 363 kg</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div>
+ <div class="pc"><b>104,68 €</b><span>por unidad</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,4</b> de 5 en Amazon · 20.993 opiniones</div>
+ <ul class="pr"><li>Plegado ocupa solo 23 cm de ancho</li><li>Estable hasta 363 kg</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:88%"></i></span><b>4,4/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:81%"></i></span><b>4,0/5</b></div><div><span class="l">Precio</span><span class="br"><i style="width:64%"></i></span><b>3,2/5</b></div></div>
+ <div class="sp"><div><span>Carga máx. (según fabricante)</span><b>363 kg</b></div><div><span>Dimensiones</span><b>123 × 39 × 47,5 cm</b></div><div><span>Peso</span><b>12,9 kg</b></div><div><span>Materiales (según la ficha)</span><b>Aleación de acero; respaldo de 76,7 cm</b></div></div>
+ <p class="gr"><b>Garantía del fabricante:</b> Sustitución del bastidor durante 2 años y garantía de 3 años en piezas de repuesto, según la ficha.</p>
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,4 de 5 con 20.993 opiniones → valor ajustado 4,40</li>
+<li><b>Capacidad (cifra del fabricante):</b> 363 kg de 450 kg (máximo declarado en su categoría) → 4,03</li>
+<li><b>Precio:</b> 104,68 € frente a una mediana de 152,34 € en su categoría → 3,18</li>
+<li><b>Media:</b> 3,87 → redondeada a 4,0 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B07DNYSJ8W?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><h3 class="gh" style="--t:225,29,72"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4c-3 3-3 13 0 16M17 4c3 3 3 13 0 16M7 12h10"></path></svg></span>Accesorios<span class="gn">2 productos</span><a href="#comparativas" data-cat="acc">Ver solo esta categoría</a></h3><details class="gg" style="--t:225,29,72"><summary><span class="gl">Qué comprar</span>Cómo elegir accesorios</summary><div class="gb"><section class="gi"><h3>Straps de levantamiento: cuándo usarlos y cómo elegirlos</h3><p>Los straps sujetan la barra cuando el agarre falla antes que la espalda, algo habitual en peso muerto, remos y tirones con carga alta. Mira el material (el algodón grueso con costura doble es una opción habitual), la longitud (con unos 60 cm se pueden enrollar con comodidad) y si llevan muñequera. Úsalos solo en las series más pesadas y sigue entrenando el agarre con el resto.</p></section></div></details><article class="card" data-id="str" style="--t:225,29,72">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/81ZDizb0wEL._AC_SL500_.jpg" alt="Fitgriff straps de algodón" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Algodón con neopreno</span><span class="star">★ Mejor puntuado</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>Fitgriff straps de algodón</h3><span class="sc"><span aria-hidden="true">★ 3,5<small>/5</small></span><span class="sr">Puntuación orientativa: 3,5 de 5</span></span></div>
+ <div class="pc"><b>9,99 €</b><span>el par (una correa para cada mano)</span><small>Precio consultado el 13/11/2026; puede cambiar</small><p class="wn"><span aria-hidden="true">⚠ </span><strong>Precio a confirmar.</strong> Precio de una variante (talla o color): puede cambiar según la opción que elijas. Confírmalo en Amazon.</p></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,7</b> de 5 en Amazon · 23.268 opiniones</div>
+ <ul class="pr"><li>Algodón denso con acolchado de neopreno</li><li>Unos 58 cm: 2-3 vueltas a la barra</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:94%"></i></span><b>4,7/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:0%"></i></span><b>No aplica</b></div><div><span class="l">Precio</span><span class="br"><i style="width:50%"></i></span><b>2,5/5</b></div></div>
+ <div class="sp"><div><span>Carga máx.</span><b>No indicada</b></div><div><span>Dimensiones</span><b>60 × 4 cm</b></div><div><span>Peso</span><b>100 g</b></div><div><span>Materiales (según la ficha)</span><b>Algodón denso con acolchado de neopreno en la muñeca</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,7 de 5 con 23.268 opiniones → valor ajustado 4,70</li>
+<li><b>Capacidad (cifra del fabricante):</b> No aplica a esta categoría: no entra en la media</li>
+<li><b>Precio:</b> 9,99 € frente a una mediana de 9,99 € en su categoría → 2,50</li>
+<li><b>Media:</b> 3,60 → redondeada a 3,5 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B01F2OGJQM?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><article class="card" data-id="sac" style="--t:225,29,72">
+ <div class="ph"><img src="https://m.media-amazon.com/images/I/71FdNvgxUAL._AC_SL500_.jpg" alt="MERCURYAL straps con muñequera" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Con muñequera</span></div>
+ <div class="cd">
+ 
+ <div class="top"><h3>MERCURYAL straps con muñequera</h3><span class="sc"><span aria-hidden="true">★ 3,5<small>/5</small></span><span class="sr">Puntuación orientativa: 3,5 de 5</span></span></div>
+ <div class="pc"><b>9,99 €</b><span>No indicado en la ficha</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,5</b> de 5 en Amazon · 197 opiniones</div>
+ <ul class="pr"><li>Muñequera de neopreno incluida</li><li>Sistema de ajuste seguro y fácil</li></ul>
+ 
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
+ <div class="mt"><div><span class="l">Opiniones</span><span class="br"><i style="width:89%"></i></span><b>4,5/5</b></div><div><span class="l">Capacidad</span><span class="br"><i style="width:0%"></i></span><b>No aplica</b></div><div><span class="l">Precio</span><span class="br"><i style="width:50%"></i></span><b>2,5/5</b></div></div>
+ <div class="sp"><div><span>Carga máx.</span><b>No indicada</b></div><div><span>Dimensiones</span><b>No indicadas</b></div><div><span>Peso</span><b>120 g (paquete)</b></div><div><span>Materiales (según la ficha)</span><b>Correas de nailon y muñequeras de neopreno</b></div></div>
+ 
+ <details class="calc"><summary>¿Cómo se calcula la puntuación?</summary><ul>
+<li><b>Opiniones:</b> 4,5 de 5 con 197 opiniones → valor ajustado 4,46</li>
+<li><b>Capacidad (cifra del fabricante):</b> No aplica a esta categoría: no entra en la media</li>
+<li><b>Precio:</b> 9,99 € frente a una mediana de 9,99 € en su categoría → 2,50</li>
+<li><b>Media:</b> 3,48 → redondeada a 3,5 de 5</li></ul>
+<a href="#metodologia">Ver la fórmula completa</a></details>
+ </details>
+ <div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0BXQQNLYF?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-cmp="" aria-pressed="false">Comparar</button></div>
+ </div>
+</article><!--/pre:list--></div>
 </div></section>
 
 <section class="alt" id="veredicto"><div class="w">
  <div class="sh"><span class="ey">Mejor puntuados</span><h2>El mejor puntuado de cada tipo</h2><p>Se elige de forma automática: es el producto con mayor puntuación orientativa de su tipo (esterillas, gomas, bancos…). No es una prueba propia ni una recomendación personalizada.</p></div>
- <div id="picks"></div>
+ <div id="picks"><!--pre:picks--><article class="card" style="--t:22,163,74"><div class="ph"><img src="https://m.media-amazon.com/images/I/81s5ZAFh70L._AC_SL500_.jpg" alt="LA MENTE ES MARAVILLOSA esterilla TPE 6 mm" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Esterillas</span></div><div class="cd"><div class="top"><h3>LA MENTE ES MARAVILLOSA esterilla TPE 6 mm</h3><span class="sc"><span aria-hidden="true">★ 3,5<small>/5</small></span><span class="sr">Puntuación orientativa: 3,5 de 5</span></span></div><div class="pc"><b>14,90 €</b><span>por unidad</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,7</b> de 5 en Amazon · 6.138 opiniones</div><p class="why"><b>Por qué aparece aquí:</b> Es el de mayor puntuación de su categoría (3,5 de 5): valoración 4,7 con 6.138 opiniones y precio de 14,90 € (por unidad).</p><div class="vd"><b>Para quién SÍ</b><p>Quieres una esterilla de 6 mm que pesa unos 0,8 kg e incluye bolsa y correa.</p></div><div class="vd"><b>Para quién NO</b><p>Necesitas más amortiguación para rodillas o columna: tiene 6 mm (la unycos tiene 10 mm).</p></div><div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0BH4ZHP9R?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-go="esterillas">Ver comparativa de esterillas</button></div></div></article><article class="card" style="--t:192,38,211"><div class="ph"><img src="https://m.media-amazon.com/images/I/51sVFEQCXXL._AC_SL500_.jpg" alt="Fokky gomas elásticas set de 5" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Gomas elásticas</span></div><div class="cd"><div class="top"><h3>Fokky gomas elásticas set de 5</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div><div class="pc"><b>6,99 €</b><span>set de 5 bandas</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,4</b> de 5 en Amazon · 14.015 opiniones</div><p class="wn"><span aria-hidden="true">⚠ </span>Contiene látex natural: puede provocar alergia en personas sensibles.</p><p class="why"><b>Por qué aparece aquí:</b> Es el de mayor puntuación de su categoría (4,0 de 5): valoración 4,4 con 14.015 opiniones y precio de 6,99 € (set de 5 bandas).</p><div class="vd"><b>Para quién SÍ</b><p>Empiezas con bandas y quieres cinco niveles de 4 a 30 lb por poco dinero.</p></div><div class="vd"><b>Para quién NO</b><p>Buscas más de 30 lb de resistencia o eres alérgico al látex: son bandas de caucho natural.</p></div><div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B09CTVQWK8?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-go="gomas">Ver comparativa de gomas elásticas</button></div></div></article><article class="card" style="--t:202,138,4"><div class="ph"><img src="https://m.media-amazon.com/images/I/513GNPYm5YL._AC_SL500_.jpg" alt="PROIRON pelota de pilates antiestallido" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Balones de pilates</span></div><div class="cd"><div class="top"><h3>PROIRON pelota de pilates antiestallido</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div><div class="pc"><b>19,00 €</b><span>por unidad (talla a elegir)</span><small>Precio consultado el 13/11/2026; puede cambiar</small><p class="wn"><span aria-hidden="true">⚠ </span><strong>Precio a confirmar.</strong> Precio de una variante (talla o color): puede cambiar según la opción que elijas. Confírmalo en Amazon.</p></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,7</b> de 5 en Amazon · 12.357 opiniones</div><p class="why"><b>Por qué aparece aquí:</b> Es el de mayor puntuación de su categoría (4,0 de 5): valoración 4,7 con 12.357 opiniones y precio de 19,00 € (por unidad (talla a elegir)).</p><div class="vd"><b>Para quién SÍ</b><p>Quieres un fitball antiestallido con bomba incluida y ejercicios impresos, en tallas de 55 a 75 cm.</p></div><div class="vd"><b>Para quién NO</b><p>Buscas una pelota pequeña tipo overball: esta se vende en 55, 65 y 75 cm.</p></div><div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0CP26FKZL?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-go="balones">Ver comparativa de balones de pilates</button></div></div></article><article class="card" style="--t:2,132,199"><div class="ph"><img src="https://m.media-amazon.com/images/I/61J1BcTQ5dL._AC_SL500_.jpg" alt="PROIRON barra de dominadas para puerta" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Barras de dominadas</span></div><div class="cd"><div class="top"><h3>PROIRON barra de dominadas para puerta</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div><div class="pc"><b>33,99 €</b><span>por unidad</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,5</b> de 5 en Amazon · 869 opiniones</div><p class="why"><b>Por qué aparece aquí:</b> Es el de mayor puntuación de su categoría (4,0 de 5): valoración 4,5 con 869 opiniones y precio de 33,99 € (por unidad).</p><div class="vd"><b>Para quién SÍ</b><p>Tu marco de puerta mide entre 72 y 97 cm y no quieres taladrar.</p></div><div class="vd"><b>Para quién NO</b><p>Tu marco es más ancho, o tu peso (con lastre) supera los 180 kg si la abres a 97 cm.</p></div><div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0C88MN138?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-go="dominadas">Ver comparativa de barras de dominadas</button></div></div></article><article class="card" style="--t:124,58,237"><div class="ph"><img src="https://m.media-amazon.com/images/I/71QnANHIpeL._AC_SL500_.jpg" alt="Eric Flag cinturón de lastre con cadena" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Cinturones de lastre</span></div><div class="cd"><div class="top"><h3>Eric Flag cinturón de lastre con cadena</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div><div class="pc"><b>26,90 €</b><span>por unidad</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,7</b> de 5 en Amazon · 1.715 opiniones</div><p class="why"><b>Por qué aparece aquí:</b> Es el de mayor puntuación de su categoría (4,0 de 5): valoración 4,7 con 1.715 opiniones y precio de 26,90 € (por unidad).</p><div class="vd"><b>Para quién SÍ</b><p>Haces dominadas o fondos con lastre y quieres un cinturón con 300 kg declarados y dos mosquetones.</p></div><div class="vd"><b>Para quién NO</b><p>Necesitas saber el ancho del cinturón: la ficha no lo indica.</p></div><div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B082SY8QZB?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-go="lastre">Ver comparativa de cinturones de lastre</button></div></div></article><article class="card" style="--t:13,148,136"><div class="ph"><img src="https://m.media-amazon.com/images/I/71F5R3XRN3L._AC_SL500_.jpg" alt="Mancuernas ajustables 32 kg (1 kg de salto)" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Mancuernas ajustables</span></div><div class="cd"><div class="top"><h3>Mancuernas ajustables 32 kg (1 kg de salto)</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div><div class="pc"><b>419,00 €</b><span>el par (2 mancuernas)</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,8</b> de 5 en Amazon · 18 opiniones</div><p class="wn"><span aria-hidden="true">⚠ </span><strong>Solo 18 opiniones:</strong> la valoración puede no ser representativa.</p><p class="why"><b>Por qué aparece aquí:</b> Es el de mayor puntuación de su categoría (4,0 de 5): valoración 4,8 con 18 opiniones y precio de 419,00 € (el par (2 mancuernas)).</p><div class="vd"><b>Para quién SÍ</b><p>Quieres hasta 32 kg por mano en saltos de 1 kg y un par completo por 419 €.</p></div><div class="vd"><b>Para quién NO</b><p>Valoras tener muchas opiniones: solo tiene 18, y la ficha apenas describe el sistema de ajuste.</p></div><div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B0CR6TDDZX?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-go="mancuernas">Ver comparativa de mancuernas ajustables</button></div></div></article><article class="card" style="--t:37,99,235"><div class="ph"><img src="https://m.media-amazon.com/images/I/71ni1LLgqfL._AC_SL500_.jpg" alt="JOROTO MD80 banco regulable 450 kg" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Bancos</span></div><div class="cd"><div class="top"><h3>JOROTO MD80 banco regulable 450 kg</h3><span class="sc"><span aria-hidden="true">★ 4,0<small>/5</small></span><span class="sr">Puntuación orientativa: 4,0 de 5</span></span></div><div class="pc"><b>199,99 €</b><span>por unidad</span><small>Precio consultado el 13/11/2026; puede cambiar</small></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,7</b> de 5 en Amazon · 938 opiniones</div><p class="why"><b>Por qué aparece aquí:</b> Es el de mayor puntuación de su categoría (4,0 de 5): valoración 4,7 con 938 opiniones y precio de 199,99 € (por unidad).</p><div class="vd"><b>Para quién SÍ</b><p>Levantas con mucha carga y quieres un banco con 450 kg declarados y respaldo de 6 posiciones.</p></div><div class="vd"><b>Para quién NO</b><p>Necesitas un banco fácil de mover: pesa 24 kg (el FLYBIRD pesa 12,9 kg).</p></div><div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B09V2CS1CY?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-go="bancos">Ver comparativa de bancos</button></div></div></article><article class="card" style="--t:225,29,72"><div class="ph"><img src="https://m.media-amazon.com/images/I/81ZDizb0wEL._AC_SL500_.jpg" alt="Fitgriff straps de algodón" loading="lazy" onerror="this.parentNode.classList.add('nf');this.remove()"><span class="tag">Accesorios</span></div><div class="cd"><div class="top"><h3>Fitgriff straps de algodón</h3><span class="sc"><span aria-hidden="true">★ 3,5<small>/5</small></span><span class="sr">Puntuación orientativa: 3,5 de 5</span></span></div><div class="pc"><b>9,99 €</b><span>el par (una correa para cada mano)</span><small>Precio consultado el 13/11/2026; puede cambiar</small><p class="wn"><span aria-hidden="true">⚠ </span><strong>Precio a confirmar.</strong> Precio de una variante (talla o color): puede cambiar según la opción que elijas. Confírmalo en Amazon.</p></div><div class="rv"><span class="rs" aria-hidden="true">★</span> <b>4,7</b> de 5 en Amazon · 23.268 opiniones</div><p class="why"><b>Por qué aparece aquí:</b> Es el de mayor puntuación de su categoría (3,5 de 5): valoración 4,7 con 23.268 opiniones y precio de 9,99 € (el par (una correa para cada mano)).</p><div class="vd"><b>Para quién SÍ</b><p>Tu agarre falla antes que tu espalda y quieres correas de algodón de unos 58 cm con acolchado de neopreno.</p></div><div class="vd"><b>Para quién NO</b><p>Necesitas una carga máxima declarada: la ficha no la indica.</p></div><div class="ac2"><a class="btn cta" href="https://www.amazon.es/dp/B01F2OGJQM?tag=hierrodesalon-21" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a><button class="btn" data-go="accesorios">Ver comparativa de accesorios</button></div></div></article><!--/pre:picks--></div>
 </div></section>
 
 <!-- Guías de compra: cada una se muestra dentro de su categoría («Qué comprar»), no como sección aparte -->
@@ -404,8 +776,14 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
 
 <section id="metodologia"><div class="w">
  <div class="sh"><span class="ey">Metodología</span><h2>Cómo calculamos la puntuación</h2><p>Es una puntuación orientativa calculada con datos públicos de Amazon.es. No hemos probado los productos.</p></div>
- <div class="crit" id="crit"></div>
- <div class="note" id="frm"></div>
+ <div class="crit" id="crit"><!--pre:crit--><div><h3>Opiniones de clientes</h3><p>Valoración media de Amazon.es ajustada por el número de opiniones.</p></div><div><h3>Capacidad declarada</h3><p>Carga o resistencia que indica el fabricante, frente a la mayor de su categoría.</p></div><div><h3>Precio frente a su categoría</h3><p>Cuánto cuesta respecto a la mediana de los productos de su categoría.</p></div><!--/pre:crit--></div>
+ <div class="note" id="frm"><!--pre:frm--><p><strong>Puntuación orientativa (de 1 a 5, en pasos de 0,5).</strong> Es la media de los criterios que tienen dato para cada producto, redondeada al 0,5 más cercano. Un criterio sin dato <strong>no entra en la media</strong> y se muestra como «Sin dato» o «No aplica». Solo se pueden comparar puntuaciones de productos de la misma categoría.</p>
+<ul>
+<li><strong>Opiniones</strong> = (N × V + 30 × 4,2) ÷ (N + 30), donde V es la valoración media de Amazon.es (de 1 a 5) y N el número de opiniones. El 4,2 y el peso de 30 son parámetros nuestros: hacen que pocas opiniones pesen menos.</li>
+<li><strong>Capacidad</strong> = 5 × (carga o resistencia declarada ÷ mayor declarada en su categoría). Es una cifra del fabricante, no medida por nosotros. Solo se calcula en categorías con datos de carga; en las demás es «No aplica».</li>
+<li><strong>Precio</strong> = 2,5 + 1,25 × log₂(mediana de su categoría ÷ precio), limitado entre 0 y 5. Un precio igual a la mediana da 2,5. Si el producto se vende por unidad y los demás por par o set (como la Nüobell), se compara el precio del par o set.</li>
+</ul>
+<p><strong>Limitaciones.</strong> En esta metodología, «categoría» es el tipo de producto (por ejemplo, esterillas o bancos), no el grupo en el que se muestra en la web. Cada categoría tiene solo 2 o 3 productos, así que la mediana y el «mayor» de cada categoría son referencias poco representativas. El criterio de precio favorece al más barato aunque no sea el de mejor calidad: por eso es solo uno de los criterios. Las opiniones de Amazon pueden incluir variantes del producto y no las hemos verificado. <strong>No hemos probado los productos</strong>: todos los datos salen de las fichas públicas de Amazon.es consultadas el <span>13/11/2026</span>. Los materiales, el nivel y el ahorro de espacio son datos o clasificaciones basados en la ficha y no puntúan.</p><!--/pre:frm--></div>
 </div></section>
 </main>
 
@@ -581,6 +959,7 @@ $("#chips").innerHTML=chip("","Todo",P.length)+GK.map(g=>chip(g,G[g].s,P.filter(
 const GD={};document.querySelectorAll("#guides article").forEach(a=>{const h=a.querySelector("h3"),t=h.textContent;a.querySelectorAll("a.more").forEach(x=>x.remove());h.remove();GD[a.id.slice(2)]={t,h:a.innerHTML}});
 const guide=g=>{const L=G[g].k.filter(c=>GD[c]);return L.length?`<details class="gg" style="--t:${CT[L[0]]}"><summary><span class="gl">Qué comprar</span>Cómo elegir ${lst(L.map(c=>C[c].toLowerCase()))}</summary><div class="gb">${L.map(c=>`<section class="gi"><h3>${GD[c].t}</h3>${GD[c].h}</section>`).join("")}</div></details>`:""};
 
+let first=true;
 function render(){
  const t=qry.toLowerCase(),F=P.filter(p=>(t?(p.n+" "+p.b+" "+C[p.c]+" "+G[GR[p.c]].n).toLowerCase().includes(t):(!cat||GR[p.c]===cat))&&pass(p)).sort(SRT[ord]);
  document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",!t&&b.dataset.c===cat));
@@ -588,6 +967,8 @@ function render(){
  /* Con «Destacados» cada grupo se divide por tipo de producto; con otro orden las tarjetas llevan el tipo escrito */
  const grp=!t&&(cat||ord==="d"),sub=!t&&ord==="d";let lg="",ls="";
  const np=(n)=>n+" "+(n===1?"producto":"productos");
+ /* La primera vez la lista ya viene escrita en el HTML (prerender.ps1) y se sustituye sin animación para que no parpadee */
+ if(first)first=false;else $("#list").classList.remove("pre");
  $("#list").innerHTML=F.length?F.map(p=>{
   let h="";const g=GR[p.c],i0=G[g].k[0];
   if(grp&&g!==lg){lg=g;ls="";h=`<h3 class="gh" style="--t:${CT[i0]}"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[i0]}</svg></span>${G[g].n}<span class="gn">${np(F.filter(x=>GR[x.c]===g).length)}</span>${cat?"":`<a href="#comparativas" data-cat="${g}">Ver solo esta categoría</a>`}</h3>${guide(g)}`}
@@ -684,6 +1065,12 @@ document.addEventListener("click",e=>{
 addEventListener("hashchange",()=>view(location.hash));addEventListener("popstate",()=>view(location.hash));
 view(location.hash);
 render();
+
+/* Modo prerender: prerender.ps1 abre la página con ?prerender y recoge aquí el HTML ya generado para escribirlo en el archivo */
+if(location.search==="?prerender"){
+ const o={date:DATE};["list","picks","chips","crit","frm"].forEach(i=>o[i]=$("#"+i).innerHTML);["s1","s2","s3"].forEach(i=>o[i]=$("#"+i).textContent);
+ const pre=document.createElement("pre");pre.id="prerender-out";pre.textContent=JSON.stringify(o);document.body.appendChild(pre);
+}
 </script>
 </body>
 </html>

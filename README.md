@@ -11,6 +11,16 @@ Web estática (sin servidor ni base de datos). Archivos:
 | `404.html`, `favicon.svg`, `robots.txt`, `sitemap.xml` | Errores, icono y SEO |
 | `og.png` | Imagen que se muestra al compartir la web en redes (1200 × 630) |
 
+## 0. Prerenderizado (cada vez que cambies `index.html`)
+
+Las tarjetas, los «mejor puntuados» y la metodología los genera JavaScript. Para que Google y los asistentes de IA los vean sin ejecutar JavaScript, el HTML generado se guarda dentro de `index.html` (entre los marcadores `<!--pre:nombre-->`). Tras cambiar datos, textos o diseño, ejecuta desde esta carpeta (necesita Microsoft Edge):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\prerender.ps1
+```
+
+Después haz commit de `index.html` y `git push`. Si no lo ejecutas, los visitantes ven los datos nuevos, pero Google y los asistentes de IA seguirán viendo la versión anterior.
+
 ## 1. Antes de publicar (obligatorio)
 
 1. **Datos legales.** Busca en `aviso-legal.html`, `privacidad.html` y `cookies.html` los textos resaltados en amarillo (`class="dato"`) y sustitúyelos por tus datos reales: nombre o razón social, NIF/CIF, domicilio, email, proveedor de hosting y fecha. Después elimina el recuadro "Plantilla orientativa". Conviene que un profesional los revise.
