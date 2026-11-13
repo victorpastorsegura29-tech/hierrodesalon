@@ -61,5 +61,7 @@ Cambia el texto en `tools\og.html` (o el icono en `tools\icon.html`) y ejecuta `
 ## Cookies y terceros
 
 - La web no instala cookies propias salvo guardar tu elección del banner (`hds-consent`, en el almacenamiento local).
-- Si añades analítica, cárgala **solo** dentro de `onAccept()` de `cookies.js` y actualiza `cookies.html` y `privacidad.html`.
+- Estadísticas: **Cloudflare Web Analytics** (instalación automática, sin cookies; se ven en Cloudflare → Observability → Web analytics). Su script está permitido en la CSP de `_headers` (`static.cloudflareinsights.com` y `cloudflareinsights.com`) y declarado en `cookies.html` y `privacidad.html`. Por eso el aviso de cookies es un único botón.
+- Si añades analítica que use cookies, cárgala **solo** dentro de `onAccept()` de `cookies.js`, vuelve a un banner con Aceptar y Rechazar del mismo peso y actualiza `cookies.html` y `privacidad.html`.
+- Los enlaces `/#c-<categoria>` (esterillas, gomas, balones, dominadas, lastre, accesorios, mancuernas, bancos; también `#g-…` o el grupo `fit`, `tra`, `pes`, `acc`) abren la categoría y bajan a la comparativa: son los que usan los pines de Pinterest.
 - Las tipografías se sirven desde `/fonts` (sin Google Fonts). Terceros que intervienen: Cloudflare (alojamiento y CDN) y Amazon (fotos y enlaces).
