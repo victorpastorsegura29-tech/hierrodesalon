@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://TU-DOMINIO.es/sitemap.xml
+Sitemap: https://hierrodesalon.netlify.app/sitemap.xml
