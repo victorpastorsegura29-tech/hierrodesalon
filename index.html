@@ -387,7 +387,7 @@ P.forEach(p=>{
  p.s=R1(parts.reduce((a,b)=>a+b,0)/parts.length);
 });
 const fm=v=>v==null?"—":v.toFixed(1).replace(".",","),why=p=>`Materiales ${fm(p.m)} · Carga máxima ${fm(p.k)} · Calidad-precio ${fm(p.v)}`;
-const $=s=>document.querySelector(s),A=p=>p.a?"https://www.amazon.es/dp/"+p.a+"?tag=TU-TAG-21":"https://www.amazon.es/s?k="+encodeURIComponent(p.q)+"&tag=TU-TAG-21";
+const $=s=>document.querySelector(s),A=p=>p.a?"https://www.amazon.es/dp/"+p.a+"?tag=hierrodesalon-21":"https://www.amazon.es/s?k="+encodeURIComponent(p.q)+"&tag=hierrodesalon-21";
 const cta=p=>`<a class="btn cta" href="${A(p)}" target="_blank" rel="nofollow sponsored noopener">Ver precio en Amazon</a>`;
 const sc=p=>`<span class="sc" title="${why(p)}">${p.s.toFixed(1).replace(".",",")}<small>/10</small></span>`;
 let cat="mancuernas",qry="",cmp=[];

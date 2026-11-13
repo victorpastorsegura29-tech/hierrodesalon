@@ -14,7 +14,7 @@ Web estática (sin servidor ni base de datos). Archivos:
 
 1. **Datos legales.** Busca en `aviso-legal.html`, `privacidad.html` y `cookies.html` los textos resaltados en amarillo (`class="dato"`) y sustitúyelos por tus datos reales: nombre o razón social, NIF/CIF, domicilio, email, proveedor de hosting y fecha. Después elimina el recuadro "Plantilla orientativa". Conviene que un profesional los revise.
 2. **Dominio.** Sustituye `TU-DOMINIO.es` por tu dominio real en `index.html` (canonical y og:url), `robots.txt` y `sitemap.xml`.
-3. **Etiqueta de afiliado.** En `index.html` cambia `TU-TAG-21` por tu tag real de Amazon Afiliados (aparece en las funciones `A=`).
+3. **Etiqueta de afiliado.** Ya configurada: `hierrodesalon-21` (aparece en la función `A=` de `index.html`).
 4. **Revisa los datos de producto** (precios, notas, opiniones) y la fecha "consultados el 13/11/2026" de la sección Metodología.
 
 Atajo en PowerShell, desde esta carpeta:
