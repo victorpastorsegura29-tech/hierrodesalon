@@ -1,5 +1,6 @@
-/* Gestión de consentimiento de cookies - Hierro de Salón
-   - Aceptar y Rechazar tienen el mismo peso visual (criterio AEPD).
+/* Aviso de cookies - Hierro de Salón
+   - Mientras la web NO use analítica ni seguimiento, se muestra un aviso compacto (un solo botón).
+   - Si añades analítica, vuelve a un banner con Aceptar y Rechazar del mismo peso visual (criterio AEPD).
    - Hasta que el usuario acepte, no se carga nada que no sea técnico.
    - Para añadir analítica en el futuro, cárgala SOLO dentro de onAccept (abajo).
    - El consentimiento se guarda en localStorage ("hds-consent") durante 12 meses. */
@@ -35,7 +36,9 @@
  ".ck-o label{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.06);cursor:pointer}"+
  ".ck-o input{margin-top:3px;width:18px;height:18px;accent-color:#5EEAD4}"+
  ".ck-o b{display:block;color:#fff}.ck-o span{color:#9FB0BF;font-size:13px}"+
- "@media(max-width:520px){.ck-b{left:0;right:0;bottom:0;border-radius:20px 20px 0 0}}";
+ ".ck-s{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:14px;font-size:13px;line-height:1.45}"+
+ ".ck-s p{margin:0;flex:1}.ck-s .ck-x{flex:0 0 auto;padding:9px 16px}"+
+ "@media(max-width:520px){.ck-b{left:0;right:0;bottom:0;border-radius:20px 20px 0 0}.ck-s{border-radius:14px 14px 0 0;padding:10px 12px;gap:10px;font-size:12px}}";
  var st=document.createElement("style");st.textContent=css;document.head.appendChild(st);
 
  var box=null;
@@ -45,8 +48,10 @@
   box=document.createElement("div");box.className="ck-b";box.setAttribute("role","dialog");box.setAttribute("aria-label","Preferencias de cookies");
   var cur=window.hdsConsent.state;
   if(!cfg){
-   box.innerHTML='<h2>Tu privacidad</h2><p>Usamos almacenamiento técnico imprescindible para que la web funcione. Con tu permiso podríamos usar cookies de analítica para mejorarla. Al pulsar un producto sales a Amazon, que aplica su propia política. Más información en la <a href="cookies">política de cookies</a>.</p>'+
-   '<div class="ck-r"><button class="ck-x" data-a="no">Rechazar</button><button class="ck-x" data-a="cfg">Configurar</button><button class="ck-x ok" data-a="yes">Aceptar todas</button></div>';
+   /* Aviso compacto: la web no usa cookies de analítica ni de seguimiento, así que no hace falta pedir consentimiento. */
+   box.className="ck-b ck-s";
+   box.innerHTML='<p>Esta web no usa cookies de seguimiento. Al pulsar un producto sales a Amazon, que aplica su propia política. <a href="cookies">Más información</a></p>'+
+   '<button class="ck-x ok" data-a="no">Entendido</button>';
   }else{
    box.innerHTML='<h2>Configurar cookies</h2><div class="ck-o">'+
    '<label><input type="checkbox" checked disabled><div><b>Técnicas (siempre activas)</b><span>Recuerdan tu elección de cookies. No recogen datos personales.</span></div></label>'+
