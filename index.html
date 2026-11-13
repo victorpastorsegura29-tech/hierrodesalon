@@ -29,7 +29,7 @@
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1013;--sf:#141A20;--alt:#1B232B;--tx:#EAEFF4;--mu:#9AA7B5;--bd:#26303A;--ac:#2DD4BF;--acs:#12302F;--ok:#4ADE80;--no:#F87171;--dk:#080B0E;--dk2:#10161C;color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#0C1013;--sf:#141A20;--alt:#1B232B;--tx:#EAEFF4;--mu:#9AA7B5;--bd:#26303A;--ac:#2DD4BF;--acs:#12302F;--ok:#4ADE80;--no:#F87171;--dk:#080B0E;--dk2:#10161C;color-scheme:dark}
 *,*::before,*::after{box-sizing:inherit}
-html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px);scroll-behavior:smooth}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + var(--hh,0px) + 10px);scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
 a{color:inherit}
@@ -47,9 +47,10 @@ h2{font-size:clamp(36px,5vw,56px);line-height:.98;margin:12px 0 12px}
 .sh{max-width:46em;margin:0 0 32px}
 .sh p{margin:0;font-size:17px;color:var(--mu);max-width:36em}
 section{padding:80px 0}
+#comparativas{padding:22px 0 72px}
 
 /* ---------- Cabecera ---------- */
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--bd)}
+header{position:relative;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--bd)}
 .hd{display:flex;align-items:center;gap:8px 28px;padding:12px 0;flex-wrap:wrap}
 .logo{display:inline-flex;align-items:center;gap:10px;order:1;text-decoration:none;font-family:var(--hf);font-weight:700;font-size:27px;line-height:1;letter-spacing:.07em;text-transform:uppercase}
 .logo b{color:var(--ac);font-weight:700}
@@ -61,7 +62,7 @@ nav a:hover{background:var(--alt);color:var(--tx)}
 .srch svg{position:absolute;left:13px;top:50%;width:16px;height:16px;margin-top:-8px;stroke:var(--mu);fill:none;stroke-width:2.2;stroke-linecap:round;pointer-events:none}
 .srch input{width:100%;padding:10px 14px 10px 38px;border:1px solid var(--bd);border-radius:999px;background:var(--sf);color:var(--tx);font:inherit;font-size:14px}
 .srch input::placeholder{color:var(--mu)}
-@media(min-width:900px){nav{order:2;flex:1 1 auto}.srch{order:3;margin-left:0}}
+@media(min-width:900px){nav{order:2;flex:1 1 auto}.srch{order:3;margin-left:0}header{position:sticky;top:env(safe-area-inset-top,0px)}}
 
 /* ---------- Botones ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 18px;border-radius:12px;border:1px solid var(--bd);background:var(--sf);color:var(--tx);font:inherit;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:border-color .15s,background .15s,transform .15s,box-shadow .15s}
@@ -76,23 +77,23 @@ a.cta:hover::after{transform:translateX(3px)}
 .btn.ghost:hover{background:rgba(255,255,255,.13);border-color:#5EEAD4}
 
 /* ---------- Portada ---------- */
-.hero{position:relative;overflow:hidden;color:#fff;padding:72px 0 92px;background:
+.hero{position:relative;overflow:hidden;color:#fff;padding:28px 0 30px;background:
  radial-gradient(900px 520px at 88% -8%,rgba(45,212,191,.22),transparent 62%),
  radial-gradient(640px 420px at -4% 108%,rgba(245,158,11,.12),transparent 62%),
  repeating-linear-gradient(45deg,rgba(255,255,255,.028) 0 2px,transparent 2px 10px),
  repeating-linear-gradient(-45deg,rgba(255,255,255,.028) 0 2px,transparent 2px 10px),
  var(--dk)}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(94,234,212,.5),transparent)}
-.hg{display:grid;gap:56px;align-items:center}
-@media(min-width:960px){.hg{grid-template-columns:1.12fr .88fr}}
-.hero .ey{color:#5EEAD4}
-.hero h1{font-size:clamp(46px,7.2vw,86px);line-height:.94;margin:18px 0 22px;max-width:10.5em}
+.hg{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
+.hg>div:first-child{flex:1 1 420px}
+.hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1;margin:0 0 6px}
 .hero h1 em{font-style:normal;color:#5EEAD4}
-.lead{font-size:clamp(17px,2vw,20px);color:#B9C6D2;margin:0 0 32px;max-width:32em}
+.lead{font-size:15px;color:#B9C6D2;margin:0;max-width:40em}
 .ha{display:flex;flex-wrap:wrap;gap:12px}
-.stats{display:flex;flex-wrap:wrap;gap:20px 36px;list-style:none;margin:44px 0 0;padding:0}
-.stats li{padding-left:14px;border-left:2px solid rgba(94,234,212,.5);font-size:13px;line-height:1.35;color:#9FB0BF}
-.stats b{display:block;font-family:var(--hf);font-size:38px;line-height:1;color:#fff;font-weight:700}
+.ha .btn{width:auto;padding:10px 18px}
+.stats{display:flex;flex-wrap:wrap;gap:4px 22px;list-style:none;margin:0;padding:0;flex:1 1 100%}
+.stats li{font-size:12.5px;line-height:1.35;color:#9FB0BF}
+.stats b{display:inline;font-weight:700;color:#5EEAD4;margin-right:5px}
 .tp{padding:22px;border-radius:26px;background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .tp h2{font-size:26px;line-height:1;margin:0 0 4px;color:#fff;letter-spacing:.04em}
 .tp>p{margin:0 0 16px;font-size:13px;color:#9FB0BF}
@@ -109,22 +110,26 @@ a.cta:hover::after{transform:translateX(3px)}
 
 /* ---------- Comparativas ---------- */
 #comparativas{background:linear-gradient(180deg,rgba(var(--t),.09),transparent 380px),var(--bg)}
-.chips{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin:0 0 28px}
-@media(min-width:760px){.chips{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:759px){.chip:last-child{grid-column:1/-1}}
-.chip{--t:71,85,105;display:flex;align-items:center;gap:14px;text-align:left;padding:14px 16px;border:1px solid var(--bd);border-radius:18px;background:var(--sf);color:var(--tx);font:inherit;cursor:pointer;transition:border-color .15s,background .15s,transform .15s,box-shadow .15s}
-.chip:hover{border-color:rgba(var(--t),.55);transform:translateY(-2px);box-shadow:0 12px 24px -16px rgba(19,23,27,.4)}
-.chip .ci{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:rgba(var(--t),.13);color:rgb(var(--t));transition:background .15s,color .15s}
-.chip .ci svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.chip .cl{display:block;font-size:15px;font-weight:700;line-height:1.2}
-.chip small{display:block;margin-top:3px;font-size:12px;color:var(--mu);font-weight:500}
+.cbar{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hh,0px));z-index:15;margin:0 -24px 10px;padding:8px 24px 6px;background:color-mix(in srgb,var(--bg) 92%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.tb{scroll-margin-top:calc(var(--bh,60px) + 4px)}
+.chips{display:flex;gap:6px;margin:0;overflow-x:auto;padding:2px 2px 4px;scrollbar-width:none}
+@media(min-width:900px){.chips{flex-wrap:nowrap}}
+.chip{--t:71,85,105;flex:none;display:flex;align-items:center;gap:8px;text-align:left;padding:5px 12px 5px 6px;border:1px solid var(--bd);border-radius:999px;background:var(--sf);color:var(--tx);font:inherit;cursor:pointer;transition:border-color .15s,background .15s,box-shadow .15s}
+.chip:hover{border-color:rgba(var(--t),.55);box-shadow:0 8px 18px -12px rgba(19,23,27,.4)}
+.chip .ci{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:rgba(var(--t),.13);color:rgb(var(--t));transition:background .15s,color .15s}
+.chip .ci svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.chip .cl{display:inline;font-size:14px;font-weight:700;line-height:1.2;white-space:nowrap}
 .chip[aria-pressed="true"]{border-color:rgb(var(--t));background:rgba(var(--t),.08);box-shadow:0 0 0 1px rgb(var(--t))}
 .chip[aria-pressed="true"] .ci{background:rgb(var(--t));color:#fff}
-.tb{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin:0 0 24px}
-.cnt{font-size:14px;color:var(--mu);font-weight:600}
-.ord{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mu);font-weight:500}
-.ord select{padding:9px 38px 9px 16px;border:1px solid var(--bd);border-radius:999px;background:var(--sf);color:var(--tx);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.tb{display:flex;align-items:flex-end;justify-content:space-between;gap:10px 20px;flex-wrap:wrap;margin:0 0 10px}
+.cnt{font-size:14px;color:var(--mu);font-weight:600;padding-bottom:10px}
 #list{display:grid;gap:24px;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
+.gh{grid-column:1/-1;display:flex;align-items:center;gap:10px;margin:8px 0 -8px;font-family:var(--hf);font-size:26px;line-height:1;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+.gh:first-child{margin-top:0}
+.gh .ci{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(var(--t),.15);color:rgb(var(--t))}
+.gh .ci svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gh .gn{font-family:Inter,system-ui,sans-serif;font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--mu)}
+.gh a{margin-left:auto;font-family:Inter,system-ui,sans-serif;font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ac);text-decoration:none;border-bottom:2px solid var(--acs)}
 .card{display:flex;flex-direction:column;background:var(--sf);border:1px solid var(--bd);border-radius:22px;overflow:hidden;box-shadow:0 1px 2px rgba(19,23,27,.04),0 10px 28px -16px rgba(19,23,27,.18);transition:transform .25s,box-shadow .25s,border-color .25s;animation:up .45s both}
 .card:hover{transform:translateY(-4px);border-color:rgba(var(--t),.5);box-shadow:0 2px 4px rgba(19,23,27,.05),0 24px 40px -18px rgba(19,23,27,.28)}
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
@@ -181,12 +186,30 @@ details.calc summary{cursor:pointer;font-weight:700;color:var(--ac)}
 details.calc ul{margin:8px 0 8px;padding-left:18px}
 details.calc li{margin:0 0 5px}
 details.calc a{font-weight:600;color:var(--ac)}
-.nt{margin:0 0 20px;padding:14px 18px;border-radius:14px;background:var(--sf);border:1px solid var(--bd);border-left:4px solid var(--cta);font-size:14px;line-height:1.55;color:var(--mu)}
-.nt strong{color:var(--tx)}
-.flt{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 16px;margin:0 0 20px}
-.flt label{display:grid;gap:5px;font-size:12px;font-weight:700;color:var(--mu)}
-.flt select{min-width:180px;padding:10px 38px 10px 14px;border:1px solid var(--bd);border-radius:12px;background:var(--sf);color:var(--tx);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
-.flt .btn{width:auto;padding:10px 16px}
+.nt{margin:0 0 16px;padding:7px 12px;border-radius:10px;background:var(--sf);border:1px solid var(--bd);border-left:3px solid var(--cta);font-size:12.5px;line-height:1.45;color:var(--mu)}
+.nt strong{color:var(--tx);font-weight:600}
+.flt{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 12px}
+.fd{display:contents}
+.fd>summary{display:none;list-style:none;cursor:pointer;padding:8px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--sf);font-size:13.5px;font-weight:700}
+.fd>summary::-webkit-details-marker{display:none}
+.fb{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 12px}
+@media(max-width:899px){
+ .tb{flex-direction:column;align-items:stretch}.cnt{padding:0;order:2}
+ .flt{width:100%;flex-wrap:nowrap;align-items:stretch}
+ .fd{display:block;flex:1 1 0;min-width:0}.fd>summary{display:block;text-align:center}
+ .fb{margin-top:8px;display:grid;grid-template-columns:1fr 1fr}
+ .od{flex:1 1 0;min-width:0}
+ .flt select{width:100%;min-width:0}
+ .flt .od select{padding:9px 32px 9px 12px}
+ .od{align-self:flex-end}
+}
+.flt label{display:grid;gap:3px;font-size:11.5px;font-weight:700;color:var(--mu)}
+.flt select{min-width:130px;padding:8px 32px 8px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--sf);color:var(--tx);font:inherit;font-size:13.5px;font-weight:600;cursor:pointer}
+.flt .btn{width:auto;padding:8px 14px}
+details.det{margin:0 0 16px;padding-top:12px;border-top:1px solid var(--bd)}
+details.det>summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--ac)}
+details.det[open]>summary{margin-bottom:12px}
+details.det .mt{padding-top:0;border-top:0}
 
 /* ---------- Nuestra elección ---------- */
 #veredicto{padding:80px 0;background:linear-gradient(180deg,var(--dk) 0 330px,var(--bg) 330px)}
@@ -197,20 +220,20 @@ details.calc a{font-weight:600;color:var(--ac)}
 #picks .card{border-top:4px solid rgb(var(--t))}
 @media(min-width:620px){#picks .card{flex-direction:row}#picks .ph{flex:0 0 42%;height:auto;min-height:280px;border-bottom:0;border-right:1px solid var(--bd)}}
 
-/* ---------- Guías ---------- */
-#guias{background:var(--sf);border-block:1px solid var(--bd);--t:15,118,110}
-#guias:not(:has(.gd article:not([hidden]))){display:none}
-.gd{display:grid;gap:24px}
-.g3{display:contents}
-.gd article{padding:32px;border:1px solid var(--bd);border-top:4px solid rgb(var(--t));border-radius:22px;background:var(--bg)}
-.gd h3{font-size:22px;letter-spacing:-.01em;line-height:1.3;margin:0 0 14px}
-.gd h4{font-size:15px;margin:22px 0 4px;color:var(--tx);break-after:avoid}
-.gd p{color:var(--mu);margin:0 0 12px;max-width:68ch;break-inside:avoid}
-.gd strong{color:var(--tx)}
-.gd a.more{display:inline-block;margin-top:4px;font-weight:700;color:var(--ac);text-decoration:none;border-bottom:2px solid var(--acs)}
-.gd a.more:hover{border-color:var(--ac)}
-#g-mancuernas{columns:2 340px;column-gap:56px}
-#g-mancuernas h3{column-span:all}
+/* ---------- Guía «Qué comprar» dentro de cada categoría ---------- */
+.gg{grid-column:1/-1;border:1px solid var(--bd);border-left:4px solid rgb(var(--t));border-radius:14px;background:var(--sf)}
+.gg>summary{position:relative;display:block;padding:12px 40px 12px 16px;cursor:pointer;list-style:none;font-size:14.5px;font-weight:700;line-height:1.5}
+.gg>summary::-webkit-details-marker{display:none}
+.gg>summary::after{content:"▾";position:absolute;right:16px;top:12px;color:var(--mu);transition:transform .2s}
+.gg[open]>summary::after{transform:rotate(180deg)}
+.gg .gl{display:inline-block;margin-right:10px;padding:3px 9px;border-radius:999px;background:rgba(var(--t),.14);color:color-mix(in srgb,rgb(var(--t)) 72%,var(--tx));font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.gb{padding:0 18px 14px}
+.gb:has(h4){columns:2 340px;column-gap:48px}
+.gb h4{font-size:15px;margin:16px 0 4px;color:var(--tx);break-after:avoid}
+.gb h4:first-child{margin-top:0}
+.gb p{color:var(--mu);margin:0 0 12px;max-width:68ch;break-inside:avoid;font-size:15px;line-height:1.6}
+.gb strong{color:var(--tx)}
+.gb p:last-child{margin-bottom:0}
 
 /* ---------- Metodología ---------- */
 #metodologia{background:var(--bg)}
@@ -273,16 +296,19 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
  .srch{margin-left:0;flex:1 1 110px;max-width:none}
  .srch input{padding:8px 12px 8px 34px}
  section,#veredicto{padding:56px 0}
- .hero{padding:48px 0 64px}
- .stats{gap:18px 26px}
- .tr{grid-template-columns:60px minmax(0,1fr) auto;gap:12px}
- .tr .th{width:60px;height:60px}
+ #comparativas{padding:10px 0 56px}
+ .cbar{margin:0 -18px 8px;padding:8px 18px 4px}
+ .hero{padding:18px 0 18px}
+ .hg{gap:10px}
+ .lead{font-size:14px}
+ .ha{display:none}
  .gd article{padding:24px}
- .chip{padding:12px;gap:10px}
- .chip .ci{width:40px;height:40px}
- .chip .cl{font-size:14px}
- .ord span{display:none}
- .ord select{padding-left:14px}
+ .stats{display:none}
+ .gh{font-size:22px;flex-wrap:wrap;gap:6px 10px}
+ .gh .gn{white-space:nowrap}
+ .gb{padding:0 16px 12px}
+ .tb{margin-bottom:8px}
+ .cnt{padding-bottom:0}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.card:hover,.card:hover .ph img{transition:none;transform:none;animation:none}}
 </style>
@@ -295,7 +321,7 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
  <div class="w hd">
   <a class="logo" href="#inicio"><svg aria-hidden="true"><use href="#i-logo"/></svg><span>Hierro <b>de Salón</b></span></a>
   <nav aria-label="Principal">
-   <a href="#inicio">Inicio</a><a href="#comparativas">Comparativas</a><a href="#eleccion">Mejor puntuados</a><a href="#guias">Guías de compra</a><a href="#metodologia">Metodología</a>
+   <a href="#inicio">Inicio</a><a href="#comparativas">Qué comprar</a><a href="#eleccion">Mejor puntuados</a><a href="#metodologia">Metodología</a>
   </nav>
   <form class="srch" role="search" onsubmit="return false"><label class="sr" for="q">Buscar productos</label><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Buscar producto…" autocomplete="off"></form>
  </div>
@@ -304,38 +330,33 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
 <main>
 <div class="hero" id="inicio"><div class="w hg">
  <div>
-  <span class="ey">Comparativas basadas en datos de Amazon.es</span>
   <h1>Compra tu equipo de fuerza <em>una sola vez</em></h1>
-  <p class="lead">Comparamos precio, opiniones de clientes y datos técnicos de cada producto. Tú eliges en minutos.</p>
-  <div class="ha"><a class="btn cta big" href="#comparativas">Ver comparativas</a><a class="btn ghost big" href="#eleccion">Ver los mejor puntuados</a></div>
-  <ul class="stats" aria-label="Datos de la web">
-   <li><b id="s1"></b>productos comparados</li>
-   <li><b id="s2"></b>categorías</li>
-   <li><b id="s3"></b>criterios en la puntuación</li>
-  </ul>
-  <p class="dt">Precios, valoraciones y opiniones de Amazon.es consultados el <span data-dc></span>; pueden haber cambiado.</p>
+  <p class="lead">Comparamos precio, opiniones y datos técnicos de Amazon.es. Elige una categoría y decide en minutos.</p>
  </div>
- <aside class="tp" aria-label="Productos mejor puntuados">
-  <h2>Mejor puntuados</h2>
-  <p>Puntuación orientativa de 1 a 5 (<a href="#metodologia">cómo se calcula</a>).</p>
-  <div id="tops"></div>
- </aside>
+ <div class="ha"><a class="btn ghost" href="#eleccion">★ Ver los mejor puntuados</a></div>
+ <ul class="stats" aria-label="Datos de la web">
+  <li><b id="s1"></b>productos comparados</li>
+  <li><b id="s2"></b>categorías</li>
+  <li><b id="s3"></b>criterios en la puntuación</li>
+ </ul>
 </div></div>
 
 <section id="comparativas"><div class="w">
- <div class="sh"><span class="ey">Comparativas</span><h2>Elige por categoría</h2><p>Cada producto con su nota, sus puntos fuertes y sus datos clave para decidir sin perder tiempo.</p></div>
- <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
- <p class="nt" role="note"><strong>Datos de Amazon.es consultados el <span data-dc></span>.</strong> Los precios, las valoraciones y el número de opiniones cambian con frecuencia: <strong>confírmalos en Amazon antes de comprar</strong>. Los botones «Ver precio en Amazon» son enlaces de afiliado: si compras, ganamos una comisión sin coste adicional para ti.</p>
- <div class="flt" role="group" aria-label="Filtros">
-  <label>Precio<select id="fp"><option value="">Cualquiera</option><option value="a">Menos de 25 €</option><option value="b">De 25 a 100 €</option><option value="c">De 100 a 300 €</option><option value="d">300 € o más</option></select></label>
-  <label>Espacio<select id="fe"><option value="">Cualquiera</option><option value="1">Ahorra espacio (según la ficha)</option></select></label>
-  <label>Nivel (orientativo)<select id="fn"><option value="">Cualquiera</option><option value="ini">Para empezar</option><option value="ava">Para avanzar</option></select></label>
-  <button class="btn" id="fx" type="button" hidden>Quitar filtros</button>
- </div>
+ <h2 class="sr">Qué comprar: comparativas por categoría</h2>
+ <div class="cbar" id="cbar"><div class="chips" id="chips" role="group" aria-label="Categorías"></div></div>
  <div class="tb">
   <span class="cnt" id="cnt" aria-live="polite"></span>
-  <label class="ord"><span>Ordenar por</span><select id="ord"><option value="s">Mejor nota</option><option value="v">Mejor calidad-precio</option><option value="n">Nombre (A-Z)</option></select></label>
+  <div class="flt" role="group" aria-label="Filtros y orden">
+   <details class="fd"><summary>Filtros</summary><div class="fb">
+   <label>Precio<select id="fp"><option value="">Cualquiera</option><option value="a">Menos de 25 €</option><option value="b">De 25 a 100 €</option><option value="c">De 100 a 300 €</option><option value="d">300 € o más</option></select></label>
+   <label>Espacio<select id="fe"><option value="">Cualquiera</option><option value="1">Ahorra espacio (según la ficha)</option></select></label>
+   <label>Nivel (orientativo)<select id="fn"><option value="">Cualquiera</option><option value="ini">Para empezar</option><option value="ava">Para avanzar</option></select></label>
+   <button class="btn" id="fx" type="button" hidden>Quitar filtros</button>
+   </div></details>
+   <label class="od">Ordenar por<select id="ord"><option value="d">Destacados</option><option value="s">Mejor nota</option><option value="v">Mejor calidad-precio</option><option value="n">Nombre (A-Z)</option></select></label>
+  </div>
  </div>
+ <p class="nt" role="note"><strong>Datos de Amazon.es del <span data-dc></span>:</strong> precios y opiniones cambian, <strong>confírmalos en Amazon antes de comprar</strong>. Los botones de Amazon son enlaces de afiliado: si compras, ganamos una comisión sin coste extra para ti.</p>
  <div id="list"></div>
 </div></section>
 
@@ -344,9 +365,8 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
  <div id="picks"></div>
 </div></section>
 
-<section id="guias"><div class="w">
- <div class="sh"><span class="ey">Guías de compra</span><h2>Antes de comprar</h2><p>Consejos generales sobre qué mirar en cada categoría. No son resultados de pruebas propias.</p></div>
- <div class="gd">
+<!-- Guías de compra: cada una se muestra dentro de su categoría («Qué comprar»), no como sección aparte -->
+<div id="guides" hidden><div class="gd">
   <article id="g-mancuernas">
    <h3>En qué fijarse antes de comprar unas mancuernas ajustables</h3>
    <p>Las mancuernas ajustables sustituyen varias pesas fijas y ocupan menos espacio. Pero no todos los modelos sirven para lo mismo. Estos son criterios generales para decidir.</p>
@@ -372,7 +392,7 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
    <article id="g-gomas"><h3>Qué gomas elásticas comprar</h3><p>En esta comparativa hay dos tipos: un set de bandas cortas de látex, que según su ficha sirve para glúteos, equilibrio y movimientos básicos, y un kit con anclaje de puerta y resistencias más altas (hasta 85 lb), que según su ficha permite ejercicios de fuerza y dominadas asistidas. Empieza con una resistencia media y sube cuando domines la técnica: un set de varios niveles te da margen. El látex puede provocar alergia: si eres sensible, evita las bandas de caucho natural. Revisa antes de cada uso que no tengan cortes ni grietas, no las estires más de lo que indique el fabricante y fija bien el anclaje de puerta.</p><a class="more" href="#comparativas" data-cat="gomas">Ver comparativa de gomas elásticas</a></article>
   </div>
  </div>
-</div></section>
+</div>
 
 <section id="metodologia"><div class="w">
  <div class="sh"><span class="ey">Metodología</span><h2>Cómo calculamos la puntuación</h2><p>Es una puntuación orientativa calculada con datos públicos de Amazon.es. No hemos probado los productos.</p></div>
@@ -384,7 +404,7 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
 <footer><div class="w">
  <div class="fg">
   <div><a class="logo" href="#inicio"><svg aria-hidden="true"><use href="#i-logo"/></svg><span>Hierro <b>de Salón</b></span></a><p>Comparativas de material de fuerza para tu home gym, con puntuación orientativa y datos de Amazon.es.</p></div>
-  <div><h3>Categorías</h3><ul class="cols"><li><a href="#comparativas" data-cat="mancuernas">Mancuernas ajustables</a></li><li><a href="#comparativas" data-cat="bancos">Bancos</a></li><li><a href="#comparativas" data-cat="dominadas">Barras de dominadas</a></li><li><a href="#comparativas" data-cat="lastre">Cinturones de lastre</a></li><li><a href="#comparativas" data-cat="accesorios">Accesorios</a></li><li><a href="#comparativas" data-cat="esterillas">Esterillas</a></li><li><a href="#comparativas" data-cat="balones">Balones de pilates</a></li><li><a href="#comparativas" data-cat="gomas">Gomas elásticas</a></li></ul></div>
+  <div><h3>Categorías</h3><ul class="cols"><li><a href="#comparativas" data-cat="esterillas">Esterillas</a></li><li><a href="#comparativas" data-cat="gomas">Gomas elásticas</a></li><li><a href="#comparativas" data-cat="balones">Balones de pilates</a></li><li><a href="#comparativas" data-cat="dominadas">Barras de dominadas</a></li><li><a href="#comparativas" data-cat="mancuernas">Mancuernas ajustables</a></li><li><a href="#comparativas" data-cat="bancos">Bancos</a></li><li><a href="#comparativas" data-cat="accesorios">Accesorios</a></li><li><a href="#comparativas" data-cat="lastre">Cinturones de lastre</a></li></ul></div>
   <div><h3>Información</h3><ul><li><a href="#metodologia">Cómo puntuamos</a></li><li><a href="aviso-legal.html">Aviso legal</a></li><li><a href="privacidad.html">Política de privacidad</a></li><li><a href="cookies.html">Política de cookies</a></li><li><a href="#" data-cookies>Configurar cookies</a></li></ul></div>
  </div>
  <p class="aff">En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables. Esto no supone ningún coste adicional para ti.</p>
@@ -411,7 +431,9 @@ dialog::backdrop{background:rgba(8,11,14,.66);-webkit-backdrop-filter:blur(3px);
    rt/nr = valoración media y nº de opiniones, kc = carga o resistencia declarada por el fabricante (kg),
    mx/di/pe/mat = datos de la ficha, sp = la ficha dice que ahorra espacio, nv = nivel orientativo. */
 const DATE="13/11/2026";
-const C={mancuernas:"Mancuernas ajustables",bancos:"Bancos",dominadas:"Barras de dominadas",lastre:"Cinturones de lastre",accesorios:"Accesorios",esterillas:"Esterillas",balones:"Balones de pilates",gomas:"Gomas elásticas"};
+/* El orden de C es el orden de aparición en la web: primero las categorías de público más amplio (criterio editorial, sin datos de ventas) */
+const C={esterillas:"Esterillas",gomas:"Gomas elásticas",balones:"Balones de pilates",dominadas:"Barras de dominadas",mancuernas:"Mancuernas ajustables",bancos:"Bancos",accesorios:"Accesorios",lastre:"Cinturones de lastre"};
+const CK=Object.keys(C);
 const CT={mancuernas:"13,148,136",bancos:"37,99,235",dominadas:"2,132,199",lastre:"124,58,237",accesorios:"225,29,72",esterillas:"22,163,74",balones:"202,138,4",gomas:"192,38,211"};
 const IC={
  all:'<rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/>',
@@ -507,8 +529,8 @@ const pic=p=>`<img src="${p.img}" alt="${p.n}" loading="lazy" onerror="this.pare
 const PK=Object.keys(C).map(k=>P.filter(p=>p.c===k).sort((a,b)=>b.raw-a.raw||b.nr-a.nr)[0]);
 const why=p=>`Es el de mayor puntuación de su categoría (${f1(p.s)} de 5): valoración ${f1(p.rt)} con ${num(p.nr)} opiniones y precio de ${eur(p.pc)} (${p.pu}).`;
 
-let cat="mancuernas",qry="",cmp=[],ord="s",fp="",fe="",fn="";
-const SRT={s:(a,b)=>b.raw-a.raw||b.nr-a.nr,v:(a,b)=>b.ps-a.ps||b.raw-a.raw,n:(a,b)=>a.n.localeCompare(b.n,"es")};
+let cat="",qry="",cmp=[],ord="d",fp="",fe="",fn="";
+const SRT={d:(a,b)=>CK.indexOf(a.c)-CK.indexOf(b.c)||b.raw-a.raw||b.nr-a.nr,s:(a,b)=>b.raw-a.raw||b.nr-a.nr,v:(a,b)=>b.ps-a.ps||b.raw-a.raw,n:(a,b)=>a.n.localeCompare(b.n,"es")};
 const PB={a:[0,25],b:[25,100],c:[100,300],d:[300,Infinity]};
 const pass=p=>{
  if(fp&&!(p.pc>=PB[fp][0]&&p.pc<PB[fp][1]))return false;
@@ -524,27 +546,37 @@ const card=p=>`<article class="card" data-id="${p.id}" style="--t:${CT[p.c]}">
  ${pricing(p)}${rate(p)}
  <ul class="pr">${p.pr.map(x=>`<li>${x}</li>`).join("")}</ul>
  ${p.av?warn(p.av):""}
+ <details class="det"><summary>Ver ficha técnica y puntuación</summary>
  ${mt(p)}
  <div class="sp">${SPK.map(k=>`<div><span>${lab(p.c,k)}</span><b>${p[k]}</b></div>`).join("")}</div>
  ${p.ga?`<p class="gr"><b>Garantía del fabricante:</b> ${p.ga}.</p>`:""}
  ${calc(p)}
+ </details>
  <div class="ac2">${cta(p)}<button class="btn" data-cmp aria-pressed="${cmp.includes(p.id)}">${cmp.includes(p.id)?"✓ En comparador":"Comparar"}</button></div>
  </div>
 </article>`;
 const pick=p=>`<article class="card" style="--t:${CT[p.c]}"><div class="ph">${pic(p)}<span class="tag">${C[p.c]}</span></div><div class="cd"><div class="top"><h3>${p.n}</h3>${sc(p)}</div>${pricing(p)}${rate(p)}${p.av?warn(p.av):""}<p class="why"><b>Por qué aparece aquí:</b> ${why(p)}</p><div class="vd"><b>Para quién SÍ</b><p>${p.y}</p></div><div class="vd"><b>Para quién NO</b><p>${p.no}</p></div><div class="ac2">${cta(p)}<button class="btn" data-go="${p.c}">Ver comparativa de ${C[p.c].toLowerCase()}</button></div></div></article>`;
 
 /* Selector de categorías (tarjetas con icono y nº de productos) */
-const chip=(k,t,n)=>`<button class="chip" data-c="${k}" style="--t:${k?CT[k]:"100,116,139"}"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[k||"all"]}</svg></span><span><span class="cl">${t}</span><small>${n} ${n===1?"producto":"productos"}</small></span></button>`;
-$("#chips").innerHTML=Object.keys(C).map(k=>chip(k,C[k],P.filter(p=>p.c===k).length)).join("")+chip("","Todo",P.length);
+const CS={esterillas:"Esterillas",gomas:"Gomas",balones:"Balones",dominadas:"Dominadas",mancuernas:"Mancuernas",bancos:"Bancos",accesorios:"Accesorios",lastre:"Lastre"};
+const chip=(k,t,n)=>`<button class="chip" data-c="${k}" title="${k?C[k]:"Todas las categorías"}: ${n} ${n===1?"producto":"productos"}" style="--t:${k?CT[k]:"100,116,139"}"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[k||"all"]}</svg></span><span class="cl">${t}</span></button>`;
+$("#chips").innerHTML=chip("","Todo",P.length)+CK.map(k=>chip(k,CS[k],P.filter(p=>p.c===k).length)).join("");
+/* Guías de compra: cada una va dentro de su categoría */
+const GD={};document.querySelectorAll("#guides article").forEach(a=>{const h=a.querySelector("h3"),t=h.textContent;a.querySelectorAll("a.more").forEach(x=>x.remove());h.remove();GD[a.id.slice(2)]={t,h:a.innerHTML}});
+const guide=c=>GD[c]?`<details class="gg" style="--t:${CT[c]}"><summary><span class="gl">Qué comprar</span>${GD[c].t}</summary><div class="gb">${GD[c].h}</div></details>`:"";
 
 function render(){
  const t=qry.toLowerCase(),F=P.filter(p=>(t?(p.n+" "+p.b+" "+C[p.c]).toLowerCase().includes(t):(!cat||p.c===cat))&&pass(p)).sort(SRT[ord]);
  document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",!t&&b.dataset.c===cat));
- const col=(!t&&CT[cat])||"71,85,105";$("#comparativas").style.setProperty("--t",col);$("#guias").style.setProperty("--t",col);
- document.querySelectorAll(".gd article").forEach(a=>a.hidden=!!t||(!!cat&&a.id!=="g-"+cat));
- $("#list").innerHTML=F.length?F.map(card).join(""):`<p class="muted">Ningún producto cumple estos filtros. Prueba a quitar alguno.</p>`;
+ const col=(!t&&CT[cat])||"71,85,105";$("#comparativas").style.setProperty("--t",col);
+ const grp=!t&&(cat||ord==="d");let last="";
+ $("#list").innerHTML=F.length?F.map(p=>{
+  let h="";
+  if(grp&&p.c!==last){last=p.c;const n=F.filter(x=>x.c===p.c).length;h=`<h3 class="gh" style="--t:${CT[p.c]}"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[p.c]}</svg></span>${C[p.c]}<span class="gn">${n} ${n===1?"producto":"productos"}</span>${cat?"":`<a href="#comparativas" data-cat="${p.c}">Ver solo esta categoría</a>`}</h3>${guide(p.c)}`}
+  return h+card(p)}).join(""):`<p class="muted">Ningún producto cumple estos filtros. Prueba a quitar alguno.</p>`;
  $("#cnt").textContent=F.length+(F.length===1?" producto":" productos");
  $("#fx").hidden=!(fp||fe||fn);
+ const nf=(fp?1:0)+(fe?1:0)+(fn?1:0);$(".fd>summary").textContent="Filtros"+(nf?" ("+nf+(nf===1?" activo)":" activos)"):"");
  bar2();
 }
 function bar2(msg){
@@ -560,15 +592,22 @@ $("#list").addEventListener("click",e=>{
  else{bar2("Máximo 3 productos");return}
  render();
 });
-$("#chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(b){go(b.dataset.c);$("#comparativas").scrollIntoView()}});
+$("#chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(b){go(b.dataset.c);$(".tb").scrollIntoView()}});
 $("#ord").addEventListener("change",e=>{ord=e.target.value;render()});
 $("#fp").addEventListener("change",e=>{fp=e.target.value;render()});
 $("#fe").addEventListener("change",e=>{fe=e.target.value;render()});
 $("#fn").addEventListener("change",e=>{fn=e.target.value;render()});
 $("#fx").addEventListener("click",()=>{fp=fe=fn="";$("#fp").value=$("#fe").value=$("#fn").value="";render()});
 document.addEventListener("click",e=>{const a=e.target.closest("a[data-cat]");if(a)go(a.dataset.cat)});
+/* En pantallas anchas los filtros se ven siempre; en móvil se abren con el botón «Filtros» */
+const wide=matchMedia("(min-width:900px)"),fd=$(".fd");fd.open=wide.matches;
+wide.addEventListener("change",e=>{fd.open=e.matches});
 $("#q").addEventListener("input",e=>{qry=e.target.value.trim();render()});
-$("#q").addEventListener("keydown",e=>{if(e.key==="Enter")$("#comparativas").scrollIntoView()});
+$("#q").addEventListener("keydown",e=>{if(e.key==="Enter")$(".tb").scrollIntoView()});
+/* Alturas de la cabecera y de la barra de categorías fijas, para que nada quede tapado al hacer scroll */
+const hd=document.querySelector("header"),cbar=$("#cbar");
+const vars=()=>{const r=document.documentElement.style;r.setProperty("--hh",(getComputedStyle(hd).position==="sticky"?hd.offsetHeight:0)+"px");r.setProperty("--bh",cbar.offsetHeight+"px")};
+vars();addEventListener("resize",vars);if(window.ResizeObserver){const ro=new ResizeObserver(vars);ro.observe(hd);ro.observe(cbar)}
 $("#cc").onclick=()=>{cmp=[];render()};
 
 /* Comparador: precio, valoración, opiniones y dimensiones juntos */
@@ -602,7 +641,6 @@ $("#dlg").addEventListener("click",e=>{if(e.target===$("#dlg"))$("#dlg").close()
 /* Mejor puntuado de cada categoría y panel de la portada */
 $("#picks").innerHTML=PK.map(pick).join("");
 $("#picks").addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(b){go(b.dataset.go);nav("#comparativas")}});
-$("#tops").innerHTML=[...P].sort(SRT.s).slice(0,4).map(p=>`<a class="tr" href="#comparativas" data-cat="${p.c}"><span class="th">${p.img?`<img src="${p.img}" alt="">`:""}</span><span><strong>${p.n}</strong><small>${C[p.c]}</small></span><span class="n">${f1(p.s)}<i>/5</i></span></a>`).join("");
 
 /* Cifras y textos que dependen de los datos (no hay valores fijos en el HTML) */
 $("#s1").textContent=P.length;$("#s2").textContent=Object.keys(C).length;$("#s3").textContent=CR.length;
@@ -617,7 +655,7 @@ $("#frm").innerHTML=`<p><strong>Puntuación orientativa (de 1 a 5, en pasos de 0
 <p><strong>Limitaciones.</strong> Cada categoría tiene solo 2 o 3 productos, así que la mediana y el «mayor» de cada categoría son referencias poco representativas. El criterio de precio favorece al más barato aunque no sea el de mejor calidad: por eso es solo uno de los criterios. Las opiniones de Amazon pueden incluir variantes del producto y no las hemos verificado. <strong>No hemos probado los productos</strong>: todos los datos salen de las fichas públicas de Amazon.es consultadas el <span>${DATE}</span>. Los materiales, el nivel y el ahorro de espacio son datos o clasificaciones basados en la ficha y no puntúan.</p>`;
 
 /* Navegación interna: no depende del hash del navegador, así funciona también en vistas previas y en file:// */
-function view(h){h=h||"";const v=h==="#eleccion";["#inicio","#comparativas","#guias","#metodologia"].forEach(s=>$(s).hidden=v);$("#veredicto").hidden=!v;const t=!v&&h.length>1&&h!=="#inicio"&&document.getElementById(h.slice(1));t?t.scrollIntoView():scrollTo(0,0)}
+function view(h){h=h||"";const v=h==="#eleccion";["#inicio","#comparativas","#metodologia"].forEach(s=>$(s).hidden=v);$("#veredicto").hidden=!v;const t=!v&&h.length>1&&h!=="#inicio"&&document.getElementById(h.slice(1));t?t.scrollIntoView():scrollTo(0,0)}
 function nav(h){try{history.pushState(null,"",h)}catch(_){}view(h)}
 document.addEventListener("click",e=>{
  const a=e.target.closest('a[href^="#"]');if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey)return;
