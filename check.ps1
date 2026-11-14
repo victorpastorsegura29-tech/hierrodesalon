@@ -40,6 +40,7 @@ $static = $index -replace '(?s)<script\b.*?</script>', '' -replace '(?s)<style\b
 # ---------- 2. Cumplimiento con Amazon ----------
 Section "2. Cumplimiento con Amazon (sin precios, estrellas ni opiniones copiadas)"
 Check (-not $index.Contains([string][char]0x20AC)) "No aparece el simbolo del euro en index.html"
+Check (-not [regex]::IsMatch($index, "media-amazon|ssl-images-amazon")) "No se carga ninguna imagen alojada en Amazon"
 Check (-not $index.Contains([string][char]0x2605)) "No aparecen estrellas (la estrella de valoracion)"
 Check (-not [regex]::IsMatch($index, '\d[\d.,]*\s*opiniones', 'IgnoreCase')) "No hay cifras de opiniones (por ejemplo 1.234 opiniones)"
 Check (-not [regex]::IsMatch($index, '\b\d(,\d)?\s*(/|de)\s*5\b(?!\d)')) "No hay notas del tipo 4,5/5 o 4,5 de 5"
