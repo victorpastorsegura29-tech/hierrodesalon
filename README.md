@@ -50,7 +50,7 @@ Cambia el texto en `tools\og.html` (o el icono en `tools\icon.html`) y ejecuta `
 
 - **No se muestran precios, valoraciones con estrellas ni número de opiniones.** Las políticas del programa solo lo permiten con datos de su API oficial. El botón lleva a Amazon, que muestra precio y opiniones actualizados. `check.ps1` vigila que no reaparezcan.
 - Los enlaces llevan `tag=hierrodesalon-21` y `rel="nofollow sponsored noopener"`; el aviso obligatorio («En calidad de Afiliado de Amazon, obtengo ingresos…») está en el pie.
-- **Fotos de producto:** no se usan imágenes alojadas en Amazon (las políticas de Afiliados no lo permiten). Cada tarjeta muestra la ilustración de su categoría. Para poner fotos reales hacen falta fotos propias, imágenes del fabricante con autorización escrita o un banco con licencia.
+- **Fotos de producto:** son fotos genéricas de cada categoría de Pexels (licencia de uso comercial, sin atribución), recortadas a 800 × 600 y guardadas en `img/`; la web las etiqueta como «Foto ilustrativa». Su origen está en `images.csv`. No se usan imágenes alojadas en Amazon (las políticas de Afiliados no lo permiten). Para fotos exactas de cada modelo hacen falta fotos propias o imágenes del fabricante con autorización escrita.
 
 ## Hosting, dominio y Search Console
 

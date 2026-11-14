@@ -1,0 +1,24 @@
+# Registro de imagenes de producto. Una fila por imagen; si el registro esta incompleto, la imagen NO debe publicarse.
+# Origenes permitidos: foto propia | imagen del fabricante con autorizacion escrita | banco de imagenes con licencia comercial (solo categorias genericas).
+# NO se permiten imagenes alojadas en Amazon ni copiadas de sus paginas.
+# IMPORTANTE: todas estas fotos son GENERICAS DE LA CATEGORIA (no son fotos del modelo concreto). La web las etiqueta como "Foto ilustrativa".
+# Licencia Pexels: uso comercial gratuito, sin atribucion obligatoria (https://www.pexels.com/license/). Se agradece el credito al autor.
+# Procesado: recorte 4:3, 800x600 px, JPEG, sin metadatos EXIF, menos de 150 KB.
+id_producto,archivo,origen,referencia_licencia,fecha,autorizado_por
+nuo,img/nuobell-80-lb.jpg,"Pexels - foto de Andrea Piacquadio - https://www.pexels.com/photo/3931367/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+bow,img/bowflex-selecttech-552.jpg,"Pexels - foto de Lukas Blazek - https://www.pexels.com/photo/669580/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+cor,img/mancuernas-ajustables-32-kg.jpg,"Pexels - foto de foad shariyati - https://www.pexels.com/photo/29224210/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+ban,img/joroto-md80.jpg,"Pexels - foto de Brett Jordan - https://www.pexels.com/photo/4488754/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+bpl,img/flybird-banco-plegable-363-kg.jpg,"Pexels - foto de 大 董 - https://www.pexels.com/photo/40371837/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+bel,img/eric-flag-cinturon-de-lastre.jpg,"Pexels - foto de Victor Freitas - https://www.pexels.com/photo/949132/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+bne,img/aqf-cinturon-de-lastre.jpg,"Pexels - foto de Ivan S - https://www.pexels.com/photo/4164452/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+str,img/fitgriff-straps.jpg,"Pexels - foto de cottonbro studio - https://www.pexels.com/photo/7671477/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+sac,img/mercuryal-straps.jpg,"Pexels - foto de Lukas Blazek - https://www.pexels.com/photo/669585/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+pdb,img/proiron-barra-de-dominadas-puerta.jpg,"Pexels - foto de cottonbro studio - https://www.pexels.com/photo/7672109/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+dhb,img/dh-fitlife-barra-de-dominadas-pared.jpg,"Pexels - foto de B M Rauf - https://www.pexels.com/photo/17594777/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+mmm,img/la-mente-es-maravillosa-esterilla-6-mm.jpg,"Pexels - foto de Pavel Danilyuk - https://www.pexels.com/photo/6339731/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+unm,img/unycos-esterilla-10-mm.jpg,"Pexels - foto de Leticia Alvares - https://www.pexels.com/photo/36717697/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+pbp,img/proiron-pelota-de-pilates.jpg,"Pexels - foto de cottonbro studio - https://www.pexels.com/photo/7671458/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+upb,img/unycos-pelota-de-yoga-y-pilates.jpg,"Pexels - foto de RDNE Stock project - https://www.pexels.com/photo/7188082/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+fko,img/fokky-gomas-set-de-5.jpg,"Pexels - foto de Oksana S - https://www.pexels.com/photo/12745676/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
+fka,img/fokky-gomas-anclaje-de-puerta.jpg,"Pexels - foto de Mikhail Nilov - https://www.pexels.com/photo/6740819/",Pexels License,2026-11-14,Licencia Pexels (uso comercial sin atribucion)
