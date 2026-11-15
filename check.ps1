@@ -107,6 +107,8 @@ $dups = $ids | Group-Object | Where-Object { $_.Count -gt 1 } | ForEach-Object {
 Check (@($dups).Count -eq 0) ("Ningun id repetido en index.html" + $(if ($dups) { " (repetidos: " + ($dups -join ", ") + ")" } else { "" }))
 $noAlt = [regex]::Matches($static, '<img\b(?![^>]*\balt=)[^>]*>').Count
 Check ($noAlt -eq 0) "Todas las imagenes tienen texto alternativo (alt)"
+Check (([regex]::Matches((Read "404.html"), 'href="/#c-[a-z]+"')).Count -ge 4) "La pagina 404 ofrece enlaces a las categorias"
+Check ($index -match 'footer li a\{display:inline-block;padding:\d+px 0\}') "Los enlaces del pie tienen una zona tactil comoda"
 
 # ---------- 6. Enlaces y recursos internos ----------
 Section "6. Enlaces internos"
@@ -161,6 +163,8 @@ if ($Live) {
   Check ((Code "$B/og.jpg") -eq "200") "og.jpg responde 200"
   Check ((Code "$B/fonts/inter-latin.woff2") -eq "200") "Las tipografias propias responden 200"
   Check ((Head "$B/fonts/inter-latin.woff2") -match '(?i)immutable') "Las tipografias se guardan en cache un ano"
+  $imgUrl = [regex]::Match($body, 'img/[a-z0-9-]+\.jpg').Value
+  Check ($imgUrl -ne '' -and (Head "$B/$imgUrl") -match '(?i)cache-control:[^\n]*max-age=86400') "Las fotos se guardan en cache un dia (y se sirven mientras se revalidan)"
   Check ((Code "$B/pagina-que-no-existe-$([guid]::NewGuid().ToString('N'))") -eq "404") "Una URL inexistente devuelve 404"
   $httpCode = Code "http://hierrodesalon.com/"
   Check ($httpCode -in "301", "308") "http:// redirige a https:// (codigo $httpCode)"
