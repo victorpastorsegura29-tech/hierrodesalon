@@ -7,6 +7,7 @@ Web estática (sin servidor ni base de datos) de comparativas de material de fit
 | Archivo | Para qué sirve |
 |---|---|
 | `index.html` | La web: portada, productos, guías «Qué comprar» y «Cómo elegimos». Los datos de los productos están en el array `P` del script |
+| `yoga-pilates-fitness.html`, `dominadas-lastre.html`, `mancuernas-bancos.html`, `straps-levantamiento.html` | Páginas por tema para Google. **Las genera `prerender.ps1` a partir de `index.html`: no se editan a mano** (sus títulos y textos están en el array `$paginas` de `prerender.ps1`) |
 | `aviso-legal.html`, `privacidad.html`, `cookies.html`, `legal.css`, `cookies.js` | Páginas legales y banner de cookies |
 | `404.html` | Página de error |
 | `fonts/` | Tipografías Inter y Barlow Condensed (licencia SIL OFL), servidas desde la propia web |
@@ -21,7 +22,7 @@ Web estática (sin servidor ni base de datos) de comparativas de material de fit
 Hace falta Windows con Microsoft Edge. Desde esta carpeta:
 
 1. **Edita** `index.html` (datos, textos o diseño).
-2. **Genera el contenido para buscadores**: las tarjetas las crea JavaScript, y este paso guarda el resultado dentro del HTML para que Google y las IA lo vean sin ejecutar nada.
+2. **Genera el contenido para buscadores**: las tarjetas las crea JavaScript, y este paso guarda el resultado dentro del HTML para que Google y las IA lo vean sin ejecutar nada. También **regenera las 4 páginas por tema** a partir de `index.html`.
    ```powershell
    powershell -ExecutionPolicy Bypass -File .\prerender.ps1
    ```

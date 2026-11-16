@@ -24,7 +24,7 @@ function Read([string]$rel) { [System.IO.File]::ReadAllText((Join-Path $root $re
 
 # ---------- 1. Archivos ----------
 Section "1. Archivos necesarios"
-$need = @("index.html", "privacidad.html", "aviso-legal.html", "cookies.html", "404.html", "legal.css", "cookies.js",
+$need = @("index.html", "yoga-pilates-fitness.html", "dominadas-lastre.html", "mancuernas-bancos.html", "straps-levantamiento.html", "privacidad.html", "aviso-legal.html", "cookies.html", "404.html", "legal.css", "cookies.js",
           "robots.txt", "sitemap.xml", "site.webmanifest", "_headers", "favicon.svg", "favicon-32.png", "apple-touch-icon.png",
           "icon-192.png", "icon-512.png", "og.jpg", "google7045589a039bc88c.html",
           "fonts\LICENSE.txt", "fonts\OFL.txt", "fonts\inter-latin.woff2", "fonts\inter-latin-ext.woff2", "fonts\barlow-condensed-600-latin.woff2",
@@ -35,6 +35,7 @@ $ogSize = (Get-Item (Join-Path $root "og.jpg")).Length
 Check ($ogSize -lt 300000) ("og.jpg pesa " + [math]::Round($ogSize / 1024) + " KB (menos de 300 KB, para que WhatsApp lo muestre)")
 
 $index = Read "index.html"
+$pages = "yoga-pilates-fitness", "dominadas-lastre", "mancuernas-bancos", "straps-levantamiento"
 $static = $index -replace '(?s)<script\b.*?</script>', '' -replace '(?s)<style\b.*?</style>', '' -replace '(?s)<!--.*?-->', ''
 
 # ---------- 2. Cumplimiento con Amazon ----------
@@ -67,6 +68,29 @@ $ldOk = $false; try { $null = $ld | ConvertFrom-Json; $ldOk = ($ld.Length -gt 10
 Check $ldOk "Los datos estructurados (JSON-LD) son JSON valido"
 Check (([regex]::Matches($static, '<h1\b')).Count -eq 1) "Hay un unico h1"
 
+# ---------- 3b. Paginas por tema (las genera prerender.ps1) ----------
+Section "3b. Paginas por tema"
+$titulos = @($title); $h1s = @([regex]::Match($static, '<h1>(.*?)</h1>', 'Singleline').Groups[1].Value)
+foreach ($pg in $pages) {
+  $t = Read "$pg.html"
+  $s = $t -replace '(?s)<script\b.*?</script>', '' -replace '(?s)<style\b.*?</style>', '' -replace '(?s)<!--.*?-->', ''
+  $pt = [regex]::Match($s, '<title>(.*?)</title>', 'Singleline').Groups[1].Value
+  $pd = [regex]::Match($s, '<meta name="description" content="([^"]*)"').Groups[1].Value
+  $ph = [regex]::Match($s, '<h1>(.*?)</h1>', 'Singleline').Groups[1].Value
+  $titulos += $pt; $h1s += $ph
+  Check ($pt.Length -ge 20 -and $pt.Length -le 70 -and $pd.Length -ge 70 -and $pd.Length -le 175) ("$pg : titulo de $($pt.Length) y descripcion de $($pd.Length) caracteres")
+  Check ($s -match ('<link rel="canonical" href="https://hierrodesalon\.com/' + $pg + '">') -and $s -match ('og:url" content="https://hierrodesalon\.com/' + $pg + '"')) "$pg : canonical y og:url propios"
+  Check (([regex]::Matches($s, '<h1\b')).Count -eq 1 -and $ph.Length -gt 5) "$pg : un unico h1 ($ph)"
+  Check (([regex]::Matches($s, 'class="card"')).Count -ge 2) "$pg : se ven las tarjetas sin JavaScript"
+  Check (-not $t.Contains([string][char]0x20AC) -and -not $t.Contains([string][char]0x2605) -and -not [regex]::IsMatch($t, '\d[\d.,]*\s*opiniones', 'IgnoreCase')) "$pg : sin euros, estrellas ni cifras de opiniones"
+  $am = [regex]::Matches($s, '<a\b[^>]*href="https://www\.amazon\.es[^"]*"[^>]*>')
+  $bad = $am | Where-Object { $_.Value -notmatch 'tag=hierrodesalon-21' -or $_.Value -notmatch 'rel="[^"]*sponsored' -or $_.Value -notmatch 'rel="[^"]*nofollow' }
+  Check ($am.Count -ge 2 -and @($bad).Count -eq 0) "$pg : $($am.Count) enlaces a Amazon con tu etiqueta y rel correcto"
+  Check ($s -match 'En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas') "$pg : lleva el aviso de Afiliado de Amazon"
+  Check ($index -match ('href="/' + $pg + '"')) "La portada enlaza a /$pg"
+}
+Check (($titulos | Select-Object -Unique).Count -eq $titulos.Count -and ($h1s | Select-Object -Unique).Count -eq $h1s.Count) "Todos los titulos y H1 son distintos entre si (la portada y las 4 paginas)"
+
 # ---------- 4. Privacidad: sin terceros innecesarios ----------
 Section "4. Privacidad"
 $allText = (Get-ChildItem $root -Include *.html, *.css, *.js, *.webmanifest -Recurse -File | Where-Object { $_.FullName -notmatch '\\(\.git|tools)\\' } |
@@ -97,7 +121,7 @@ function Test-Balance([string]$s) {
   if ($stack.Count -gt 0) { [void]$errs.Add("sin cerrar: " + (($stack.ToArray() | Select-Object -First 5) -join ", ")) }
   return ,$errs
 }
-foreach ($f in "index.html", "privacidad.html", "aviso-legal.html", "cookies.html", "404.html") {
+foreach ($f in (@("index.html", "privacidad.html", "aviso-legal.html", "cookies.html", "404.html") + ($pages | ForEach-Object { "$_.html" }))) {
   $s = (Read $f) -replace '(?s)<script\b.*?</script>', '' -replace '(?s)<style\b.*?</style>', '' -replace '(?s)<!--.*?-->', ''
   $e = Test-Balance $s
   Check ($e.Count -eq 0) ("$f : etiquetas abiertas y cerradas en orden" + $(if ($e.Count) { " (" + (($e | Select-Object -First 3) -join "; ") + ")" } else { "" }))
@@ -120,7 +144,7 @@ function Local-Exists([string]$ref) {
   return ((Test-Path (Join-Path $root $p) -PathType Leaf) -or (Test-Path (Join-Path $root "$p.html") -PathType Leaf))
 }
 $broken = New-Object System.Collections.ArrayList
-foreach ($f in "index.html", "privacidad.html", "aviso-legal.html", "cookies.html", "404.html") {
+foreach ($f in (@("index.html", "privacidad.html", "aviso-legal.html", "cookies.html", "404.html") + ($pages | ForEach-Object { "$_.html" }))) {
   $s = (Read $f) -replace '(?s)<script\b.*?</script>', '' -replace '(?s)<!--.*?-->', ''
   foreach ($m in [regex]::Matches($s, '\b(?:href|src)="([^"]*)"')) { if (-not (Local-Exists $m.Groups[1].Value)) { [void]$broken.Add("$f -> " + $m.Groups[1].Value) } }
   foreach ($m in [regex]::Matches($s, 'url\(([^)]+)\)')) { $u = $m.Groups[1].Value.Trim("'", '"', ' '); if (-not (Local-Exists $u)) { [void]$broken.Add("$f css -> $u") } }
@@ -132,6 +156,7 @@ $smap = Read "sitemap.xml"
 $locs = [regex]::Matches($smap, '<loc>([^<]+)</loc>') | ForEach-Object { $_.Groups[1].Value }
 $badLoc = $locs | Where-Object { $_ -notmatch '^https://hierrodesalon\.com/' -or $_ -match '\.html$' -or -not (Local-Exists ($_ -replace '^https://hierrodesalon\.com', '')) }
 Check ($locs.Count -ge 4 -and @($badLoc).Count -eq 0) ("El sitemap lista $($locs.Count) URL validas (con https, sin .html y con archivo)")
+Check (@($pages | Where-Object { $locs -notcontains ("https://hierrodesalon.com/" + $_) }).Count -eq 0) "El sitemap incluye las 4 paginas por tema"
 
 # ---------- 7. El HTML generado esta al dia ----------
 Section "7. Prerender (lo que ven Google y las IA)"
