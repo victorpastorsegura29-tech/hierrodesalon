@@ -672,7 +672,7 @@ function render(){
  /* Títulos: h2 (sección) > h3 (grupo) > h4 (tipo) > h5 (tarjeta); sin grupos las tarjetas cuelgan del h2 (h3) */
  $("#list").innerHTML=F.length?F.map((p,i)=>{
   let h="";const g=GR[p.c],i0=G[g].k[0],multi=G[g].k.length>1;
-  if(grp&&g!==lg){lg=g;ls="";h=`<h3 class="gh" style="--t:${CT[i0]}"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[i0]}</svg></span>${G[g].n}<span class="gn">${np(F.filter(x=>GR[x.c]===g).length)}</span>${cat?"":`<a href="/${G[g].u}" aria-label="Ver solo esta categoría: ${G[g].n}">Ver solo esta categoría</a>`}</h3>${guide(g)}`}
+  if(grp&&g!==lg){lg=g;ls="";h=`<h3 class="gh" style="--t:${CT[i0]}"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[i0]}</svg></span>${G[g].n}<span class="gn">${np(F.filter(x=>GR[x.c]===g).length)}</span>${cat?"":`<a href="#" data-u="${G[g].u}" aria-label="Ver solo esta categoría: ${G[g].n}">Ver solo esta categoría</a>`}</h3>${guide(g)}`}
   if(sub&&multi&&p.c!==ls){ls=p.c;h+=`<h4 class="sk" style="--t:${CT[p.c]}">${C[p.c]}<span>${np(F.filter(x=>x.c===p.c).length)}</span></h4>`}
   return h+card(p,!sub,sub&&multi?5:grp?4:3,i)}).join(""):`<p class="muted">${t?"No hemos encontrado «"+qry.replace(/[<>&"]/g,"")+"». Prueba con otra palabra (por ejemplo «esterilla», «pared» o «plegable») o elige una categoría.":"Ningún producto cumple estos filtros. Prueba a quitar alguno."}</p>`;
  $("#cnt").textContent=t?F.length+(F.length===1?" resultado":" resultados")+" para «"+qry+"»":F.length+(F.length===1?" producto":" productos");
@@ -758,5 +758,6 @@ if(location.protocol==="file:"&&location.search==="?prerender"){
  const pre=document.createElement("pre");pre.id="prerender-out";pre.textContent=JSON.stringify(o);document.body.appendChild(pre);
 }
 </script>
+<script>/* Enlaces «Ver solo esta categoría»: la URL se monta aquí para que Google no lea código como si fuera una dirección */(function(){function f(e){var a=e.target.closest&&e.target.closest("a[data-u]");if(a)a.setAttribute("href","/"+a.getAttribute("data-u"))}["pointerover","focusin","touchstart","mousedown"].forEach(function(t){document.addEventListener(t,f,{passive:true})});document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[data-u]");if(a&&a.getAttribute("href")==="#"){e.preventDefault();location.href="/"+a.getAttribute("data-u")}})})();</script>
 </body>
 </html>
